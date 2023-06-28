@@ -1,0 +1,320 @@
+/* == Google Font Import - Playfair Display and Raleway===== */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap');
+
+$enable-negative-margins: true;
+
+html{
+  scroll-behavior: smooth;
+  overflow-x: hidden !important;
+}
+
+body {
+position: relative;
+overflow-x: hidden !important;
+}
+
+//Color
+$primary: #0F4C81;
+$secondary: #3F3F3F;
+$light: #EBEDF0;
+
+//Spacing
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .5,  //8px
+  2: $spacer * .75, //12px
+  3: $spacer,       //16px
+  4: $spacer * 1.5, //24px
+  5: $spacer * 2,   //32px
+  6: $spacer * 2.5, //40px
+  7: $spacer * 3,   //48px
+  8: $spacer * 3.5, //56px
+  9: $spacer * 4,   //64px
+  10: $spacer * 4.5, //72px
+  11: $spacer * 5,   //80px
+  12: $spacer * 7.5,  //120px
+);
+
+//Typography
+$header-font-family:          'Merriweather', serif;
+$font-size-root:              16px;
+$font-size-base:              1rem;
+$h1-font-size:                $font-size-base * 3.8125; //61px
+$h2-font-size:                $font-size-base * 3.0625; //49px
+$h3-font-size:                $font-size-base * 2.4375; //39px
+$h4-font-size:                $font-size-base * 1.9375; //31px
+$h5-font-size:                $font-size-base * 1.5625; //25px
+$h6-font-size:                $font-size-base * 1.25;   //20px
+$font-size-sm:                $font-size-base * 0.8125; //Body Hint 13px
+$btn-font-size:               $font-size-base;          //16px
+
+// Font Weight
+$font-weight-lighter:         400; //Regular
+$font-weight-light:           500; //Medium
+$font-weight-normal:          600; //Semi-bold
+$font-weight-bold:            700; //Bold
+$font-weight-bolder:          bolder; //Bolder
+$font-weight-base:            $font-weight-lighter;
+
+//Button
+$btn-padding-y:               1rem;
+$btn-padding-x:               1.5rem;
+$btn-border-radius:           0px;
+$btn-font-family:             $header-font-family;
+$btn-font-size:               $btn-font-size;
+
+// h1 to h6
+h1,h2,h3,h4,h5,h6{
+font-family: $header-font-family;
+font-weight: $font-weight-bold !important;
+color: $primary;
+}
+
+// Grid
+$grid-columns:      12;
+$grid-gutter-width: 2rem; //32px
+
+//Grid Breakpoint
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+//Container max-width
+$container-max-widths: (
+  sm: 378px,
+  md: 570px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);
+
+//Shadow
+$box-shadow:                  0px 2px 4px rgba(0, 0, 0, 0.24);
+$box-shadow-sm:               0px 4px 8px rgba(0, 0, 0, 0.16);
+$box-shadow-lg:               0px 16px 24px rgba(0, 0, 0, 0.12);
+
+
+//Aspect Ration
+$aspect-ratios: (
+  "1x1": 100%,
+  "4x3": calc(3 / 4 * 100%),
+  "16x9": calc(9 / 16 * 100%),
+  "21x9": calc(9 / 21 * 100%),
+  "4x1": calc(1 / 4 * 100%),
+  "3x4": calc(4 / 3 * 100%)
+);
+
+//Input form
+$input-bg:                              $light;
+$input-color:                           $primary;
+$input-border-radius:                   0px;
+$input-padding-y:                       1rem;
+$input-padding-x:                       1rem;
+$input-btn-border-width:                0px;
+$input-btn-font-size:                   1.125rem;
+
+//Floating label
+// $form-floating-height:            add(3.5rem, $input-height-border);
+// $form-floating-line-height:       1.25;
+// $form-floating-padding-x:         $input-padding-x;
+// $form-floating-padding-y:         $input-padding-y;
+// $form-floating-input-padding-t:   1.625rem;
+// $form-floating-input-padding-b:   .625rem;
+// $form-floating-label-opacity:     .65;
+// $form-floating-label-transform:   scale(.75) translateY(-.75rem) translateX(.15rem);
+// $form-floating-transition:        opacity .5s ease-in-out, transform .1s ease-in-out;
+
+// Breadcrumb
+$breadcrumb-divider:                quote(">");
+$breadcrumb-divider-flipped:        $breadcrumb-divider;
+$breadcrumb-margin-bottom:          0px;
+$breadcrumb-padding-y:              1.5rem;
+
+// Nav Pills
+$nav-link-font-size:                1.125rem;
+$nav-link-font-weight:              null;
+$nav-tabs-border-radius:            0px;
+$nav-pills-border-radius:           0px;
+
+// Accordion Item
+$accordion-border-width:            0px;
+
+// Pagination
+$pagination-border-radius:          0px;
+$pagination-border-radius-sm:       0px;
+$pagination-border-radius-lg:       0px;
+$pagination-border-color:           $primary;
+$pagination-border-width:           1px;
+
+//Badge
+$badge-font-size:                   $font-size-sm;
+$badge-border-radius:               0px;
+
+//Card
+$card-border-width:                 0px;
+$card-border-radius:                0px;
+$card-height:                       100%;
+$card-spacer-y:                     2.5rem;
+$card-spacer-x:                     1.5rem;
+// $card-bg:                           lighten($dark, 05);
+// $card-box-shadow:                   $box-shadow-lg;
+// $card-color:                        #fff;
+$card-group-margin:                 2rem;
+
+.card:not(.card.hero){
+    box-shadow: $box-shadow;
+    transition: .5s;
+
+    &:hover{
+        box-shadow: $box-shadow-lg;
+        border-left: 0.5rem solid $primary;
+        transition: .5s;
+    }
+}
+
+.card-footer{
+  padding: 1rem 1.5rem !important;
+  border-top: 1px solid $secondary !important;
+  background-color: #fff !important;
+  text-transform: uppercase;
+}
+
+// Slick
+.slick-slide:not(.custom-slider) {
+  padding:  1rem;
+}
+
+.slick-arrow {
+  height: 2.5rem !important;
+  width: 2.5rem !important;
+  background-color: $primary !important;
+}
+
+.slick-prev{
+  left: -0.5rem !important;
+  z-index: 100;
+}
+
+.slick-next{
+  right: -0.5rem !important;
+}
+
+.slick-prev:before, .slick-next:before{
+  font-size: $h4-font-size !important;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1 !important;
+}
+// .slick-list {
+//   padding:-27px;
+// }
+
+.icon-size{
+  width: 2.5110625rem  !important;
+}
+
+.slick-dots li button:before{
+  font-size: 2.5rem !important;
+  content: "∎" !important;
+  color: $primary !important;
+}
+
+.hero {
+  .slick-dots li button:before{
+    top: -1.5rem !important;
+  }
+}
+
+
+// .slick-dots li button::marker  {
+//   border-radius: 0px !important;
+// }
+  
+// .li.slick-active:before{
+//   background: $primary !important;
+// } 
+
+
+.fa-square-facebook:hover{
+  color: #1877F2 !important;
+  transition: .5s;
+}
+
+.fa-instagram:hover{
+  color: #C32AA3 !important;
+  transition: .5s;
+}
+
+.fa-square-twitter:hover{
+  color: #1DA1F2 !important;
+  transition: .5s;
+}
+
+.fa-linkedin:hover{
+  color: #0A66C2 !important;
+  transition: .5s;
+}
+
+.fa-square-youtube:hover{
+  color: #FF0000 !important;
+  transition: .5s;
+}
+
+.fa-square-github:hover{
+  color: #0d1117 !important;
+  transition: .5s;
+}
+
+.image-holder-bg{
+  transition: .7s ease;
+}
+
+.image-holder{
+  transition: .7s ease;
+  &:hover{
+    transition: .7s ease;
+    .image-holder-bg{
+      transform: rotate(45deg);
+      transition: .7s ease;
+    }
+  }
+}
+// .image-holder-bg{
+//   transition: .5s ease;
+//   &:hover{
+//     transform: rotate(45deg);
+//     transition: .5s ease;
+//   }
+// }
+
+@import '../node_modules/bootstrap/scss/_functions.scss';
+@import '../node_modules/bootstrap/scss/_variables.scss';
+@import '../node_modules/bootstrap/scss/mixins/_breakpoints.scss';
+
+@include media-breakpoint-down(md) { 
+    .card.hero { 
+      .ratio-16x9{
+        --bs-aspect-ratio: calc(3 / 4 * 100%);
+        }
+    }
+
+    .icon-size{
+      width: 2.4004370rem  !important;
+    }
+  }
+  @include media-breakpoint-down(sm) { 
+    .card.hero { 
+      .ratio-16x9{
+        --bs-aspect-ratio: calc(4 / 3 * 100%);
+        }
+    }
+  }
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
