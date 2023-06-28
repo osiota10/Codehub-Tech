@@ -8,7 +8,7 @@ class ContactForm(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     full_name = models.CharField(max_length=50)
     email = models.EmailField()
-    location = models.CharField(max_length=50)
+    subject = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=15)
     message = RichTextField()
 
