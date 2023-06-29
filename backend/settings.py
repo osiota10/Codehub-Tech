@@ -156,3 +156,11 @@ cloudinary.config(
     api_key = env('api_key'), 
     api_secret = env('api_secret') 
 )
+
+# SMTP Configurations
+EMAIL_BACKEND = env('EMAIL_BACKEND')
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_USE_SSL = env('EMAIL_USE_SSL')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
