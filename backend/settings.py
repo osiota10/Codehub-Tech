@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 import environ
+import cloudinary, cloudinary.uploader, cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'Company',
     'Course',
     'corsheaders',
+    'cloudinary',
     # 'frontend'
 ]
 
@@ -146,3 +148,11 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'Course.UserAccount'
+
+
+#Cloudinary Config
+cloudinary.config( 
+    cloud_name = env('cloud_name'), 
+    api_key = env('api_key'), 
+    api_secret = env('api_secret') 
+)
