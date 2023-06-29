@@ -18,8 +18,8 @@ from django.urls import path, include
 from .views import index
 
 urlpatterns = [
-    path('', index),
+    path('', include('Company.urls')),
     path('admin/', admin.site.urls),
-     path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
 ]
