@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from 'axios';
+import LoaderIcon from "./utilities/loader";
+import SuccessModal from "./utilities/successModalMsg";
 
 
 const ContactForm = () => {
-
+    // Form
     const [loading, setLoading] = useState(false);
     const [formError, setFormError] = useState([]);
     const [formData, setFormData] = useState({
@@ -37,7 +39,7 @@ const ContactForm = () => {
                 const res = await axios.post(`${process.env.REACT_APP_API_URL}/contact-us`, body, config);
                 setLoading(false)
                 if (res.status === 201) {
-                    // handleShow()
+                    handleShow()
                     setFormData({
                         full_name: '',
                         subject: '',
@@ -52,6 +54,12 @@ const ContactForm = () => {
         }
         PostFormData()
     };
+
+    //Modal
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
         <div className='container py-10'>
             <section className='row'>
@@ -74,7 +82,6 @@ const ContactForm = () => {
                                     value={full_name}
                                     required
                                 />
-                                {/* <input type="text" className="form-control" id="full_name" placeholder="name@example.com" /> */}
                                 <label for="full_name">Full Name</label>
                             </div>
                         </div>
@@ -90,7 +97,6 @@ const ContactForm = () => {
                                     value={phone_number}
                                     required
                                 />
-                                {/* <input type="text" className="form-control" id="phone_number" placeholder="name@example.com" /> */}
                                 <label for="phone_number">Phone Number</label>
                             </div>
                         </div>
@@ -107,7 +113,6 @@ const ContactForm = () => {
                                     value={email}
                                     required
                                 />
-                                {/* <input type="email" className="form-control" id="email" placeholder="name@example.com" /> */}
                                 <label for="email">Email address</label>
                             </div>
                         </div>
@@ -123,7 +128,6 @@ const ContactForm = () => {
                                     value={subject}
                                     required
                                 />
-                                {/* <input type="text" className="form-control" id="subject" placeholder="name@example.com" /> */}
                                 <label for="subject">Subject</label>
                             </div>
                         </div>
@@ -141,18 +145,42 @@ const ContactForm = () => {
                                     style={{ height: '9.375rem' }}
                                     required
                                 ></textarea>
-                                {/* <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style={{ height: '9.375rem' }}></textarea> */}
                                 <label for="floatingTextarea2">Brief Description</label>
                             </div>
                         </div>
 
 
                         <div className="col-12 d-grid">
-                            <button type="submit" className="btn btn-primary ">Submit</button>
+                            <button
+                                type="submit"
+                                className={loading ? "btn btn-primary disabled" : "btn btn-primary"}
+                            >
+                                {loading
+                                    ?
+                                    <LoaderIcon />
+                                    :
+                                    null
+                                }
+                                Submit
+                            </button>
                         </div>
                     </form>
                 </section>
             </section>
+
+            {
+                show
+                    ?
+                    <SuccessModal
+                        title='Thank you'
+                        message='you have successfully uploaded Payment Proof'
+                        errorMessage={formError}
+                        show={show}
+                        onClose={handleClose}
+                    />
+                    :
+                    null
+            }
         </div>
     );
 }
