@@ -47,10 +47,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Company',
     'Course',
+    'corsheaders',
     # 'frontend'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,6 +61,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ALLOW_CREDENTIALS = env('CORS_ALLOW_CREDENTIALS')
+CORS_ORIGIN_WHITELIST = env.list('CORS_ORIGIN_WHITELIST')
+CORS_ALLOWED_ORIGIN_REGEXES = env.list('CORS_ALLOWED_ORIGIN_REGEXES')
+
 
 ROOT_URLCONF = 'backend.urls'
 
