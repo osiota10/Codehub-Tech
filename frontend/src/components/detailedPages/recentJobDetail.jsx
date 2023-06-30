@@ -26,7 +26,7 @@ function RecentJobDetail() {
             <TextTemplate />
 
 
-            <Technologies />
+            {/* <Technologies /> */}
             <RecentJobGroup />
             <MailSubscription />
             <ContactForm />

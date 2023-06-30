@@ -55,7 +55,7 @@ class HeroSection extends Component {
                                             <button className='btn btn-primary'>Request a Quote</button>
 
                                             <section className="mt-4">
-                                                <Stat />
+                                                {/* <Stat /> */}
                                             </section>
                                         </div>
                                         <div className="col-lg-6 d-none d-lg-block">
@@ -77,7 +77,7 @@ class HeroSection extends Component {
                                             <button className='btn btn-primary'>Request a Quote</button>
 
                                             <section className="mt-4">
-                                                <Stat />
+                                                {/* <Stat /> */}
                                             </section>
                                         </div>
                                         <div className="col-lg-6 d-none d-lg-block">

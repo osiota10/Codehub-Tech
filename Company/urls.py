@@ -8,4 +8,5 @@ urlpatterns = [
     path('clients', OurClientView.as_view()),
     path('services', ServiceView.as_view()),
     path('services/<int:id>', ServiceDetail.as_view()),
+    path('recent-jobs', RecentJobView.as_view()),
 ]

@@ -28,7 +28,10 @@ function RecentJobCard({ key, title, body, category, thumbnail }) {
 
                 </section>
                 <div class="card-footer text-primary fw-bold">
-                    <small>{category}</small>
+                    {category.map((item) =>
+                        <small key={item.id}>{item.name}</small>
+                    )}
+
                 </div>
             </section>
         </section>

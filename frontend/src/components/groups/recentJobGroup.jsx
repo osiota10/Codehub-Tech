@@ -54,19 +54,33 @@ export const getSliderSettings = (dots, arrows, slidesToShow, removeAutoPlay) =>
 };
 
 
-function RecentJobGroup() {
+function RecentJobGroup({ filterCategory }) {
   const sliderSettings = getSliderSettings(true, true, 3, true)
 
   const jobs = useContext(JobContext)
+
+
+  // Extract category names from the passed category object
+  const categoryNames = filterCategory ? filterCategory.map(cat => cat.name) : [];
+
+  const filteredItems = categoryNames.length
+    ? jobs.filter(item => {
+      // Assuming item.category is a list of objects
+      return item.category.some(cat => categoryNames.includes(cat.name));
+    })
+    : jobs;
+
   return (
     <div className='container py-10'>
-      <h2 className='text-center mb-8'>Our Recent Jobs</h2>
+      <h2 className='text-center mb-8'>
+        {filterCategory ? 'Related Jobs Done' : 'Our Recent Jobs'}
+      </h2>
       <Slider {...sliderSettings}>
-        {jobs.slice(0, 9).map(item =>
+        {filteredItems.slice(0, 9).map(item =>
           <RecentJobCard
             key={item.id}
             title={item.title}
-            body={item.description}
+            body={item.summary}
             category={item.category}
             thumbnail={item.image}
           />)}

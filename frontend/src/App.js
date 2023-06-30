@@ -30,6 +30,7 @@ function App() {
   const [jobs, setJobs] = useState([])
   const [categories, setCategories] = useState([]);
 
+  // console.log(categories)
   useEffect(() => {
 
     //Service
@@ -45,13 +46,13 @@ function App() {
       })
 
     // Recent Jobs
-    axios.get(`https://fakestoreapi.com/products`)
+    axios.get(`${process.env.REACT_APP_API_URL}/recent-jobs`)
       .then(res => {
         setJobs(res.data)
 
         // Extract unique categories from the products and store them in the state
-        const uniqueCategories = [...new Set(res.data.map(product => product.category))];
-        setCategories(uniqueCategories);
+        // const uniqueCategories = [...new Set(res.data.map(product => product.category))];
+        // setCategories(uniqueCategories);
       })
   }, []);
 

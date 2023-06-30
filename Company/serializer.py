@@ -64,3 +64,12 @@ class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
         fields = ('id', 'title', 'description', 'image', 'category', 'technologies', 'get_image_url', 'pricings', 'stats', 'faqs')
+
+
+class RecentJobSerializer(serializers.ModelSerializer):
+    category = CategorySerializer(many=True)
+    technologies = OurTechnologySerializer(many=True)
+
+    class Meta:
+        model = RecentJob
+        fields = ('id', 'title', 'summary', 'problem_statement', 'solution_offered', 'category', 'technologies')

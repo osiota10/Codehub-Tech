@@ -48,3 +48,12 @@ class ServiceDetail(generics.RetrieveAPIView):
     serializer_class = ServiceSerializer
     queryset = Service.objects.all()
     permission_classes = [AllowAny,]
+
+
+class RecentJobView(APIView):
+    permission_classes = [AllowAny,]
+
+    def get(self, request):
+        services = RecentJob.objects.all()
+        serializer = RecentJobSerializer(services, many=True)
+        return Response(serializer.data)

@@ -10,7 +10,7 @@ const Faq = ({ faqList }) => {
         <section className='col-lg-10 mx-auto'>
           <Accordion defaultActiveKey={faqList[0].id}>
             {faqList.map((item) =>
-              <Accordion.Item eventKey={item.id} className='mb-5 shadow-sm'>
+              <Accordion.Item eventKey={item.id} className='mb-5 shadow-sm' key={item.id}>
                 <Accordion.Header>{item.faq_question}</Accordion.Header>
                 <Accordion.Body>
                   {parse(`${item.faq_answer}`)}

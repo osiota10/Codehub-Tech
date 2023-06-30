@@ -38,7 +38,7 @@ function ServicesDetail() {
 
 
 
-            {/* Pricing display Logic */}
+            {/* Stats display Logic */}
             {
                 dataCheck
                     ?
@@ -93,7 +93,8 @@ function ServicesDetail() {
             }
 
             <WorkProcessGroup />
-            <RecentJobGroup />
+
+            <RecentJobGroup filterCategory={detail.category} />
 
             {/* FAQs display Logic */}
             {
