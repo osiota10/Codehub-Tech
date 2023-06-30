@@ -20,4 +20,4 @@ class OurWorkProcessSerializer(serializers.ModelSerializer):
 class OurClientSerializer(serializers.ModelSerializer):
     class Meta:
         model = OurClient
-        fields = '__all__'
+        fields = ('id', 'name_of_client', 'get_logo_url')

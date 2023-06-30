@@ -48,4 +48,7 @@ class OurClient(models.Model):
     logo = CloudinaryField()
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.name_of_client}"
+    
+    def get_logo_url(self):
+        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
