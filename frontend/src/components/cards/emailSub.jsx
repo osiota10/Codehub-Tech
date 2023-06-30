@@ -11,7 +11,7 @@ const MailSubscription = () => {
     const [formData, setFormData] = useState({
         email: '',
     });
-
+    console.log(formError)
     const { email } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -41,7 +41,10 @@ const MailSubscription = () => {
                     })
                 }
             } catch (err) {
-                setFormError(err.response.data);
+                console.log(err)
+                setFormError(err.response.data.email);
+                setLoading(false)
+                handleShow()
             }
         }
         PostFormData()

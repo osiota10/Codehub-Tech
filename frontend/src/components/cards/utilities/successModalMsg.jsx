@@ -16,7 +16,7 @@ const SuccessModal = ({ title, message, show, onClose, errorMessage }) => {
             </Modal.Header>
 
             <Modal.Body>
-                {errorMessage && errorMessage.length === 0
+                {errorMessage.length === 0
                     ?
                     <p className=''>{message}</p>
                     :
@@ -24,7 +24,7 @@ const SuccessModal = ({ title, message, show, onClose, errorMessage }) => {
                 }
 
                 {
-                    errorMessage && errorMessage.length > 0
+                    errorMessage.length > 0
                         ?
                         <section>
                             {Object.entries(errorMessage).map(([key, value]) => (
