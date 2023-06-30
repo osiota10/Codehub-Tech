@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -41,3 +42,10 @@ class OurWorkProcess(models.Model):
 
     class Meta:
         verbose_name_plural = "Our Work Processes"
+
+class OurClient(models.Model):
+    name_of_client = models.CharField(max_length=50)
+    logo = CloudinaryField()
+
+    def __str__(self):
+        return f"{self.title}"

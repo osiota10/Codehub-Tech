@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(ContactForm)
 admin.site.register(EmailSubcription)
 admin.site.register(OurWorkProcess)
+admin.site.register(OurClient)

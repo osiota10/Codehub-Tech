@@ -16,3 +16,8 @@ class OurWorkProcessSerializer(serializers.ModelSerializer):
     class Meta:
         model = OurWorkProcess
         fields = '__all__'
+
+class OurClientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OurClient
+        fields = '__all__'
