@@ -14,3 +14,11 @@ class EmailSubcriptionView(generics.CreateAPIView):
     queryset = EmailSubcription.objects.all()
     serializer_class = EmailSubcriptionSerializer
     permission_classes = [AllowAny,]
+
+class OurworkProcessView(generics.ListCreateAPIView):
+    serializer_class = OurWorkProcessSerializer
+    permission_classes = [AllowAny,]
+
+    def get_queryset(self):
+        query = OurWorkProcess.objects.all()
+        return query

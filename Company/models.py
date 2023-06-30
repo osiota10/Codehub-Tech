@@ -29,3 +29,15 @@ class EmailSubcription(models.Model):
 
     class Meta:
         verbose_name_plural = "Email Subcriptions"
+
+class OurWorkProcess(models.Model):
+    step = models.IntegerField()
+    font_awesome_class = models.CharField(max_length=50, blank=True, null=True)
+    title = models.CharField(max_length=50)
+    description = RichTextField()
+
+    def __str__(self):
+        return f"{self.title}"
+
+    class Meta:
+        verbose_name_plural = "Our Work Processes"

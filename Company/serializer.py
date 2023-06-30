@@ -11,3 +11,8 @@ class EmailSubcriptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmailSubcription
         fields = '__all__'
+
+class OurWorkProcessSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OurWorkProcess
+        fields = '__all__'
