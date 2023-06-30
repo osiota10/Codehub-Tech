@@ -45,7 +45,19 @@ function ServiceGroup({ type }) {
         <div className='container py-10'>
           <h2 className='text-center mb-8'>What We Do</h2>
           <Slider {...settings}>
-            {service.map(item => <Link className='text-decoration-none' to={'/services/' + item.id}><Service key={item.id} title={item.title} body={item.body} /></Link>)}
+            {service.map(item =>
+              <Link
+                className='text-decoration-none'
+                to={'/services/' + item.id}
+              >
+                <Service
+                  key={item.id}
+                  title={item.title}
+                  body={item.description}
+                  image={item.get_image_url}
+                />
+              </Link>
+            )}
           </Slider>
           <div className='d-flex justify-content-center'>
             <Link to="/services" className='btn btn-primary'>See all Services</Link>

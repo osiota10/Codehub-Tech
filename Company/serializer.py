@@ -32,9 +32,35 @@ class OurTechnologySerializer(serializers.ModelSerializer):
         model = OurTechnology
         fields = ('id', 'name_of_technology', 'get_logo_url')
 
+class PricingFeatureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PricingFeature
+        fields = '__all__'
+
+
+class PricingSerializer(serializers.ModelSerializer):
+    pricing_features = PricingFeatureSerializer(many=True)
+    class Meta:
+        model = Pricing
+        fields = ('id', 'service', 'price', 'title', 'description', 'pricing_features')
+
+class StatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Stat
+        fields = '__all__'
+
+class FaqSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FAQ
+        fields = '__all__'
+
 class ServiceSerializer(serializers.ModelSerializer):
     category = CategorySerializer(many=True)
     technologies = OurTechnologySerializer(many=True)
+    pricings = PricingSerializer(many=True)
+    stats = StatSerializer(many=True)
+    faqs = FaqSerializer(many=True)
+
     class Meta:
         model = Service
-        fields = ('id', 'title', 'description', 'image', 'category', 'technologies', 'get_image_url')
+        fields = ('id', 'title', 'description', 'image', 'category', 'technologies', 'get_image_url', 'pricings', 'stats', 'faqs')

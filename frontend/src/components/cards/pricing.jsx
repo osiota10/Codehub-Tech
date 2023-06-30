@@ -1,15 +1,16 @@
 
-function Pricing() {
+function Pricing({ id, title, price, description, pricingFeatures }) {
+
     return (
-        <section className="col">
+        <section className="col" key={id}>
             <section className="card mx-auto" style={{ maxWidth: '379px' }}>
                 <section className="card-body">
                     <header className="text-center">
-                        <h6>Title</h6>
-                        <h4>N20,000</h4>
+                        <h6>{title}</h6>
+                        <h4>N{price}</h4>
                     </header>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fringilla turpis adipiscing ut sapien.</p>
+                    <p className="text-center">{description}</p>
 
                     <section>
                         <section class="table-responsive mt-1">
@@ -20,22 +21,15 @@ function Pricing() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><i class="fa-solid fa-check"></i></td>
-                                        <td>item</td>
-                                    </tr>
-                                    <tr>
-                                        <td><i class="fa-solid fa-check"></i></td>
-                                        <td>item</td>
-                                    </tr>
-                                    <tr>
-                                        <td><i class="fa-solid fa-xmark"></i></td>
-                                        <td>item</td>
-                                    </tr>
-                                    <tr>
-                                        <td><i class="fa-solid fa-check"></i></td>
-                                        <td>Delivery in 2-4 working days</td>
-                                    </tr>
+                                    {pricingFeatures.map((item) =>
+                                        <tr key={item.id}>
+                                            <td>
+                                                <i className={item.is_featured ? "fa-solid fa-check" : "fa-solid fa-xmark"}>
+                                                </i>
+                                            </td>
+                                            <td>{item.name}</td>
+                                        </tr>
+                                    )}
                                 </tbody>
                             </table>
 

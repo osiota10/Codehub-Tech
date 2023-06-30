@@ -100,7 +100,7 @@ class RecentJob(models.Model):
         return f"{self.title}"
 
 class Pricing(models.Model):
-    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='pricings')
     price = models.IntegerField()
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=50)
@@ -109,7 +109,7 @@ class Pricing(models.Model):
         return f"{self.service} - N{self.price}"
 
 class PricingFeature(models.Model):
-    pricing = models.ForeignKey(Pricing, on_delete=models.CASCADE)
+    pricing = models.ForeignKey(Pricing, on_delete=models.CASCADE, related_name='pricing_features')
     name = models.CharField(max_length=50)
     is_featured = models.BooleanField()
 
@@ -117,7 +117,7 @@ class PricingFeature(models.Model):
         return f"{self.pricing} - N{self.name}"
     
 class Stat(models.Model):
-    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='stats')
     stat_figure = models.IntegerField()
     stat_title = models.CharField(max_length=50)
 
@@ -125,6 +125,6 @@ class Stat(models.Model):
         return f"{self.stat_title} - N{self.stat_figure}"
 
 class FAQ(models.Model):
-    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name="faqs")
     faq_question = models.CharField(max_length=50)
     faq_answer = RichTextField()

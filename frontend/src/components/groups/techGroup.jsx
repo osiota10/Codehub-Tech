@@ -4,8 +4,6 @@ import Client from "../cards/clientCard";
 function Technologies(props) {
   const { techList } = props;
 
-  console.log(techList)
-
   return (
     <section className="container py-10">
       <h2 className="text-center mb-8">Technologies</h2>

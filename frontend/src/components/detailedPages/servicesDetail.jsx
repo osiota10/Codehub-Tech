@@ -16,7 +16,7 @@ function ServicesDetail() {
     const { id } = useParams();
     const [detail, setDetails] = useState([]);
     const dataCheck = !detail || detail.length === 0
-
+    console.log(detail)
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/services/` + id)
             .then(res => {
@@ -36,15 +36,45 @@ function ServicesDetail() {
                 </section>
             </section>
 
-            <section className=" bg-light py-10">
-                <section className="row">
-                    <section className="col-lg-10 mx-auto">
-                        <Stat />
-                    </section>
-                </section>
-            </section>
 
-            <PricingGroup />
+
+            {/* Pricing display Logic */}
+            {
+                dataCheck
+                    ?
+                    null
+                    :
+                    <>
+                        {Object.keys(detail.stats).length === 0
+                            ?
+                            null
+                            :
+                            <section className=" bg-light py-10">
+                                <section className="row">
+                                    <section className="col-lg-10 mx-auto">
+                                        <Stat statList={detail.stats} />
+                                    </section>
+                                </section>
+                            </section>
+                        }
+                    </>
+            }
+
+            {/* Pricing display Logic */}
+            {
+                dataCheck
+                    ?
+                    null
+                    :
+                    <>
+                        {Object.keys(detail.pricings).length === 0
+                            ?
+                            null
+                            :
+                            <PricingGroup priceList={detail.pricings} />
+                        }
+                    </>
+            }
 
             {/* Technologies display Logic */}
             {
@@ -64,7 +94,23 @@ function ServicesDetail() {
 
             <WorkProcessGroup />
             <RecentJobGroup />
-            <Faq />
+
+            {/* FAQs display Logic */}
+            {
+                dataCheck
+                    ?
+                    null
+                    :
+                    <>
+                        {Object.keys(detail.faqs).length === 0
+                            ?
+                            null
+                            :
+                            <Faq faqList={detail.faqs} />
+                        }
+                    </>
+            }
+
             <MailSubscription />
             <ContactForm />
         </>

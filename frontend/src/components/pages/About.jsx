@@ -17,7 +17,7 @@ class About extends Component {
         <PageTitle title="About" />
         <TextTemplate />
         <ServiceGroup type={false} />
-        <Technologies />
+        {/* <Technologies /> */}
         <IndustryGroup />
         <ClientGroup />
         <MailSubscription />

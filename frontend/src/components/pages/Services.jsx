@@ -14,10 +14,18 @@ import MailSubscription from '../cards/emailSub';
 function Items({ currentItems }) {
   return (
     <section className='container py-8'>
-      <section className='row row-cols-1 row-cols-lg-3 g-6'>
+      <section className='row row-cols-1 row-cols-lg-3 g-6 justify-content-center'>
         {currentItems &&
           currentItems.map((item) => (
-            <section><Link className='text-decoration-none' to={'/services/' + item.id}><Service key={item.id} title={item.title} body={item.body} /></Link></section>
+            <section><Link className='text-decoration-none' to={'/services/' + item.id}>
+              <Service
+                key={item.id}
+                title={item.title}
+                body={item.description}
+                image={item.get_image_url}
+              />
+            </Link>
+            </section>
           ))}
       </section>
     </section>
@@ -84,7 +92,7 @@ function Services() {
   return (
     <>
       <PageTitle title="Services" />
-      <PaginatedItems itemsPerPage={12} />
+      <PaginatedItems itemsPerPage={9} />
       <MailSubscription />
       <ContactForm />
     </>
