@@ -21,3 +21,9 @@ class OurClientSerializer(serializers.ModelSerializer):
     class Meta:
         model = OurClient
         fields = ('id', 'name_of_client', 'get_logo_url')
+
+
+class ServiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Service
+        fields = ('id', 'title', 'description', 'image', 'category', 'technologies')

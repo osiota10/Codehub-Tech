@@ -31,3 +31,12 @@ class OurClientView(generics.ListAPIView):
     def get_queryset(self):
         query = OurClient.objects.all()
         return query
+    
+
+class ServiceView(generics.ListAPIView):
+    serializer_class = ServiceSerializer
+    permission_classes = [AllowAny,]
+
+    def get_queryset(self):
+        query = Service.objects.all()
+        return query

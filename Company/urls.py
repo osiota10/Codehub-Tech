@@ -6,4 +6,5 @@ urlpatterns = [
     path('email-subscription', EmailSubcriptionView.as_view()),
     path('work-process', OurworkProcessView.as_view()),
     path('clients', OurClientView.as_view()),
+    path('services', ServiceView.as_view()),
 ]
