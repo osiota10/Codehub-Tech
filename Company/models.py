@@ -52,3 +52,71 @@ class OurClient(models.Model):
     
     def get_logo_url(self):
         return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
+
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.name}"
+
+class OurTechnology(models.Model):
+    name_of_technology = models.CharField(max_length=50)
+    logo = CloudinaryField()
+
+    def __str__(self):
+        return f"{self.name_of_technology}"
+    
+    class Meta:
+        verbose_name_plural = "Our Technologies"
+
+
+class Service(models.Model):
+    title = models.CharField(max_length=50)
+    description = RichTextField()
+    image = CloudinaryField()
+    category = models.ManyToManyField(Category)
+    technologies = models.ManyToManyField(OurTechnology, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.title}"
+
+class RecentJob(models.Model):
+    title = models.CharField(max_length=50)
+    summary = RichTextField()
+    problem_statement = RichTextField()
+    solution_offered = RichTextField()
+    category = models.ManyToManyField(Category)
+    technologies = models.ManyToManyField(OurTechnology, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.title}"
+
+class Pricing(models.Model):
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    price = models.IntegerField()
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.service} - N{self.price}"
+
+class PricingFeature(models.Model):
+    pricing = models.ForeignKey(Pricing, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50)
+    is_featured = models.BooleanField()
+
+    def __str__(self):
+        return f"{self.pricing} - N{self.name}"
+    
+class Stat(models.Model):
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    stat_figure = models.IntegerField()
+    stat_title = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.stat_title} - N{self.stat_figure}"
+
+class FAQ(models.Model):
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    faq_question = models.CharField(max_length=50)
+    faq_answer = RichTextField()
