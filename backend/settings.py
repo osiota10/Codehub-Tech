@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'djoser',
     'frontend',
+    'ckeditor',
 ]
 
 REST_FRAMEWORK = {
