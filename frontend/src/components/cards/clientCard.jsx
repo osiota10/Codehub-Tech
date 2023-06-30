@@ -1,6 +1,6 @@
 import TextTruncate from 'react-text-truncate';
 
-function Client({ id, name_of_client, logo }) {
+function Client({ id, name, logo }) {
     return (
         <>
             <section className='card mx-auto' style={{ maxWidth: '379px' }} key={id}>
@@ -11,7 +11,7 @@ function Client({ id, name_of_client, logo }) {
                         line={3}
                         element="h6"
                         truncateText="…"
-                        text={name_of_client}
+                        text={name}
                     />
                 </div>
             </section>

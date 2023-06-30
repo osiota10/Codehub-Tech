@@ -19,7 +19,6 @@ import ScrollToTop from './components/cards/utilities/scrollToTop';
 
 // Contexts
 export const ServiceContext = createContext(null)
-export const clientContext = createContext(null)
 export const TestimonialContext = createContext(null)
 export const JobContext = createContext(null)
 export const CategoryContext = createContext(null)
@@ -27,22 +26,16 @@ export const CategoryContext = createContext(null)
 
 function App() {
   const [service, setService] = useState([]);
-  const [client, setClient] = useState([])
   const [testimonials, setTestimonials] = useState([])
   const [jobs, setJobs] = useState([])
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
+
     //Service
-    axios.get(`https://jsonplaceholder.typicode.com/posts/`)
+    axios.get(`${process.env.REACT_APP_API_URL}/services`)
       .then(res => {
         setService(res.data)
-      })
-
-    // Clients
-    axios.get(`https://jsonplaceholder.typicode.com/albums/`)
-      .then(res => {
-        setClient(res.data)
       })
 
     // Testimonials
@@ -64,30 +57,28 @@ function App() {
 
   return (
     <ServiceContext.Provider value={service}>
-      <clientContext.Provider value={client}>
-        <TestimonialContext.Provider value={testimonials}>
-          <JobContext.Provider value={jobs}>
-            <CategoryContext.Provider value={categories}>
-              <BrowserRouter>
-                <ScrollToTop />
-                <Routes>
-                  <Route path="/" element={<Layout />}>
-                    <Route index element={<Home />} />
-                    <Route path="about" element={<About />} />
-                    <Route path="services" element={<Services />} />
-                    <Route path="services/:id" element={<ServicesDetail />} />
-                    <Route path="recent-jobs" element={<RecentJob />} />
-                    <Route path="recent-jobs/:id" element={<RecentJobDetail />} />
-                    <Route path="contact" element={<Contact />} />
-                    <Route path="*" element={<NoPage />} />
-                  </Route>
-                </Routes>
-              </BrowserRouter>
-            </CategoryContext.Provider>
-          </JobContext.Provider>
-        </TestimonialContext.Provider>
-      </clientContext.Provider>
-    </ServiceContext.Provider>
+      <TestimonialContext.Provider value={testimonials}>
+        <JobContext.Provider value={jobs}>
+          <CategoryContext.Provider value={categories}>
+            <BrowserRouter>
+              <ScrollToTop />
+              <Routes>
+                <Route path="/" element={<Layout />}>
+                  <Route index element={<Home />} />
+                  <Route path="about" element={<About />} />
+                  <Route path="services" element={<Services />} />
+                  <Route path="services/:id" element={<ServicesDetail />} />
+                  <Route path="recent-jobs" element={<RecentJob />} />
+                  <Route path="recent-jobs/:id" element={<RecentJobDetail />} />
+                  <Route path="contact" element={<Contact />} />
+                  <Route path="*" element={<NoPage />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </CategoryContext.Provider>
+        </JobContext.Provider>
+      </TestimonialContext.Provider>
+    </ServiceContext.Provider >
 
   );
 }

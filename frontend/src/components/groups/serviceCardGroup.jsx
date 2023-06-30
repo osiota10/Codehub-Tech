@@ -17,8 +17,19 @@ function ServiceGroup({ type }) {
       {type ?
         <>
           <h2 className='text-center mb-8'>Our Services</h2>
-          <div className='row row-cols-1 row-cols-lg-3 g-6'>
-            {service.slice(0, 6).map(item => <Link className='text-decoration-none' to={'/services/' + item.id}><Service key={item.id} title={item.title} body={item.body} /></Link>)}
+          <div className='row row-cols-1 row-cols-lg-3 g-6 justify-content-center'>
+            {service.slice(0, 6).map(item =>
+              <Link className='text-decoration-none'
+                to={'/services/' + item.id}
+              >
+                <Service
+                  key={item.id}
+                  title={item.title}
+                  body={item.description}
+                  image={item.get_image_url}
+                />
+              </Link>
+            )}
           </div>
         </>
 

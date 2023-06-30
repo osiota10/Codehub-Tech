@@ -10,14 +10,15 @@ import WorkProcessGroup from "../groups/workProcessGroup";
 import Faq from "../cards/faq";
 import Stat from '../cards/stat';
 import PricingGroup from "../groups/pricingGroup";
+import parse from 'html-react-parser';
 
 function ServicesDetail() {
     const { id } = useParams();
     const [detail, setDetails] = useState([]);
+    const dataCheck = !detail || detail.length === 0
 
     useEffect(() => {
-        console.log('correct')
-        axios.get(`https://jsonplaceholder.typicode.com/posts/` + id)
+        axios.get(`${process.env.REACT_APP_API_URL}/services/` + id)
             .then(res => {
                 setDetails(res.data)
             })
@@ -26,10 +27,11 @@ function ServicesDetail() {
     return (
         <>
             <PageTitle title={detail.title} />
+
             <section className="container py-10">
                 <section className="row">
                     <section className="col-lg-8 mx-auto">
-                        <p>{detail.body}</p>
+                        {parse(`${detail.description}`)}
                     </section>
                 </section>
             </section>
@@ -43,7 +45,23 @@ function ServicesDetail() {
             </section>
 
             <PricingGroup />
-            <Technologies />
+
+            {/* Technologies display Logic */}
+            {
+                dataCheck
+                    ?
+                    null
+                    :
+                    <>
+                        {Object.keys(detail.technologies).length === 0
+                            ?
+                            null
+                            :
+                            <Technologies techList={detail.technologies} />
+                        }
+                    </>
+            }
+
             <WorkProcessGroup />
             <RecentJobGroup />
             <Faq />

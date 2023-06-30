@@ -7,4 +7,5 @@ urlpatterns = [
     path('work-process', OurworkProcessView.as_view()),
     path('clients', OurClientView.as_view()),
     path('services', ServiceView.as_view()),
+    path('services/<int:id>', ServiceDetail.as_view()),
 ]

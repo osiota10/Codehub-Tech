@@ -1,17 +1,13 @@
 import TextTruncate from 'react-text-truncate';
 
-const pic = {
-    url: 'https://picsum.photos/200'
-}
 
-
-function Service({ key, title, body }) {
+function Service({ key, title, body, image }) {
     return (
         <>
-            <section className="col">
-                <section className="card mx-auto" style={{ maxWidth: '379px' }} key={key}>
+            <section className="col mx-auto" key={key}>
+                <section className="card mx-auto" style={{ maxWidth: '379px' }}>
                     <div className='ratio ratio-16x9'>
-                        <img src={pic.url} className="card-img-top mb-4" alt="..." />
+                        <img src={image} className="card-img-top mb-4" alt="..." />
                     </div>
                     <section className="card-body">
                         <TextTruncate

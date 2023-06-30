@@ -3,6 +3,8 @@ from rest_framework import generics
 from .models import *
 from .serializer import *
 from rest_framework.permissions import AllowAny
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 
 class ContactFormView(generics.CreateAPIView):
@@ -33,10 +35,16 @@ class OurClientView(generics.ListAPIView):
         return query
     
 
-class ServiceView(generics.ListAPIView):
-    serializer_class = ServiceSerializer
+class ServiceView(APIView):
     permission_classes = [AllowAny,]
 
-    def get_queryset(self):
-        query = Service.objects.all()
-        return query
+    def get(self, request):
+        services = Service.objects.all()
+        serializer = ServiceSerializer(services, many=True)
+        return Response(serializer.data)
+
+class ServiceDetail(generics.RetrieveAPIView):
+    lookup_field = 'id'
+    serializer_class = ServiceSerializer
+    queryset = Service.objects.all()
+    permission_classes = [AllowAny,]

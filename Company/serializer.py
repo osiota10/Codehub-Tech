@@ -22,8 +22,19 @@ class OurClientSerializer(serializers.ModelSerializer):
         model = OurClient
         fields = ('id', 'name_of_client', 'get_logo_url')
 
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+class OurTechnologySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OurTechnology
+        fields = ('id', 'name_of_technology', 'get_logo_url')
 
 class ServiceSerializer(serializers.ModelSerializer):
+    category = CategorySerializer(many=True)
+    technologies = OurTechnologySerializer(many=True)
     class Meta:
         model = Service
-        fields = ('id', 'title', 'description', 'image', 'category', 'technologies')
+        fields = ('id', 'title', 'description', 'image', 'category', 'technologies', 'get_image_url')

@@ -29,7 +29,7 @@ const ClientGroup = () => {
             {client.map(item =>
               <Client
                 id={item.id}
-                name_of_client={item.name_of_client}
+                name={item.name_of_client}
                 logo={item.get_logo_url}
               />
             )}

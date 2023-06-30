@@ -1,6 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from cloudinary.models import CloudinaryField
+from django.db.models import Prefetch
 
 # Create your models here.
 
@@ -65,6 +66,9 @@ class OurTechnology(models.Model):
 
     def __str__(self):
         return f"{self.name_of_technology}"
+
+    def get_logo_url(self):
+        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
     
     class Meta:
         verbose_name_plural = "Our Technologies"
@@ -79,6 +83,10 @@ class Service(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+    
+    def get_image_url(self):
+        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
+    
 
 class RecentJob(models.Model):
     title = models.CharField(max_length=50)
