@@ -25,7 +25,7 @@ function ServiceGroup({ type }) {
                 <Service
                   key={item.id}
                   title={item.title}
-                  body={item.description}
+                  body={item.safe_description_html}
                   image={item.get_image_url}
                 />
               </Link>
@@ -48,19 +48,19 @@ function ServiceGroup({ type }) {
             {service.map(item =>
               <Link
                 className='text-decoration-none'
-                to={'/services/' + item.id}
+                to={'/services/' + item.slug}
               >
                 <Service
                   key={item.id}
                   title={item.title}
-                  body={item.description}
+                  body={item.safe_description_html}
                   image={item.get_image_url}
                 />
               </Link>
             )}
           </Slider>
           <div className='d-flex justify-content-center'>
-            <Link to="/services" className='btn btn-primary'>See all Services</Link>
+            <Link to="/services" className='btn btn-primary mt-9'>See all Services</Link>
           </div>
         </div>
 

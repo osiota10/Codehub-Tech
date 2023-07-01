@@ -7,30 +7,36 @@ class ContactFormSerializer(serializers.ModelSerializer):
         model = ContactForm
         fields = '__all__'
 
+
 class EmailSubcriptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmailSubcription
         fields = '__all__'
+
 
 class OurWorkProcessSerializer(serializers.ModelSerializer):
     class Meta:
         model = OurWorkProcess
         fields = '__all__'
 
+
 class OurClientSerializer(serializers.ModelSerializer):
     class Meta:
         model = OurClient
         fields = ('id', 'name_of_client', 'get_logo_url')
+
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = '__all__'
 
+
 class OurTechnologySerializer(serializers.ModelSerializer):
     class Meta:
         model = OurTechnology
         fields = ('id', 'name_of_technology', 'get_logo_url')
+
 
 class PricingFeatureSerializer(serializers.ModelSerializer):
     class Meta:
@@ -40,19 +46,24 @@ class PricingFeatureSerializer(serializers.ModelSerializer):
 
 class PricingSerializer(serializers.ModelSerializer):
     pricing_features = PricingFeatureSerializer(many=True)
+
     class Meta:
         model = Pricing
-        fields = ('id', 'service', 'price', 'title', 'description', 'pricing_features')
+        fields = ('id', 'service', 'price', 'title',
+                  'description', 'pricing_features')
+
 
 class StatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Stat
         fields = '__all__'
 
+
 class FaqSerializer(serializers.ModelSerializer):
     class Meta:
         model = FAQ
         fields = '__all__'
+
 
 class ServiceSerializer(serializers.ModelSerializer):
     category = CategorySerializer(many=True)
@@ -63,7 +74,8 @@ class ServiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Service
-        fields = ('id', 'title', 'description', 'image', 'slug', 'category', 'technologies', 'get_image_url', 'pricings', 'stats', 'faqs')
+        fields = ('id', 'title', 'description', 'image', 'slug', 'category', 'technologies',
+                  'get_image_url', 'pricings', 'stats', 'faqs', 'safe_description_html')
 
 
 class RecentJobSerializer(serializers.ModelSerializer):
@@ -72,4 +84,5 @@ class RecentJobSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RecentJob
-        fields = ('id', 'title', 'summary', 'slug', 'problem_statement', 'solution_offered', 'category', 'technologies')
+        fields = ('id', 'title', 'summary', 'slug', 'problem_statement',
+                  'solution_offered', 'category', 'technologies')

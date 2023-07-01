@@ -1,7 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from cloudinary.models import CloudinaryField
-from django.db.models import Prefetch
+from django.utils.html import strip_tags
 
 # Create your models here.
 
@@ -88,6 +88,9 @@ class Service(models.Model):
     def get_image_url(self):
         return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
     
+    def safe_description_html(self):
+        return strip_tags(self.description)
+    
 
 class RecentJob(models.Model):
     title = models.CharField(max_length=50)
@@ -100,6 +103,9 @@ class RecentJob(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+    
+    def safe_suummary_html(self):
+        return strip_tags(self.summary)
 
 class Pricing(models.Model):
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='pricings')

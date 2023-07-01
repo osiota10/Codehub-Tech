@@ -17,11 +17,11 @@ function Items({ currentItems }) {
       <section className='row row-cols-1 row-cols-lg-3 g-6 justify-content-center'>
         {currentItems &&
           currentItems.map((item) => (
-            <section><Link className='text-decoration-none' to={'/services/' + item.id}>
+            <section><Link className='text-decoration-none' to={'/services/' + item.slug}>
               <Service
                 key={item.id}
                 title={item.title}
-                body={item.description}
+                body={item.safe_description_html}
                 image={item.get_image_url}
               />
             </Link>
@@ -60,27 +60,35 @@ function PaginatedItems({ itemsPerPage }) {
     <>
       <section className='container'>
         <Items currentItems={currentItems} />
-        <ReactPaginate
-          previousLabel={'Prev'}
-          nextLabel={'Next'}
-          breakLabel="..."
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={3}
-          pageCount={pageCount}
-          renderOnZeroPageCount={null}
-          marginPagesDisplayed={3}
-          // CSS Classes
-          containerClassName={'pagination justify-content-center py-8'}
-          pageClassName={'page-item me-1'}
-          pageLinkClassName={'page-link'}
-          previousClassName={'page-item me-5'}
-          previousLinkClassName={'page-link'}
-          nextClassName={'page-item ms-4'}
-          nextLinkClassName={'page-link'}
-          breakClassName={'page-item me-1'}
-          breakLinkClassName={'page-link'}
-          activeClassName={'active'}
-        />
+
+        {
+          Object.keys(items).length > itemsPerPage
+            ?
+            <ReactPaginate
+              previousLabel={'Prev'}
+              nextLabel={'Next'}
+              breakLabel="..."
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={3}
+              pageCount={pageCount}
+              renderOnZeroPageCount={null}
+              marginPagesDisplayed={3}
+              // CSS Classes
+              containerClassName={'pagination justify-content-center py-8'}
+              pageClassName={'page-item me-1'}
+              pageLinkClassName={'page-link'}
+              previousClassName={'page-item me-5'}
+              previousLinkClassName={'page-link'}
+              nextClassName={'page-item ms-4'}
+              nextLinkClassName={'page-link'}
+              breakClassName={'page-item me-1'}
+              breakLinkClassName={'page-link'}
+              activeClassName={'active'}
+            />
+            :
+            null
+        }
+
       </section>
     </>
   );
