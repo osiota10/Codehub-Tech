@@ -16,7 +16,7 @@ function ServicesDetail() {
     const { slug } = useParams();
     const [detail, setDetails] = useState([]);
     const dataCheck = !detail || detail.length === 0
-    console.log(detail)
+
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/services/` + slug)
             .then(res => {

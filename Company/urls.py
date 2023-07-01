@@ -9,4 +9,5 @@ urlpatterns = [
     path('services', ServiceView.as_view()),
     path('services/<slug:slug>', ServiceDetail.as_view()),
     path('recent-jobs', RecentJobView.as_view()),
+    path('recent-jobs/<slug:slug>', RecentJobDetail.as_view()),
 ]

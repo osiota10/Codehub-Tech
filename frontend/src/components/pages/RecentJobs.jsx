@@ -10,16 +10,16 @@ function Items({ currentItems }) {
 
 
   return (
-    <section className='row row-cols-1 row-cols-lg-3 g-6'>
+    <section className='row row-cols-1 row-cols-lg-3 g-6 justify-content-center'>
       {currentItems && currentItems.map((item) => (
         <Link
           className='text-decoration-none'
-          to={'/recent-jobs/' + item.id}
+          to={'/recent-jobs/' + item.slug}
         >
           <RecentJobCard
             key={item.id}
             title={item.title}
-            body={item.description}
+            body={item.safe_summary_html}
             category={item.category}
             thumbnail={item.image}
           />
@@ -100,7 +100,8 @@ function RecentJob() {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const jobs = useContext(JobContext)
-  const categories = useContext(CategoryContext)
+  // const categories = useContext(CategoryContext)
+  const categories = []
 
   useEffect(() => {
     const filtered = selectedCategory

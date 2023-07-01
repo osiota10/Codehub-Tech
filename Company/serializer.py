@@ -85,4 +85,4 @@ class RecentJobSerializer(serializers.ModelSerializer):
     class Meta:
         model = RecentJob
         fields = ('id', 'title', 'summary', 'slug', 'problem_statement',
-                  'solution_offered', 'category', 'technologies')
+                  'solution_offered', 'category', 'technologies', 'safe_summary_html')

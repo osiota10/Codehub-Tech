@@ -12,10 +12,12 @@ class ContactFormView(generics.CreateAPIView):
     serializer_class = ContactFormSerializer
     permission_classes = [AllowAny,]
 
+
 class EmailSubcriptionView(generics.CreateAPIView):
     queryset = EmailSubcription.objects.all()
     serializer_class = EmailSubcriptionSerializer
     permission_classes = [AllowAny,]
+
 
 class OurworkProcessView(generics.ListAPIView):
     serializer_class = OurWorkProcessSerializer
@@ -24,7 +26,7 @@ class OurworkProcessView(generics.ListAPIView):
     def get_queryset(self):
         query = OurWorkProcess.objects.all()
         return query
-    
+
 
 class OurClientView(generics.ListAPIView):
     serializer_class = OurClientSerializer
@@ -33,7 +35,7 @@ class OurClientView(generics.ListAPIView):
     def get_queryset(self):
         query = OurClient.objects.all()
         return query
-    
+
 
 class ServiceView(APIView):
     permission_classes = [AllowAny,]
@@ -42,6 +44,7 @@ class ServiceView(APIView):
         services = Service.objects.all()
         serializer = ServiceSerializer(services, many=True)
         return Response(serializer.data)
+
 
 class ServiceDetail(generics.RetrieveAPIView):
     lookup_field = 'slug'
@@ -57,3 +60,10 @@ class RecentJobView(APIView):
         services = RecentJob.objects.all()
         serializer = RecentJobSerializer(services, many=True)
         return Response(serializer.data)
+
+
+class RecentJobDetail(generics.RetrieveAPIView):
+    lookup_field = 'slug'
+    serializer_class = RecentJobSerializer
+    queryset = RecentJob.objects.all()
+    permission_classes = [AllowAny,]

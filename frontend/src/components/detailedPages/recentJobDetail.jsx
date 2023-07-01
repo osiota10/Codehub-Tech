@@ -7,27 +7,69 @@ import MailSubscription from "../cards/emailSub";
 import RecentJobGroup from "../groups/recentJobGroup";
 import Technologies from "../groups/techGroup";
 import TextTemplate from "../cards/sampleText";
+import parse from 'html-react-parser';
 
 function RecentJobDetail() {
-    const { id } = useParams();
+    const { slug } = useParams();
     const [detail, setDetails] = useState([]);
 
+    const dataCheck = !detail || detail.length === 0
     useEffect(() => {
         console.log('correct')
-        axios.get(`https://fakestoreapi.com/products/` + id)
+        axios.get(`${process.env.REACT_APP_API_URL}/recent-jobs/` + slug)
             .then(res => {
                 setDetails(res.data)
             })
-    }, [id]);
+    }, [slug]);
 
     return (
         <>
             <PageTitle title={detail.title} />
+
+            <section className="container py-10">
+                <section className="row">
+                    <section className="col-lg-8 mx-auto">
+                        {parse(`${detail.summary}`)}
+                    </section>
+                </section>
+            </section>
+
             <TextTemplate />
 
 
-            {/* <Technologies /> */}
-            <RecentJobGroup />
+            {/* Technologies display Logic */}
+            {
+                dataCheck
+                    ?
+                    null
+                    :
+                    <>
+                        {Object.keys(detail.technologies).length === 0
+                            ?
+                            null
+                            :
+                            <Technologies techList={detail.technologies} />
+                        }
+                    </>
+            }
+
+            {/* Related Jobs display Logic */}
+            {
+                dataCheck
+                    ?
+                    null
+                    :
+                    <>
+                        {Object.keys(detail.category).length === 0
+                            ?
+                            null
+                            :
+                            <RecentJobGroup filterCategory={detail.category} />
+                        }
+                    </>
+            }
+
+
             <MailSubscription />
             <ContactForm />
         </>

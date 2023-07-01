@@ -77,13 +77,19 @@ function RecentJobGroup({ filterCategory }) {
       </h2>
       <Slider {...sliderSettings}>
         {filteredItems.slice(0, 9).map(item =>
-          <RecentJobCard
-            key={item.id}
-            title={item.title}
-            body={item.summary}
-            category={item.category}
-            thumbnail={item.image}
-          />)}
+          <Link
+            className='text-decoration-none'
+            to={'/recent-jobs/' + item.slug}
+          >
+            <RecentJobCard
+              key={item.id}
+              title={item.title}
+              body={item.safe_summary_html}
+              category={item.category}
+              thumbnail={item.image}
+            />
+          </Link>
+        )}
       </Slider>
       <div className='d-flex justify-content-center'>
         <Link to="/recent-jobs" className='btn btn-primary mt-9'>See all Jobs</Link>

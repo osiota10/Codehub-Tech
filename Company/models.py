@@ -104,7 +104,7 @@ class RecentJob(models.Model):
     def __str__(self):
         return f"{self.title}"
     
-    def safe_suummary_html(self):
+    def safe_summary_html(self):
         return strip_tags(self.summary)
 
 class Pricing(models.Model):
