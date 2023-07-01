@@ -94,3 +94,12 @@ class OurTeamView(APIView):
         our_team = OurTeam.objects.all()
         serializer = OurTeamSerializer(our_team, many=True)
         return Response(serializer.data)
+
+
+class TechnologyView(generics.ListAPIView):
+    serializer_class = OurTechnologySerializer
+    permission_classes = [AllowAny,]
+
+    def get_queryset(self):
+        query = OurTechnology.objects.all()
+        return query
