@@ -9,7 +9,7 @@ export const getSliderSettings = (dots, arrows, slidesToShow, removeAutoPlay) =>
     dots: dots,
     arrows: arrows,
     className: "center",
-    infinite: true,
+    infinite: false,
     centerPadding: "160px",
     slidesToShow: slidesToShow,
     swipeToSlide: true,
