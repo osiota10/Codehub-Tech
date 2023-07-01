@@ -13,16 +13,16 @@ import PricingGroup from "../groups/pricingGroup";
 import parse from 'html-react-parser';
 
 function ServicesDetail() {
-    const { id } = useParams();
+    const { slug } = useParams();
     const [detail, setDetails] = useState([]);
     const dataCheck = !detail || detail.length === 0
     console.log(detail)
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/services/` + id)
+        axios.get(`${process.env.REACT_APP_API_URL}/services/` + slug)
             .then(res => {
                 setDetails(res.data)
             })
-    }, [id]);
+    }, [slug]);
 
     return (
         <>
@@ -94,7 +94,21 @@ function ServicesDetail() {
 
             <WorkProcessGroup />
 
-            <RecentJobGroup filterCategory={detail.category} />
+            {/* Related Jobs display Logic */}
+            {
+                dataCheck
+                    ?
+                    null
+                    :
+                    <>
+                        {Object.keys(detail.category).length === 0
+                            ?
+                            null
+                            :
+                            <RecentJobGroup filterCategory={detail.category} />
+                        }
+                    </>
+            }
 
             {/* FAQs display Logic */}
             {

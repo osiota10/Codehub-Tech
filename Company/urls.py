@@ -7,6 +7,6 @@ urlpatterns = [
     path('work-process', OurworkProcessView.as_view()),
     path('clients', OurClientView.as_view()),
     path('services', ServiceView.as_view()),
-    path('services/<int:id>', ServiceDetail.as_view()),
+    path('services/<slug:slug>', ServiceDetail.as_view()),
     path('recent-jobs', RecentJobView.as_view()),
 ]

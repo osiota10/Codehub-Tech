@@ -80,6 +80,7 @@ class Service(models.Model):
     image = CloudinaryField()
     category = models.ManyToManyField(Category)
     technologies = models.ManyToManyField(OurTechnology, blank=True, null=True)
+    slug = models.SlugField(max_length=250, blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"
@@ -95,6 +96,7 @@ class RecentJob(models.Model):
     solution_offered = RichTextField()
     category = models.ManyToManyField(Category)
     technologies = models.ManyToManyField(OurTechnology, blank=True, null=True)
+    slug = models.SlugField(max_length=250, blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"

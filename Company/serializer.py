@@ -63,7 +63,7 @@ class ServiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Service
-        fields = ('id', 'title', 'description', 'image', 'category', 'technologies', 'get_image_url', 'pricings', 'stats', 'faqs')
+        fields = ('id', 'title', 'description', 'image', 'slug', 'category', 'technologies', 'get_image_url', 'pricings', 'stats', 'faqs')
 
 
 class RecentJobSerializer(serializers.ModelSerializer):
@@ -72,4 +72,4 @@ class RecentJobSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RecentJob
-        fields = ('id', 'title', 'summary', 'problem_statement', 'solution_offered', 'category', 'technologies')
+        fields = ('id', 'title', 'summary', 'slug', 'problem_statement', 'solution_offered', 'category', 'technologies')

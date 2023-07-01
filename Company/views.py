@@ -44,7 +44,7 @@ class ServiceView(APIView):
         return Response(serializer.data)
 
 class ServiceDetail(generics.RetrieveAPIView):
-    lookup_field = 'id'
+    lookup_field = 'slug'
     serializer_class = ServiceSerializer
     queryset = Service.objects.all()
     permission_classes = [AllowAny,]

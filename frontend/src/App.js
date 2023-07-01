@@ -68,9 +68,9 @@ function App() {
                   <Route index element={<Home />} />
                   <Route path="about" element={<About />} />
                   <Route path="services" element={<Services />} />
-                  <Route path="services/:id" element={<ServicesDetail />} />
+                  <Route path="services/:slug" element={<ServicesDetail />} />
                   <Route path="recent-jobs" element={<RecentJob />} />
-                  <Route path="recent-jobs/:id" element={<RecentJobDetail />} />
+                  <Route path="recent-jobs/:slug" element={<RecentJobDetail />} />
                   <Route path="contact" element={<Contact />} />
                   <Route path="*" element={<NoPage />} />
                 </Route>

@@ -20,7 +20,7 @@ function ServiceGroup({ type }) {
           <div className='row row-cols-1 row-cols-lg-3 g-6 justify-content-center'>
             {service.slice(0, 6).map(item =>
               <Link className='text-decoration-none'
-                to={'/services/' + item.id}
+                to={'/services/' + item.slug}
               >
                 <Service
                   key={item.id}
