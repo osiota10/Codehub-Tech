@@ -72,7 +72,7 @@ const Footer = () => {
                 <div className='container py-4'>
                     <div className="row text-center g-3">
                         <div className="col-md-4">
-                            <Socials small={true} />
+                            {/* <Socials small={true} /> */}
                         </div>
 
                         <div className="col-md-4">

@@ -85,3 +85,12 @@ class TestimonialView(APIView):
         testimonials = Testimonial.objects.all()
         serializer = TestimonialSerializer(testimonials, many=True)
         return Response(serializer.data)
+
+
+class OurTeamView(APIView):
+    permission_classes = [AllowAny,]
+
+    def get(self, request):
+        our_team = OurTeam.objects.all()
+        serializer = OurTeamSerializer(our_team, many=True)
+        return Response(serializer.data)

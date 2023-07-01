@@ -12,4 +12,5 @@ urlpatterns = [
     path('recent-jobs/<slug:slug>', RecentJobDetail.as_view()),
     path('industries', OurIndustryView.as_view()),
     path('testimonials', TestimonialView.as_view()),
+    path('our-teams', OurTeamView.as_view()),
 ]

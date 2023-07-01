@@ -21,7 +21,6 @@ class ContactForm(models.Model):
         verbose_name_plural = "Contact Forms"
 
 
-
 class EmailSubcription(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     email = models.EmailField()
@@ -31,6 +30,7 @@ class EmailSubcription(models.Model):
 
     class Meta:
         verbose_name_plural = "Email Subcriptions"
+
 
 class OurWorkProcess(models.Model):
     step = models.IntegerField()
@@ -44,21 +44,24 @@ class OurWorkProcess(models.Model):
     class Meta:
         verbose_name_plural = "Our Work Processes"
 
+
 class OurClient(models.Model):
     name_of_client = models.CharField(max_length=50)
     logo = CloudinaryField()
 
     def __str__(self):
         return f"{self.name_of_client}"
-    
+
     def get_logo_url(self):
         return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
 
     def __str__(self):
         return f"{self.name}"
+
 
 class OurTechnology(models.Model):
     name_of_technology = models.CharField(max_length=50)
@@ -69,7 +72,7 @@ class OurTechnology(models.Model):
 
     def get_logo_url(self):
         return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
-    
+
     class Meta:
         verbose_name_plural = "Our Technologies"
 
@@ -84,13 +87,13 @@ class Service(models.Model):
 
     def __str__(self):
         return f"{self.title}"
-    
+
     def get_image_url(self):
         return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
-    
+
     def safe_description_html(self):
         return strip_tags(self.description)
-    
+
 
 class RecentJob(models.Model):
     title = models.CharField(max_length=50)
@@ -103,12 +106,14 @@ class RecentJob(models.Model):
 
     def __str__(self):
         return f"{self.title}"
-    
+
     def safe_summary_html(self):
         return strip_tags(self.summary)
 
+
 class Pricing(models.Model):
-    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='pricings')
+    service = models.ForeignKey(
+        Service, on_delete=models.CASCADE, related_name='pricings')
     price = models.IntegerField()
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=50)
@@ -116,24 +121,30 @@ class Pricing(models.Model):
     def __str__(self):
         return f"{self.service} - N{self.price}"
 
+
 class PricingFeature(models.Model):
-    pricing = models.ForeignKey(Pricing, on_delete=models.CASCADE, related_name='pricing_features')
+    pricing = models.ForeignKey(
+        Pricing, on_delete=models.CASCADE, related_name='pricing_features')
     name = models.CharField(max_length=50)
     is_featured = models.BooleanField()
 
     def __str__(self):
         return f"{self.pricing} - N{self.name}"
-    
+
+
 class Stat(models.Model):
-    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='stats')
+    service = models.ForeignKey(
+        Service, on_delete=models.CASCADE, related_name='stats')
     stat_figure = models.IntegerField()
     stat_title = models.CharField(max_length=50)
 
     def __str__(self):
         return f"{self.stat_title} - N{self.stat_figure}"
 
+
 class FAQ(models.Model):
-    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name="faqs")
+    service = models.ForeignKey(
+        Service, on_delete=models.CASCADE, related_name="faqs")
     faq_question = models.CharField(max_length=50)
     faq_answer = RichTextField()
 
@@ -147,10 +158,11 @@ class OurIndustry(models.Model):
 
     def get_logo_url(self):
         return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
-    
+
     class Meta:
         verbose_name_plural = "Our Industries"
-    
+
+
 class Testimonial(models.Model):
     name = models.CharField(max_length=50)
     position = models.CharField(max_length=50)
@@ -162,3 +174,35 @@ class Testimonial(models.Model):
 
     def get_image_url(self):
         return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
+
+
+class CompanyInfo(models.Model):
+    pass
+
+
+class OurTeam(models.Model):
+    name = models.CharField(max_length=50)
+    position = models.CharField(max_length=50)
+    image = CloudinaryField()
+
+    def __str__(self):
+        return f"{self.name} - {self.position}"
+
+    def get_image_url(self):
+        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
+
+
+class SocialUrl(models.Model):
+    team_member = models.OneToOneField(
+        OurTeam, related_name='team_social', on_delete=models.CASCADE, blank=True, null=True)
+    company = models.OneToOneField(
+        CompanyInfo, related_name='company_social', on_delete=models.CASCADE, blank=True, null=True)
+    facebook_url = models.URLField(blank=True, null=True)
+    instagram_url = models.URLField(blank=True, null=True)
+    twitter_url = models.URLField(blank=True, null=True)
+    linkedin_url = models.URLField(blank=True, null=True)
+    github_url = models.URLField(blank=True, null=True)
+    youtube_url = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.facebook_url}"

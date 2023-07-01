@@ -1,35 +1,85 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { a } from 'react-router-dom';
 
 
-function Socials({ small }) {
+function Socials({ small, socials }) {
+    const { facebook_url, instagram_url, twitter_url, linkedin_url, github_url, youtube_url } = socials
+
     return (
         <div>
             {small ?
                 <>
-                    <span className='me-1 bg-white p-1'>
-                        <Link to='#'><i className="fa-brands fa-square-facebook fs-5 text-primary align-middle"></i></Link>
-                    </span>
+                    {
+                        facebook_url
+                            ?
+                            <span className='me-1 bg-white p-1'>
+                                <a href={facebook_url} target="_blank" rel="noopener noreferrer">
+                                    <i className="fa-brands fa-square-facebook fs-5 text-primary align-middle"></i>
+                                </a>
+                            </span>
+                            :
+                            null
+                    }
 
-                    <span className='me-1 bg-white p-1'>
-                        <Link to='#'><i className="fa-brands fa-instagram fs-5 text-primary align-middle"></i></Link>
-                    </span>
+                    {
+                        instagram_url
+                            ?
+                            <span className='me-1 bg-white p-1'>
+                                <a href={instagram_url} target="_blank" rel="noopener noreferrer">
+                                    <i className="fa-brands fa-instagram fs-5 text-primary align-middle"></i>
+                                </a>
+                            </span>
+                            :
+                            null
+                    }
 
-                    <span className='me-1 bg-white p-1'>
-                        <Link to='#'><i className="fa-brands fa-square-twitter fs-5 text-primary align-middle"></i></Link>
-                    </span>
+                    {
+                        twitter_url
+                            ?
+                            <span className='me-1 bg-white p-1'>
+                                <a href={twitter_url} target="_blank" rel="noopener noreferrer">
+                                    <i className="fa-brands fa-square-twitter fs-5 text-primary align-middle"></i>
+                                </a>
+                            </span>
+                            :
+                            null
+                    }
 
-                    <span className='me-1 bg-white p-1'>
-                        <Link to='#'><i className="fa-brands fa-linkedin fs-5 text-primary align-middle"></i></Link>
-                    </span>
+                    {
+                        linkedin_url
+                            ?
+                            <span className='me-1 bg-white p-1'>
+                                <a href={linkedin_url} target="_blank" rel="noopener noreferrer">
+                                    <i className="fa-brands fa-linkedin fs-5 text-primary align-middle">
+                                    </i></a>
+                            </span>
+                            :
+                            null
+                    }
 
-                    <span className='me-1 bg-white p-1'>
-                        <Link to='#'><i className="fa-brands fa-square-youtube fs-5 text-primary align-middle"></i></Link>
-                    </span>
+                    {
+                        youtube_url
+                            ?
+                            <span className='me-1 bg-white p-1'>
+                                <a href={youtube_url} target="_blank" rel="noopener noreferrer">
+                                    <i className="fa-brands fa-square-youtube fs-5 text-primary align-middle"></i>
+                                </a>
+                            </span>
+                            :
+                            null
+                    }
 
-                    <span className='me-1 bg-white p-1'>
-                        <Link to='#'><i className="fa-brands fa-square-github fs-5 text-primary align-middle"></i></Link>
-                    </span>
+                    {
+                        github_url
+                            ?
+                            <span className='me-1 bg-white p-1'>
+                                <a href={github_url} target="_blank" rel="noopener noreferrer">
+                                    <i className="fa-brands fa-square-github fs-5 text-primary align-middle"></i>
+                                </a>
+                            </span>
+                            :
+                            null
+                    }
                 </>
 
                 :
@@ -42,33 +92,80 @@ function Socials({ small }) {
                         </header>
 
                         <section className='d-flex justify-content-center'>
-                            <section className='me-1 bg-white p-1'>
-                                <Link to='#'><i className="fa-brands fa-square-facebook fs-1 text-primary align-middle"></i></Link>
-                            </section>
+                            {
+                                facebook_url
+                                    ?
+                                    <section className='me-1 bg-white p-1'>
+                                        <a href={facebook_url} target="_blank" rel="noopener noreferrer">
+                                            <i className="fa-brands fa-square-facebook fs-1 text-primary align-middle"></i>
+                                        </a>
+                                    </section>
+                                    :
+                                    null
+                            }
 
-                            <section className='me-1 bg-white p-1'>
-                                <Link to='#'><i className="fa-brands fa-instagram fs-1 text-primary align-middle"></i></Link>
-                            </section>
+                            {
+                                instagram_url
+                                    ?
+                                    <section className='me-1 bg-white p-1' target="_blank" rel="noopener noreferrer">
+                                        <a href={instagram_url}>
+                                            <i className="fa-brands fa-instagram fs-1 text-primary align-middle"></i>
+                                        </a>
+                                    </section>
+                                    :
+                                    null
+                            }
 
-                            <section className='me-1 bg-white p-1'>
-                                <Link to='#'><i className="fa-brands fa-square-twitter fs-1 text-primary align-middle"></i></Link>
-                            </section>
+                            {
+                                twitter_url
+                                    ?
+                                    <section className='me-1 bg-white p-1'>
+                                        <a href={twitter_url} target="_blank" rel="noopener noreferrer">
+                                            <i className="fa-brands fa-square-twitter fs-1 text-primary align-middle"></i>
+                                        </a>
+                                    </section>
+                                    :
+                                    null
+                            }
 
-                            <section className='me-1 bg-white p-1'>
-                                <Link to='#'><i className="fa-brands fa-linkedin fs-1 text-primary align-middle"></i></Link>
-                            </section>
+                            {
+                                linkedin_url
+                                    ?
+                                    <section className='me-1 bg-white p-1'>
+                                        <a href={linkedin_url} target="_blank" rel="noopener noreferrer">
+                                            <i className="fa-brands fa-linkedin fs-1 text-primary align-middle"></i>
+                                        </a>
+                                    </section>
+                                    :
+                                    null
+                            }
 
-                            <section className='me-1 bg-white p-1'>
-                                <Link to='#'><i className="fa-brands fa-square-youtube fs-1 text-primary align-middle"></i></Link>
-                            </section>
+                            {
+                                youtube_url
+                                    ?
+                                    <section className='me-1 bg-white p-1'>
+                                        <a href={youtube_url} target="_blank" rel="noopener noreferrer">
+                                            <i className="fa-brands fa-square-youtube fs-1 text-primary align-middle"></i>
+                                        </a>
+                                    </section>
+                                    :
+                                    null
+                            }
 
-                            <span className='me-1 bg-white p-1'>
-                                <Link to='#'><i className="fa-brands fa-square-github fs-1 text-primary align-middle"></i></Link>
-                            </span>
+                            {
+                                github_url
+                                    ?
+                                    <span className='me-1 bg-white p-1'>
+                                        <a href={github_url} target="_blank" rel="noopener noreferrer">
+                                            <i className="fa-brands fa-square-github fs-1 text-primary align-middle"></i>
+                                        </a>
+                                    </span>
+                                    :
+                                    null
+                            }
                         </section>
                     </section>
                 </>
-
             }
         </div>
     );

@@ -98,3 +98,17 @@ class TestimonialSerializer(serializers.ModelSerializer):
     class Meta:
         model = Testimonial
         fields = ('id', 'name', 'position', 'message', 'get_image_url')
+
+
+class SocialUrlSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SocialUrl
+        fields = '__all__'
+
+
+class OurTeamSerializer(serializers.ModelSerializer):
+    team_social = SocialUrlSerializer()
+
+    class Meta:
+        model = OurTeam
+        fields = ('id', 'name', 'position', 'get_image_url', 'team_social')

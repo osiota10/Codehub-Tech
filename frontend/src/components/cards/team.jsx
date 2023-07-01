@@ -1,10 +1,8 @@
 import Socials from "./socials";
 
-const pic = {
-    url: 'https://picsum.photos/200'
-}
 
-function OurTeam() {
+function OurTeam({ name, position, image, socialList }) {
+
     return (
         <section className='col'>
             <section className="card mx-auto" style={{ maxWidth: '379px' }} >
@@ -14,14 +12,16 @@ function OurTeam() {
 
                 <section className="card-body fw-bolder text-primary">
                     <section className="d-flex justify-content-center mt-n12">
-                        <img src={pic.url} className="mb-4 rounded-circle athlete-pix" width="170" height="170" alt="..." />
+                        <img src={image} className="mb-4 rounded-circle athlete-pix" width="170" height="170" alt="..." />
                     </section>
                     <section className="text-center">
-                        <h5>Osiota Samuel Obrozie</h5>
-                        <p>Lead Developer</p>
-                        <Socials small={true} />
+                        <h5>{name}</h5>
+                        <p>{position}</p>
+                        <Socials
+                            small={true}
+                            socials={socialList}
+                        />
                     </section>
-
                 </section>
             </section>
         </section>
