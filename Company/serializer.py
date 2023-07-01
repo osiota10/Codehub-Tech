@@ -87,7 +87,14 @@ class RecentJobSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'summary', 'slug', 'problem_statement',
                   'solution_offered', 'category', 'technologies', 'safe_summary_html')
 
+
 class OurIndustrySerializer(serializers.ModelSerializer):
     class Meta:
         model = OurIndustry
         fields = ('id', 'name_of_industry', 'get_logo_url')
+
+
+class TestimonialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Testimonial
+        fields = ('id', 'name', 'position', 'message', 'get_image_url')

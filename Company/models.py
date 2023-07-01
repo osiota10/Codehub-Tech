@@ -150,3 +150,15 @@ class OurIndustry(models.Model):
     
     class Meta:
         verbose_name_plural = "Our Industries"
+    
+class Testimonial(models.Model):
+    name = models.CharField(max_length=50)
+    position = models.CharField(max_length=50)
+    message = RichTextField()
+    image = CloudinaryField()
+
+    def __str__(self):
+        return f"{self.name} - {self.position}"
+
+    def get_image_url(self):
+        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")

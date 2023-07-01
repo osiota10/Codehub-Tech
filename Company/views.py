@@ -76,3 +76,12 @@ class OurIndustryView(generics.ListAPIView):
     def get_queryset(self):
         query = OurIndustry.objects.all()
         return query
+
+
+class TestimonialView(APIView):
+    permission_classes = [AllowAny,]
+
+    def get(self, request):
+        testimonials = Testimonial.objects.all()
+        serializer = TestimonialSerializer(testimonials, many=True)
+        return Response(serializer.data)
