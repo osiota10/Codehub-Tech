@@ -86,3 +86,8 @@ class RecentJobSerializer(serializers.ModelSerializer):
         model = RecentJob
         fields = ('id', 'title', 'summary', 'slug', 'problem_statement',
                   'solution_offered', 'category', 'technologies', 'safe_summary_html')
+
+class OurIndustrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OurIndustry
+        fields = '__all__'

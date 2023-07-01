@@ -67,3 +67,12 @@ class RecentJobDetail(generics.RetrieveAPIView):
     serializer_class = RecentJobSerializer
     queryset = RecentJob.objects.all()
     permission_classes = [AllowAny,]
+
+
+class OurIndustryView(generics.ListAPIView):
+    serializer_class = OurIndustrySerializer
+    permission_classes = [AllowAny,]
+
+    def get_queryset(self):
+        query = OurIndustry.objects.all()
+        return query

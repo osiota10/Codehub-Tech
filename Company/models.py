@@ -136,3 +136,17 @@ class FAQ(models.Model):
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name="faqs")
     faq_question = models.CharField(max_length=50)
     faq_answer = RichTextField()
+
+
+class OurIndustry(models.Model):
+    name_of_industry = models.CharField(max_length=50)
+    logo = CloudinaryField()
+
+    def __str__(self):
+        return f"{self.name_of_industry}"
+
+    def get_logo_url(self):
+        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
+    
+    class Meta:
+        verbose_name_plural = "Our Industries"
