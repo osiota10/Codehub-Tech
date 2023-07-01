@@ -90,4 +90,4 @@ class RecentJobSerializer(serializers.ModelSerializer):
 class OurIndustrySerializer(serializers.ModelSerializer):
     class Meta:
         model = OurIndustry
-        fields = '__all__'
+        fields = ('id', 'name_of_industry', 'get_logo_url')
