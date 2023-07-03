@@ -75,7 +75,7 @@ class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
         fields = ('id', 'title', 'description', 'image', 'slug', 'category', 'technologies',
-                  'get_image_url', 'pricings', 'stats', 'faqs', 'safe_description_html')
+                  'get_image_url', 'pricings', 'stats', 'faqs', 'safe_description_html', 'hero_snippet', 'get_hero_image_url')
 
 
 class RecentJobSerializer(serializers.ModelSerializer):

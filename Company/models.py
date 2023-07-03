@@ -83,6 +83,8 @@ class Service(models.Model):
     title = models.CharField(max_length=50)
     description = RichTextField()
     image = CloudinaryField()
+    hero_image = CloudinaryField(blank=True, null=True)
+    hero_snippet = models.TextField(blank=True, null=True)
     category = models.ManyToManyField(Category)
     technologies = models.ManyToManyField(OurTechnology, blank=True, null=True)
     slug = models.SlugField(max_length=250, blank=True, null=True)
@@ -92,6 +94,9 @@ class Service(models.Model):
 
     def get_image_url(self):
         return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
+    
+    def get_hero_image_url(self):
+        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.hero_image}")
 
     def safe_description_html(self):
         return strip_tags(self.description)

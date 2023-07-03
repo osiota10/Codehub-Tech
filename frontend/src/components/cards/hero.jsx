@@ -2,7 +2,6 @@ import { useContext } from 'react'
 import Slider from 'react-slick';
 import Stat from './stat';
 import { ServiceContext } from '../../App';
-import parse from 'html-react-parser';
 import { Link } from 'react-router-dom';
 
 const pic = {
@@ -50,7 +49,7 @@ const HeroSection = () => {
                                     <div className="row align-items-center">
                                         <div className="col-lg-6">
                                             <h2>{item.title}</h2>
-                                            <p>{parse(`${item.description}`)}</p>
+                                            <p>{item.hero_snippet}</p>
                                             <Link
                                                 to={'/services/' + item.slug}
                                                 className='btn btn-primary text-decoration-none'
@@ -68,7 +67,7 @@ const HeroSection = () => {
                                             }
                                         </div>
                                         <div className="col-lg-6 d-none d-lg-block">
-                                            <img src="HeroImage.png" className='img-fluid ms-auto' alt="" />
+                                            <img src={item.get_hero_image_url} className='img-fluid ms-auto' alt="" />
                                         </div>
                                     </div>
                                 </section>
