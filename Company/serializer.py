@@ -65,6 +65,12 @@ class FaqSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class RecentJobStatementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RecentJobStatement
+        fields = ('id', 'title', 'description', 'get_image_url')
+
+
 class ServiceSerializer(serializers.ModelSerializer):
     category = CategorySerializer(many=True)
     technologies = OurTechnologySerializer(many=True)
@@ -81,11 +87,12 @@ class ServiceSerializer(serializers.ModelSerializer):
 class RecentJobSerializer(serializers.ModelSerializer):
     category = CategorySerializer(many=True)
     technologies = OurTechnologySerializer(many=True)
+    recent_job_statement = RecentJobStatementSerializer(many=True)
 
     class Meta:
         model = RecentJob
         fields = ('id', 'title', 'summary', 'slug', 'problem_statement',
-                  'solution_offered', 'category', 'technologies', 'safe_summary_html', 'date', 'get_image_url')
+                  'solution_offered', 'category', 'technologies', 'safe_summary_html', 'date', 'get_image_url', 'recent_job_statement')
 
 
 class OurIndustrySerializer(serializers.ModelSerializer):
@@ -123,8 +130,9 @@ class CompanyInfoSerializer(serializers.ModelSerializer):
         fields = ('id', 'company_name', 'company_address', 'telephone', 'telephone_2',
                   'email', 'about_company', 'return_policy', 'term_and_conditions', 'privacy_policy', 'company_social', 'company_faqs')
 
+
 class CoreValueSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         model = CoreValue
         fields = ('id', 'title', 'description', 'get_image_url')

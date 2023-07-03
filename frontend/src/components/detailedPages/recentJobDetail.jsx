@@ -12,7 +12,7 @@ import parse from 'html-react-parser';
 function RecentJobDetail() {
     const { slug } = useParams();
     const [detail, setDetails] = useState([]);
-
+    console.log(detail)
     const dataCheck = !detail || detail.length === 0
     useEffect(() => {
         console.log('correct')
@@ -34,7 +34,21 @@ function RecentJobDetail() {
                 </section>
             </section>
 
-            {/* <TextTemplate /> */}
+            {
+                dataCheck
+                    ?
+                    null
+                    :
+                    <>
+                        {
+                            Object.keys(detail.recent_job_statement).length === 0
+                                ?
+                                null
+                                :
+                                <TextTemplate dataList={detail.recent_job_statement} />
+                        }
+                    </>
+            }
 
 
             {/* Technologies display Logic */}

@@ -123,6 +123,21 @@ class RecentJob(models.Model):
         return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
 
 
+class RecentJobStatement(models.Model):
+    recent_job = models.ForeignKey(
+        RecentJob, related_name="recent_job_statement", on_delete=models.CASCADE)
+    pic = CloudinaryField('image')
+    title = models.CharField(
+        max_length=50, help_text="Should be Problem Statement or Solutions Offered")
+    description = RichTextField()
+
+    def get_image_url(self):
+        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.pic}")
+
+    def __str__(self):
+        return f"{self.title}"
+
+
 class Pricing(models.Model):
     service = models.ForeignKey(
         Service, on_delete=models.CASCADE, related_name='pricings')
