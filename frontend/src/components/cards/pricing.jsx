@@ -3,14 +3,14 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 
 
-function Pricing({ id, title, price, description, pricingFeatures }) {
+function Pricing({ id, title, price, description, pricingFeatures, serviceName }) {
     //Modal
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const handleWhatsAppRedirect = () => {
-        const message = `Check out this product: ${title}`;
+        const message = `Hi there, i am interested in ${serviceName}, ${title} (N${price}) package precisely.`;
         const encodedMessage = encodeURIComponent(message);
         const whatsappURL = `https://wa.me/2349072444299?text=${encodedMessage}`;
         window.open(whatsappURL, '_blank');
@@ -66,14 +66,14 @@ function Pricing({ id, title, price, description, pricingFeatures }) {
                     <Modal.Title>Make Payments</Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body>
-                    <section className='mb-3'>
+                <Modal.Body className=''>
+                    <section className='mb-3 d-flex justify-content-center'>
                         <Button variant="btn btn-primary" onClick={() => handleWhatsAppRedirect()}>
                             Via WhatsApp
                         </Button>
                     </section>
 
-                    <section>
+                    <section className='d-flex justify-content-center'>
                         <Button variant="btn btn-primary" disabled>
                             Pay Online
                         </Button>

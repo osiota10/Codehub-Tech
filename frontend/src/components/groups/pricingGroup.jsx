@@ -1,7 +1,7 @@
 import Pricing from "../cards/pricing";
 
-function PricingGroup(props) {
-    const { priceList } = props
+function PricingGroup({ priceList, serviceTitle }) {
+
     return (
         <section className="container py-10">
             <h2 className='text-center mb-8'>Pricing</h2>
@@ -13,6 +13,7 @@ function PricingGroup(props) {
                         price={item.price}
                         description={item.description}
                         pricingFeatures={item.pricing_features}
+                        serviceName={serviceTitle}
                     />
                 )}
             </div>

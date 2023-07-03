@@ -71,7 +71,7 @@ function ServicesDetail() {
                             ?
                             null
                             :
-                            <PricingGroup priceList={detail.pricings} />
+                            <PricingGroup priceList={detail.pricings} serviceTitle={detail.title} />
                         }
                     </>
             }
