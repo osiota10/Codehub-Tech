@@ -5,7 +5,7 @@ import parse from 'html-react-parser';
 function TextTemplate({ dataList }) {
     return (
 
-        <section className="container py-10">
+        <section className="container pt-10">
             {
                 dataList.map((item) =>
                     <section
