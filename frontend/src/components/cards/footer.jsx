@@ -10,6 +10,7 @@ import { CompanyInfoContext } from '../../App';
 const Footer = () => {
     const services = useContext(ServiceContext)
     const companyInfo = useContext(CompanyInfoContext)
+    const dataCheck = !companyInfo.company_social || companyInfo.company_social.length === 0
 
     return (
         <div className='pt-8 text-white bg-primary'>
@@ -74,7 +75,7 @@ const Footer = () => {
                 <div className=' py-4'>
                     <div className="row row-cols-1 row-cols-md-4 g-3 justify-content-center text-center">
                         {
-                            companyInfo
+                            dataCheck
                                 ?
                                 null
                                 :

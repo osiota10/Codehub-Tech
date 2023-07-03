@@ -14,6 +14,8 @@ const pic = {
 
 const Contact = () => {
   const companyInfo = useContext(CompanyInfoContext)
+  const dataCheckSocials = !companyInfo.company_social || companyInfo.company_social.length === 0
+  const dataCheckFaqs = !companyInfo.company_faqs || companyInfo.company_faqs.length === 0
 
   return (
     <>
@@ -66,12 +68,25 @@ const Contact = () => {
         </section>
       </section>
 
-      <Socials small={false} socials={companyInfo.company_social} />
+      {
+        dataCheckSocials
+          ?
+          null
+          :
+          <Socials small={false} socials={companyInfo.company_social} />
+      }
 
       <ContactForm />
       <MailSubscription />
 
-      <Faq faqList={companyInfo.company_faqs} />
+      {
+        dataCheckFaqs
+          ?
+          null
+          :
+          <Faq faqList={companyInfo.company_faqs} />
+      }
+
     </>
   );
 }
