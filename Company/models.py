@@ -246,3 +246,15 @@ class FAQ(models.Model):
         if self.service and self.company:
             raise ValidationError(
                 "Only one of service and company can be selected.")
+
+
+class CoreValue(models.Model):
+    pic = CloudinaryField('image')
+    title = models.CharField(max_length=50)
+    description = RichTextField()
+
+    def get_image_url(self):
+        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.pic}")
+
+    def __str__(self):
+        return f"{self.title}"

@@ -34,7 +34,7 @@ function RecentJobDetail() {
                 </section>
             </section>
 
-            <TextTemplate />
+            {/* <TextTemplate /> */}
 
 
             {/* Technologies display Logic */}

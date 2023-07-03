@@ -110,3 +110,12 @@ class CompanyInfoView(generics.RetrieveAPIView):
     queryset = CompanyInfo.objects.all()
     serializer_class = CompanyInfoSerializer
     permission_classes = [AllowAny,]
+
+
+class CoeValueView(generics.ListAPIView):
+    serializer_class = CoreValueSerializer
+    permission_classes = [AllowAny,]
+
+    def get_queryset(self):
+        query = CoreValue.objects.all()
+        return query
