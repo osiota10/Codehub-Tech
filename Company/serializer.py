@@ -112,3 +112,13 @@ class OurTeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = OurTeam
         fields = ('id', 'name', 'position', 'get_image_url', 'team_social')
+
+
+class CompanyInfoSerializer(serializers.ModelSerializer):
+    company_social = SocialUrlSerializer()
+    company_faqs = FaqSerializer(many=True)
+
+    class Meta:
+        model = CompanyInfo
+        fields = ('id', 'company_name', 'company_address', 'telephone', 'telephone_2',
+                  'email', 'about_company', 'return_policy', 'term_and_conditions', 'privacy_policy', 'company_social', 'company_faqs')

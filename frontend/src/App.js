@@ -19,18 +19,18 @@ import ScrollToTop from './components/cards/utilities/scrollToTop';
 
 // Contexts
 export const ServiceContext = createContext(null)
-export const TestimonialContext = createContext(null)
+export const CompanyInfoContext = createContext(null)
 export const JobContext = createContext(null)
 export const CategoryContext = createContext(null)
 
 
 function App() {
   const [service, setService] = useState([]);
-  const [testimonials, setTestimonials] = useState([])
+  const [companyInfo, setCompanyInfor] = useState([])
   const [jobs, setJobs] = useState([])
   const [categories, setCategories] = useState([]);
 
-  console.log(categories)
+  console.log(companyInfo)
   useEffect(() => {
 
     //Service
@@ -39,10 +39,10 @@ function App() {
         setService(res.data)
       })
 
-    // Testimonials
-    axios.get(`https://jsonplaceholder.ir/users`)
+    // Company Info
+    axios.get(`${process.env.REACT_APP_API_URL}/company-info/1`)
       .then(res => {
-        setTestimonials(res.data)
+        setCompanyInfor(res.data)
       })
 
     // Recent Jobs
@@ -58,7 +58,7 @@ function App() {
 
   return (
     <ServiceContext.Provider value={service}>
-      <TestimonialContext.Provider value={testimonials}>
+      <CompanyInfoContext.Provider value={companyInfo}>
         <JobContext.Provider value={jobs}>
           <CategoryContext.Provider value={categories}>
             <BrowserRouter>
@@ -78,7 +78,7 @@ function App() {
             </BrowserRouter>
           </CategoryContext.Provider>
         </JobContext.Provider>
-      </TestimonialContext.Provider>
+      </CompanyInfoContext.Provider>
     </ServiceContext.Provider >
 
   );

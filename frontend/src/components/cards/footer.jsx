@@ -4,10 +4,12 @@ import Socials from './socials';
 import { ServiceContext } from '../../App';
 import TextTruncate from 'react-text-truncate';
 import { Link } from 'react-router-dom';
+import { CompanyInfoContext } from '../../App';
 
 
 const Footer = () => {
     const services = useContext(ServiceContext)
+    const companyInfo = useContext(CompanyInfoContext)
 
     return (
         <div className='pt-8 text-white bg-primary'>
@@ -69,17 +71,23 @@ const Footer = () => {
                 </div>
             </div>
             <div style={{ borderTop: '1px solid #fff' }}>
-                <div className='container py-4'>
-                    <div className="row text-center g-3">
-                        <div className="col-md-4">
-                            {/* <Socials small={true} /> */}
-                        </div>
+                <div className=' py-4'>
+                    <div className="row row-cols-1 row-cols-md-4 g-3 justify-content-center text-center">
+                        {
+                            companyInfo
+                                ?
+                                null
+                                :
+                                <div className="col">
+                                    <Socials small={true} socials={companyInfo.company_social} />
+                                </div>
+                        }
 
-                        <div className="col-md-4">
+                        <div className="col">
                             <small className="text-center">&#169; Codehub Technologies 2022. <br /> All rights Reserved</small>
                         </div>
 
-                        <div className="col-md-4">
+                        <div className="col">
                             <small class="text-center">Designed and Developed by <br /> <span className='fw-bold'>Codehub Technologies</span></small>
                         </div>
                     </div>

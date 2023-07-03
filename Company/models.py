@@ -2,6 +2,8 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from cloudinary.models import CloudinaryField
 from django.utils.html import strip_tags
+from django.core.exceptions import ValidationError
+from django.core.validators import RegexValidator
 
 # Create your models here.
 
@@ -142,13 +144,6 @@ class Stat(models.Model):
         return f"{self.stat_title} - N{self.stat_figure}"
 
 
-class FAQ(models.Model):
-    service = models.ForeignKey(
-        Service, on_delete=models.CASCADE, related_name="faqs")
-    faq_question = models.CharField(max_length=50)
-    faq_answer = RichTextField()
-
-
 class OurIndustry(models.Model):
     name_of_industry = models.CharField(max_length=50)
     logo = CloudinaryField()
@@ -177,7 +172,20 @@ class Testimonial(models.Model):
 
 
 class CompanyInfo(models.Model):
-    pass
+    logo = CloudinaryField(null=True, blank=True)
+    page_header_image = CloudinaryField(null=True, blank=True)
+    company_name = models.CharField(max_length=100, null=True, blank=True)
+    company_address = models.CharField(
+        max_length=255, null=True, blank=True)
+    telephone = models.CharField(max_length=15, validators=[
+        RegexValidator(r'^\d{11}$', 'Enter a valid phone number.')], null=True, blank=True)
+    telephone_2 = models.CharField(max_length=15, null=True, blank=True, validators=[
+        RegexValidator(r'^\d{11}$', 'Enter a valid phone number.')])
+    email = models.EmailField(null=True, blank=True)
+    about_company = RichTextField(blank=True, null=True)
+    return_policy = RichTextField(blank=True, null=True)
+    term_and_conditions = RichTextField(blank=True, null=True)
+    privacy_policy = RichTextField(blank=True, null=True)
 
 
 class OurTeam(models.Model):
@@ -206,3 +214,25 @@ class SocialUrl(models.Model):
 
     def __str__(self):
         return f"{self.facebook_url}"
+
+    def clean(self):
+        if self.team_member and self.company:
+            raise ValidationError(
+                "Only one of team_member and company can be selected.")
+
+
+class FAQ(models.Model):
+    service = models.ForeignKey(
+        Service, on_delete=models.CASCADE, related_name="faqs", blank=True, null=True)
+    company = models.ForeignKey(
+        CompanyInfo, related_name='company_faqs', on_delete=models.CASCADE, blank=True, null=True)
+    faq_question = models.CharField(max_length=50)
+    faq_answer = RichTextField()
+
+    def __str__(self):
+        return f"{self.service} {self.company} - {self.faq_question}"
+
+    def clean(self):
+        if self.service and self.company:
+            raise ValidationError(
+                "Only one of service and company can be selected.")

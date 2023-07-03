@@ -1,5 +1,20 @@
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import { useState } from 'react';
+
 
 function Pricing({ id, title, price, description, pricingFeatures }) {
+    //Modal
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const handleWhatsAppRedirect = () => {
+        const message = `Check out this product: ${title}`;
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappURL = `https://wa.me/2349072444299?text=${encodedMessage}`;
+        window.open(whatsappURL, '_blank');
+    }
 
     return (
         <section className="col" key={id}>
@@ -35,11 +50,43 @@ function Pricing({ id, title, price, description, pricingFeatures }) {
 
                         </section>
                         <div className="d-grid">
-                            <button type="submit" className="btn btn-primary mb-3">Order Now</button>
+                            <button type="submit" className="btn btn-primary mb-3" onClick={handleShow}>Order Now</button>
                         </div>
                     </section>
                 </section>
             </section>
+
+            <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Make Payments</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <section className='mb-3'>
+                        <Button variant="btn btn-primary" onClick={() => handleWhatsAppRedirect()}>
+                            Via WhatsApp
+                        </Button>
+                    </section>
+
+                    <section>
+                        <Button variant="btn btn-primary" disabled>
+                            Pay Online
+                        </Button>
+                    </section>
+
+                </Modal.Body>
+
+                <Modal.Footer className='d-flex justify-content-center'>
+                    <Button variant="btn btn-danger" onClick={handleClose} >
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </section>
     );
 }

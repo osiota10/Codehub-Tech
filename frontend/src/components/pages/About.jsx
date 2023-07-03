@@ -20,7 +20,7 @@ const About = () => {
         setTech(res.data)
       })
   }, [])
-  console.log(tech)
+
   return (
     <>
       <PageTitle title="About" />

@@ -103,3 +103,10 @@ class TechnologyView(generics.ListAPIView):
     def get_queryset(self):
         query = OurTechnology.objects.all()
         return query
+
+
+class CompanyInfoView(generics.RetrieveAPIView):
+    lookup_field = 'id'
+    queryset = CompanyInfo.objects.all()
+    serializer_class = CompanyInfoSerializer
+    permission_classes = [AllowAny,]
