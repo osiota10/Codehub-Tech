@@ -2,7 +2,7 @@ import React from 'react'
 import TextTruncate from 'react-text-truncate';
 
 
-function RecentJobCard({ key, title, body, category, thumbnail }) {
+function RecentJobCard({ key, title, body, category, thumbnail, date }) {
     return (
         <section className='col'>
             <section className="card mx-auto" style={{ maxWidth: '379px' }} key={key}>
@@ -17,7 +17,7 @@ function RecentJobCard({ key, title, body, category, thumbnail }) {
                         text={title}
                         className='card-title'
                     />
-                    <small className='fw-bold text-primary'><i class="fa-sharp fa-solid fa-calendar-days me-1"></i> 2nd February, 2023</small>
+                    <small className='fw-bold text-primary'><i class="fa-sharp fa-solid fa-calendar-days me-1"></i> {date}</small>
                     <TextTruncate
                         line={6}
                         element="p"

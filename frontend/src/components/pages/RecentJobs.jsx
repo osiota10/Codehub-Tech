@@ -21,7 +21,8 @@ function Items({ currentItems }) {
             title={item.title}
             body={item.safe_summary_html}
             category={item.category}
-            thumbnail={item.image}
+            thumbnail={item.get_image_url}
+            date={item.date}
           />
         </Link>
       ))}

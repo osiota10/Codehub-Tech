@@ -94,7 +94,7 @@ class Service(models.Model):
 
     def get_image_url(self):
         return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
-    
+
     def get_hero_image_url(self):
         return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.hero_image}")
 
@@ -104,6 +104,8 @@ class Service(models.Model):
 
 class RecentJob(models.Model):
     title = models.CharField(max_length=50)
+    date = models.DateField(blank=True, null=True)
+    image = CloudinaryField(blank=True, null=True)
     summary = RichTextField()
     problem_statement = RichTextField()
     solution_offered = RichTextField()
@@ -116,6 +118,9 @@ class RecentJob(models.Model):
 
     def safe_summary_html(self):
         return strip_tags(self.summary)
+
+    def get_image_url(self):
+        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
 
 
 class Pricing(models.Model):
