@@ -52,8 +52,12 @@ const MailSubscription = () => {
 
     //Modal
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setFormError([])
+        setShow(false)
+    };
     const handleShow = () => setShow(true);
+
     return (
         <div className='bg-light'>
             <div className='container py-10'>
@@ -108,8 +112,7 @@ const MailSubscription = () => {
                     show
                         ?
                         <SuccessModal
-                            title='Thank you'
-                            message='you have successfully subscribe to our email updates'
+                            message='You have successfully subscribe to our email updates'
                             errorMessage={formError}
                             show={show}
                             onClose={handleClose}
