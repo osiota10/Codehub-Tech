@@ -5,6 +5,8 @@ import { JobContext, CategoryContext } from '../../App';
 import Nav from 'react-bootstrap/Nav';
 import ReactPaginate from "react-paginate";
 import { Link } from 'react-router-dom';
+import MailSubscription from '../cards/emailSub';
+import ContactForm from '../cards/contactForm';
 
 function Items({ currentItems }) {
 
@@ -146,7 +148,10 @@ function RecentJob() {
 
         <PaginatedItems itemsPerPage={3} data={filteredProducts} selectedCategory={selectedCategory} />
 
+
       </section>
+      <MailSubscription />
+      <ContactForm />
     </>
   );
 }
