@@ -78,7 +78,7 @@ function NavBar() {
                         </Offcanvas.Body>
                     </Offcanvas>
 
-                    <button className='btn btn-primary d-none d-sm-none d-md-none d-lg-block' onClick={handleRequestQuoteShow}>Request a Quote</button>
+                    <a className='btn btn-primary d-none d-sm-none d-md-none d-lg-block' href="#contact-form">Request a Quote</a>
                 </div>
             </nav>
             <Outlet />

@@ -61,7 +61,7 @@ const ContactForm = () => {
     const handleShow = () => setShow(true);
 
     return (
-        <div className='container py-10'>
+        <div className='container py-10' id="contact-form">
             <section className='row'>
                 <section className='col-lg-10 mx-auto'>
                     <header className='text-center mb-8'>
