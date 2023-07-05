@@ -66,9 +66,16 @@ const HeroSection = () => {
                                                     </section>
                                             }
                                         </div>
-                                        <div className="col-lg-6 d-none d-lg-block">
-                                            <img src={item.get_hero_image_url} className='img-fluid ms-auto' alt="" />
-                                        </div>
+                                        {/* <div className="col-lg-6 d-none d-lg-block">
+                                            <div className="overflow-hidden" style={{ maxHeight: '100%', maxWidth: '100%' }}>
+                                                <img src={item.get_hero_image_url} className='img-fluid ms-auto' alt="" />
+                                            </div>
+                                            <section className="ratio ratio-1x1">
+                                                <img src={item.get_hero_image_url} className='img-fluid ms-auto' alt="" />
+                                            </section>
+
+                                        </div> */}
+
                                     </div>
                                 </section>
                             )}
