@@ -33,57 +33,53 @@ const HeroSection = () => {
         backgroundRepeat: 'no-repeat',
         boxShadow: 'inset 0 0 0 100vh rgba(235, 237, 240, 0.93)',
     };
+
+    const getStyle = (imgUrl) => {
+        return {
+            backgroundImage: `linear-gradient(to right, rgb(0, 237, 240), rgba(255, 255, 255, 0.0)), url(${imgUrl})`,
+            height: '100%',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+        };
+    };
+
     return (
-        <section className="card hero" >
-            <div className="">
-                <section className="ratio ratio-16x9" style={myStyle}>
+        <section className="card hero custom-slider">
+            {
+                <Slider {...settings}>
+                    {services.map((item) =>
+                        <section className="" key={item.id}>
+                            <section className="ratio ratio-16x9" style={getStyle(item.get_hero_image_url)}>
 
-                </section>
+                            </section>
 
-                <div className="card-img-overlay img-dark-overlay">
-                    <div className="container py-5 position-absolute top-50 start-50 translate-middle w-100">
+                            <div className="container py-5 position-absolute top-50 start-50 translate-middle w-100">
+                                <div className="row align-items-center">
+                                    <div className="col-lg-6">
+                                        <h2>{item.title}</h2>
+                                        <p>{item.hero_snippet}</p>
+                                        <Link
+                                            to={'/services/' + item.slug}
+                                            className='btn btn-primary text-decoration-none'
+                                        >
+                                            See More
+                                        </Link>
 
-                        <Slider {...settings}>
-                            {services.map((item) =>
-                                <section className="custom-slider" key={item.id}>
-                                    <div className="row align-items-center">
-                                        <div className="col-lg-6">
-                                            <h2>{item.title}</h2>
-                                            <p>{item.hero_snippet}</p>
-                                            <Link
-                                                to={'/services/' + item.slug}
-                                                className='btn btn-primary text-decoration-none'
-                                            >
-                                                See More
-                                            </Link>
-
-                                            {
-                                                Object.keys(item.stats).length === 0
-                                                    ?
-                                                    null :
-                                                    <section className="mt-4">
-                                                        <Stat statList={item.stats} />
-                                                    </section>
-                                            }
-                                        </div>
-                                        {/* <div className="col-lg-6 d-none d-lg-block">
-                                            <div className="overflow-hidden" style={{ maxHeight: '100%', maxWidth: '100%' }}>
-                                                <img src={item.get_hero_image_url} className='img-fluid ms-auto' alt="" />
-                                            </div>
-                                            <section className="ratio ratio-1x1">
-                                                <img src={item.get_hero_image_url} className='img-fluid ms-auto' alt="" />
-                                            </section>
-
-                                        </div> */}
-
+                                        {
+                                            Object.keys(item.stats).length === 0
+                                                ?
+                                                null :
+                                                <section className="mt-4">
+                                                    <Stat statList={item.stats} />
+                                                </section>
+                                        }
                                     </div>
-                                </section>
-                            )}
-                        </Slider>
-
-                    </div>
-                </div>
-            </div>
+                                </div>
+                            </div>
+                        </section>
+                    )}
+                </Slider>
+            }
         </section>
     );
 }

@@ -50,11 +50,11 @@ function NavBar() {
                         <h6>Codehub <br />Technologies</h6>
                     </Link>
 
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onClick={handleOffcanvasShow}>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#offcanvasNavbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onClick={handleOffcanvasShow}>
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <Offcanvas show={showOffcanvas} onHide={handleOffcanvasClose} backdrop="static" responsive="lg">
+                    <Offcanvas id="offcanvasNavbar" show={showOffcanvas} onHide={handleOffcanvasClose} backdrop="static" responsive="lg" tabIndex="-1">
                         <Offcanvas.Header closeButton>
                             <Offcanvas.Title>Offcanvas</Offcanvas.Title>
                         </Offcanvas.Header>

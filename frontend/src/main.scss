@@ -188,8 +188,9 @@ $card-group-margin:                 2rem;
 
 // Slick
 .slick-slide:not(.custom-slider) {
-  padding:  1rem;
+  padding:  1rem !important;
 }
+
 
 .slick-arrow {
   height: 2.5rem !important;
@@ -230,6 +231,10 @@ $card-group-margin:                 2rem;
 .hero {
   .slick-dots li button:before{
     top: -1.5rem !important;
+  }
+
+  .slick-slide {
+    padding:  0 !important;
   }
 }
 

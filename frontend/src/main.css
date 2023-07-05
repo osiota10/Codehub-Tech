@@ -36,7 +36,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 }
 
 .slick-slide:not(.custom-slider) {
-  padding: 1rem;
+  padding: 1rem !important;
 }
 
 .slick-arrow {
@@ -74,6 +74,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 .hero .slick-dots li button:before {
   top: -1.5rem !important;
+}
+.hero .slick-slide {
+  padding: 0 !important;
 }
 
 .fa-square-facebook:hover {
