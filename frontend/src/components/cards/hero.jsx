@@ -4,10 +4,6 @@ import Stat from './stat';
 import { ServiceContext } from '../../App';
 import { Link } from 'react-router-dom';
 
-const pic = {
-    url: 'https://picsum.photos/300/200'
-}
-
 const settings = {
     dots: true,
     arrows: false,
@@ -16,23 +12,16 @@ const settings = {
     centerPadding: "160px",
     slidesToShow: 1,
     swipeToSlide: true,
-    afterChange: function (index) {
-        console.log(
-            `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
-        );
-    },
+    // afterChange: function (index) {
+    //     console.log(
+    //         `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+    //     );
+    // },
 };
 
 const HeroSection = () => {
     const services = useContext(ServiceContext)
 
-    const myStyle = {
-        backgroundImage: `url(${pic.url})`,
-        height: '100%',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        boxShadow: 'inset 0 0 0 100vh rgba(235, 237, 240, 0.93)',
-    };
 
     const getStyle = (imgUrl) => {
         return {

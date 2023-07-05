@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { Outlet, Link, NavLink } from "react-router-dom";
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
 function NavBar() {
@@ -17,24 +15,6 @@ function NavBar() {
     }
 
     window.addEventListener('scroll', handleFixNavBar)
-
-
-    // Request Quote Modal
-    const [showRequestQuote, setRequestQuote] = useState(false);
-    const handleRequestQuoteClose = () => setRequestQuote(false);
-    const handleRequestQuoteShow = () => setRequestQuote(true);
-
-    const [formAddData, setFormAddData] = useState({
-        event: '',
-        pb: '',
-    });
-    const { event, pb } = formAddData;
-    const onChange = e => setFormAddData({ ...formAddData, [e.target.name]: e.target.value });
-
-    const onRequestQuoteSubmit = e => {
-        e.preventDefault();
-
-    };
 
     // Offcanvas
     const [showOffcanvas, setOffcanvasShow] = useState(false);
@@ -82,53 +62,6 @@ function NavBar() {
                 </div>
             </nav>
             <Outlet />
-
-            <Modal
-                show={showRequestQuote}
-                onHide={handleRequestQuoteClose}
-                backdrop="static"
-                keyboard={false}
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title>Request a Quote</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <form onSubmit={e => onRequestQuoteSubmit(e)}>
-                        <section className="row g-3">
-                            <div class="col-12">
-                                <label for="event" class="form-label">Event</label>
-                                <input
-                                    type="text"
-                                    class="form-control inputfield bg-light"
-                                    id="event"
-                                    name="event"
-                                    value={event}
-                                    onChange={e => onChange(e)}
-                                    required />
-                            </div>
-                            <div class="col-12">
-                                <label for="pb" class="form-label">PB</label>
-                                <input
-                                    type="text"
-                                    class="form-control inputfield bg-light"
-                                    id="pb"
-                                    name="pb"
-                                    value={pb}
-                                    onChange={e => onChange(e)}
-                                    required />
-                            </div>
-                            <div class="col-12 mt-3">
-                                <button type="submit" class="btn btn-primary form-control">Submit</button>
-                            </div>
-                        </section>
-                    </form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="btn btn-outline-primary" onClick={handleRequestQuoteClose}>
-                        Close
-                    </Button>
-                </Modal.Footer>
-            </Modal>
         </>
     );
 }
