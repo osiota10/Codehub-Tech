@@ -30,7 +30,6 @@ function App() {
   const [jobs, setJobs] = useState([])
   const [categories, setCategories] = useState([]);
 
-  console.log(companyInfo)
   useEffect(() => {
 
     //Service
@@ -50,8 +49,17 @@ function App() {
       .then(res => {
         setJobs(res.data)
 
-        // Extract unique categories from the products and store them in the state
-        const uniqueCategories = [...new Set(res.data.map(product => product.category))];
+        //Extract Unique categories
+        const uniqueCategories = res.data.reduce((categories, product) => {
+          const productCategories = product.category;
+          productCategories.forEach(category => {
+            const existingCategory = categories.find(c => c.name === category.name);
+            if (!existingCategory) {
+              categories.push(category);
+            }
+          });
+          return categories;
+        }, []);
         setCategories(uniqueCategories);
       })
   }, []);

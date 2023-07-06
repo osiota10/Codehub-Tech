@@ -29,6 +29,7 @@ const HeroSection = () => {
             height: '100%',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
+            // boxShadow: 'inset 0 0 0 100vh rgba(235, 237, 240, 0.93)',
         };
     };
 

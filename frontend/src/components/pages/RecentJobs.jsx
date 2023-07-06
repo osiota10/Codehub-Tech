@@ -9,8 +9,6 @@ import MailSubscription from '../cards/emailSub';
 import ContactForm from '../cards/contactForm';
 
 function Items({ currentItems }) {
-
-
   return (
     <section className='row row-cols-1 row-cols-lg-3 g-6 justify-content-center'>
       {currentItems && currentItems.map((item) => (
@@ -103,20 +101,23 @@ function RecentJob() {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const jobs = useContext(JobContext)
-  // const categories = useContext(CategoryContext)
-  const categories = []
+  const categories = useContext(CategoryContext)
+
+  const categoryNames = categories ? categories.map(cat => cat.name) : [];
 
   useEffect(() => {
+
     const filtered = selectedCategory
-      ? jobs.filter((item) => item.category === selectedCategory)
+      ? jobs.filter((job) => job.category.some((category) => category.name === selectedCategory))
       : jobs;
+
     setFilteredProducts(filtered);
+
   }, [selectedCategory, jobs]);
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
   };
-
 
   return (
     <>
@@ -132,7 +133,7 @@ function RecentJob() {
               All
             </Nav.Link>
           </Nav.Item>
-          {categories.map(item => (
+          {categoryNames.map(item => (
             <Nav.Item>
               <Nav.Link
                 eventKey={item}
@@ -146,7 +147,7 @@ function RecentJob() {
         </Nav>
 
 
-        <PaginatedItems itemsPerPage={3} data={filteredProducts} selectedCategory={selectedCategory} />
+        <PaginatedItems itemsPerPage={6} data={filteredProducts} selectedCategory={selectedCategory} />
 
 
       </section>
