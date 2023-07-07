@@ -36,21 +36,21 @@ function NavBar() {
 
                     <Offcanvas id="offcanvasNavbar" show={showOffcanvas} onHide={handleOffcanvasClose} backdrop="static" responsive="lg" tabIndex="-1">
                         <Offcanvas.Header closeButton>
-                            <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+                            <Offcanvas.Title>Codehub Technologies</Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
-                            <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
+                            <div className="navbar-collapse justify-content-center" id="navbarNav">
                                 <ul className="nav nav-pills">
-                                    <li className="nav-item">
+                                    <li className="nav-item" onClick={handleOffcanvasClose}>
                                         <NavLink to="/about" className='nav-link' aria-current="page">About</NavLink>
                                     </li>
-                                    <li className="nav-item">
+                                    <li className="nav-item" onClick={handleOffcanvasClose}>
                                         <NavLink to="/services" className='nav-link'>Services</NavLink>
                                     </li>
-                                    <li className="nav-item">
+                                    <li className="nav-item" onClick={handleOffcanvasClose}>
                                         <NavLink to="/recent-jobs" className='nav-link'>Recent Jobs</NavLink>
                                     </li>
-                                    <li className="nav-item">
+                                    <li className="nav-item" onClick={handleOffcanvasClose}>
                                         <NavLink to="/contact" className='nav-link'>Contact</NavLink>
                                     </li>
                                 </ul>
