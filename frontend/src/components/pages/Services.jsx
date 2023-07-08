@@ -32,10 +32,10 @@ function Items({ currentItems }) {
   );
 }
 
-function PaginatedItems({ itemsPerPage }) {
+function PaginatedItems({ itemsPerPage, data }) {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
-  const services = useContext(ServiceContext)
+  const services = data
   const items = Object.values(services);
   const [itemOffset, setItemOffset] = useState(0);
 
@@ -97,10 +97,20 @@ function PaginatedItems({ itemsPerPage }) {
 
 
 function Services() {
+  const services = useContext(ServiceContext)
+
   return (
     <>
       <PageTitle title="Services" />
-      <PaginatedItems itemsPerPage={9} />
+
+      {
+        Object.keys(services).length === 0
+          ?
+          null
+          :
+          <PaginatedItems itemsPerPage={9} data={services} />
+      }
+
       <MailSubscription />
       <ContactForm />
     </>

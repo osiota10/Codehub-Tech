@@ -19,26 +19,34 @@ const WorkProcessGroup = () => {
     }, [])
 
     return (
-        <section className="container py-10">
-            <h2 className="text-center mb-8">Our Work Process</h2>
-            <section className="row g-4 align-items-center">
-                <section className="col-lg-6">
-                    <ImageHolder image={pic.url} />
-                </section>
+        <>
+            {
+                Object.keys(workProcess).length === 0
+                    ?
+                    null
+                    :
+                    <section className="container py-10">
+                        <h2 className="text-center mb-8">Our Work Process</h2>
+                        <section className="row g-4 align-items-center">
+                            <section className="col-lg-6">
+                                <ImageHolder image={pic.url} />
+                            </section>
 
-                <section className="col-lg-6">
-                    {workProcess.map((item) =>
-                        <WorkProcess
-                            id={item.id}
-                            title={item.title}
-                            step={item.step}
-                            font_awesome_class={item.font_awesome_class}
-                            description={item.description}
-                        />
-                    )}
-                </section>
-            </section>
-        </section>
+                            <section className="col-lg-6">
+                                {workProcess.map((item) =>
+                                    <WorkProcess
+                                        id={item.id}
+                                        title={item.title}
+                                        step={item.step}
+                                        font_awesome_class={item.font_awesome_class}
+                                        description={item.description}
+                                    />
+                                )}
+                            </section>
+                        </section>
+                    </section>
+            }
+        </>
     );
 }
 

@@ -20,7 +20,7 @@ function TeamGroup() {
     return (
         <>
             {
-                Object.keys(ourTeam) === 0
+                Object.keys(ourTeam).length === 0
                     ?
                     null
                     :

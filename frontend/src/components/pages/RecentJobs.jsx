@@ -123,34 +123,38 @@ function RecentJob() {
     <>
       <PageTitle title="Recent Jobs" />
 
-      <section className='container py-8'>
-        <Nav variant="pills" defaultActiveKey="all" className='mb-6 justify-content-center'>
-          <Nav.Item>
-            <Nav.Link
-              eventKey="all"
-              onClick={() => handleCategoryChange('')}
-            >
-              All
-            </Nav.Link>
-          </Nav.Item>
-          {categoryNames.map(item => (
-            <Nav.Item>
-              <Nav.Link
-                eventKey={item}
-                onClick={() => handleCategoryChange(item)}
-                active={selectedCategory === item}
-              >
-                {item}
-              </Nav.Link>
-            </Nav.Item>
-          ))}
-        </Nav>
+      {
+        Object.keys(filteredProducts).length === 0
+          ?
+          null
+          :
+          <section className='container py-8'>
+            <Nav variant="pills" defaultActiveKey="all" className='mb-6 justify-content-center'>
+              <Nav.Item>
+                <Nav.Link
+                  eventKey="all"
+                  onClick={() => handleCategoryChange('')}
+                >
+                  All
+                </Nav.Link>
+              </Nav.Item>
+              {categoryNames.map(item => (
+                <Nav.Item>
+                  <Nav.Link
+                    eventKey={item}
+                    onClick={() => handleCategoryChange(item)}
+                    active={selectedCategory === item}
+                  >
+                    {item}
+                  </Nav.Link>
+                </Nav.Item>
+              ))}
+            </Nav>
 
+            <PaginatedItems itemsPerPage={6} data={filteredProducts} selectedCategory={selectedCategory} />
+          </section>
+      }
 
-        <PaginatedItems itemsPerPage={6} data={filteredProducts} selectedCategory={selectedCategory} />
-
-
-      </section>
       <MailSubscription />
       <ContactForm />
     </>

@@ -71,31 +71,39 @@ function RecentJobGroup({ filterCategory }) {
     : jobs;
 
   return (
-    <div className='container py-10'>
-      <h2 className='text-center mb-8'>
-        {filterCategory ? 'Related Jobs Done' : 'Our Recent Jobs'}
-      </h2>
-      <Slider {...sliderSettings}>
-        {filteredItems.slice(0, 9).map(item =>
-          <Link
-            className='text-decoration-none'
-            to={'/recent-jobs/' + item.slug}
-          >
-            <RecentJobCard
-              key={item.id}
-              title={item.title}
-              body={item.safe_summary_html}
-              category={item.category}
-              thumbnail={item.get_image_url}
-              date={item.date}
-            />
-          </Link>
-        )}
-      </Slider>
-      <div className='d-flex justify-content-center'>
-        <Link to="/recent-jobs" className='btn btn-primary mt-9'>See all Jobs</Link>
-      </div>
-    </div>
+    <>
+      {
+        Object.keys(filteredItems).length === 0
+          ?
+          null
+          :
+          <div className='container py-10'>
+            <h2 className='text-center mb-8'>
+              {filterCategory ? 'Related Jobs Done' : 'Our Recent Jobs'}
+            </h2>
+            <Slider {...sliderSettings}>
+              {filteredItems.slice(0, 9).map(item =>
+                <Link
+                  className='text-decoration-none'
+                  to={'/recent-jobs/' + item.slug}
+                >
+                  <RecentJobCard
+                    key={item.id}
+                    title={item.title}
+                    body={item.safe_summary_html}
+                    category={item.category}
+                    thumbnail={item.get_image_url}
+                    date={item.date}
+                  />
+                </Link>
+              )}
+            </Slider>
+            <div className='d-flex justify-content-center'>
+              <Link to="/recent-jobs" className='btn btn-primary mt-9'>See all Jobs</Link>
+            </div>
+          </div>
+      }
+    </>
   );
 }
 
