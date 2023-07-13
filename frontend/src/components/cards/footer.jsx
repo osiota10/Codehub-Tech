@@ -56,17 +56,17 @@ const Footer = () => {
                     <div className="col-lg-4">
                         <h5 className='text-white'>Get in Touch</h5>
                         <div class="mt-1">
-                            <a href="mailto:osiotaobrozie@gmail.com" class="text-decoration-none text-white"><span> <i
+                            <a href={`mailto:${companyInfo.email}`} class="text-decoration-none text-white"><span> <i
                                 class="fa-solid fa-envelope me-1"></i></span>
-                                <p class="d-inline">osiotaobrozie@gmail.com</p></a>
+                                <p class="d-inline">{companyInfo.email}</p></a>
                         </div>
                         <div class="mt-1">
-                            <a href="tel:2348106906058" class="text-decoration-none text-white"><p class="d-inline"><i
-                                class="fa-solid fa-phone-volume me-1"></i>2348106906058</p></a>
+                            <a href={`tel:${companyInfo.telephone}`} class="text-decoration-none text-white"><p class="d-inline"><i
+                                class="fa-solid fa-phone-volume me-1"></i>{companyInfo.telephone}</p></a>
                         </div>
                         <div class="mt-1">
                             <i class="fa-solid fa-location-dot me-1"></i>
-                            <p class="d-inline">Stephen Keshi Stadium, Asaba</p>
+                            <p class="d-inline">{companyInfo.company_address}</p>
                         </div>
                     </div>
                 </div>
