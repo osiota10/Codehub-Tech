@@ -1,5 +1,6 @@
 import NarBar from "../cards/navBar";
 import Footer from "../cards/footer";
+import FabIcon from "../cards/utilities/floatingFab";
 
 
 const Layout = () => {
@@ -9,6 +10,7 @@ const Layout = () => {
 
 
       <Footer />
+      <FabIcon />
     </>
   )
 };
