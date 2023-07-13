@@ -145,6 +145,14 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     order: 1;
   }
 }
+@media (max-width: 991.98px) {
+  .custom-bar .nav.nav-pills {
+    display: block;
+  }
+  .custom-bar .nav.nav-pills li {
+    border-bottom: 2px solid #EBEDF0;
+  }
+}
 @media (max-width: 767.98px) {
   .card.hero .ratio-16x9 {
     --bs-aspect-ratio: calc(3 / 4 * 100%);

@@ -39,7 +39,7 @@ function NavBar() {
                             <Offcanvas.Title>Codehub Technologies</Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
-                            <div className="navbar-collapse justify-content-center" id="navbarNav">
+                            <div className="navbar-collapse justify-content-center custom-bar" id="navbarNav">
                                 <ul className="nav nav-pills">
                                     <li className="nav-item" onClick={handleOffcanvasClose}>
                                         <NavLink to="/about" className='nav-link' aria-current="page">About</NavLink>

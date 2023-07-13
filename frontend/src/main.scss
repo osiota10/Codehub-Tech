@@ -329,6 +329,17 @@ $card-group-margin:                 2rem;
   }
  }
 
+ @include media-breakpoint-down(lg) { 
+  .custom-bar{
+    .nav.nav-pills {
+      display: block;
+      li {
+        border-bottom: 2px solid $light;
+      }
+    }
+  }
+}
+ 
 @include media-breakpoint-down(md) { 
     .card.hero { 
       .ratio-16x9{
