@@ -8,7 +8,6 @@ import MailSubscription from '../cards/emailSub';
 import ContactForm from '../cards/contactForm';
 import WorkProcessGroup from '../groups/workProcessGroup';
 import TeamGroup from '../groups/teamGroup';
-import FabIcon from '../cards/utilities/floatingFab';
 
 
 class Home extends Component {
@@ -25,7 +24,6 @@ class Home extends Component {
         <TestimonialGroup />
         <MailSubscription />
         <ContactForm />
-        <FabIcon />
       </>
     );
   }
