@@ -4,7 +4,6 @@ import ContactForm from '../cards/contactForm';
 import Socials from '../cards/socials';
 import Faq from '../cards/faq';
 import MailSubscription from "../cards/emailSub";
-import { Link } from 'react-router-dom';
 import GoogleMap from '../cards/googleMap';
 import { CompanyInfoContext } from '../../App';
 
