@@ -39,6 +39,7 @@ const Footer = () => {
                                         <Link
                                             className='text-decoration-none text-white'
                                             to={'/services/' + item.id}
+                                            key={item.id}
                                         >
                                             <TextTruncate
                                                 line={1}

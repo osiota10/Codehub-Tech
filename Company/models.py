@@ -212,6 +212,12 @@ class CompanyInfo(models.Model):
     term_and_conditions = RichTextField(blank=True, null=True)
     privacy_policy = RichTextField(blank=True, null=True)
 
+    def get_page_header_image(self):
+        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.page_header_image}")
+
+    def get_logo(self):
+        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
+
 
 class OurTeam(models.Model):
     name = models.CharField(max_length=50)

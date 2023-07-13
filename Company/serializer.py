@@ -128,7 +128,7 @@ class CompanyInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = CompanyInfo
         fields = ('id', 'company_name', 'company_address', 'telephone', 'telephone_2',
-                  'email', 'about_company', 'return_policy', 'term_and_conditions', 'privacy_policy', 'company_social', 'company_faqs')
+                  'email', 'about_company', 'return_policy', 'term_and_conditions', 'privacy_policy', 'company_social', 'company_faqs', 'get_page_header_image', 'get_logo')
 
 
 class CoreValueSerializer(serializers.ModelSerializer):

@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-
-const pic = {
-    url: 'https://picsum.photos/300/200'
-}
+import { CompanyInfoContext } from '../../App';
 
 const PageTitle = ({ title }) => {
+    const companyInfo = useContext(CompanyInfoContext)
+
     const myStyle = {
-        backgroundImage: `url(${pic.url})`,
+        backgroundImage: `url(${companyInfo.get_page_header_image})`,
         height: '227px',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
@@ -38,7 +37,7 @@ const PageTitle = ({ title }) => {
                         <li class="breadcrumb-item">
                             <Link to="/" className='nav-link active' aria-current="page"><i class="fa-solid fa-house"></i></Link>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">{this.props.title}</li>
+                        <li class="breadcrumb-item active" aria-current="page">{title}</li>
                     </ol>
                 </nav>
             </div>

@@ -29,14 +29,20 @@ function NavBar() {
                 <div className="container-fluid">
                     <Link to="/" className='navbar-brand d-flex align-items-center'>
                         <img src="logo.svg" alt="Logo" width="50" height="50" className="d-inline-block align-text-top me-1" />
-                        <h6>
-                            {companyInfo.company_name.split(' ').map((word, index) => (
-                                < span key={index}>
-                                    <span>{word}</span>
-                                    <br />
-                                </ span>
-                            ))}
-                        </h6>
+                        {
+                            companyInfo.company_name
+                                ?
+                                <h6>
+                                    {companyInfo.company_name.split(' ').map((word, index) => (
+                                        < span key={index}>
+                                            <span>{word}</span>
+                                            <br />
+                                        </ span>
+                                    ))}
+                                </h6>
+                                :
+                                null
+                        }
                     </Link>
 
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#offcanvasNavbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onClick={handleOffcanvasShow}>
