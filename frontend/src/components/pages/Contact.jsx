@@ -42,26 +42,26 @@ const Contact = () => {
                     <i className="fa-sharp fa-solid fa-location-dot fs-4 text-white align-middle"></i>
                   </section>
 
-                  <p className="fw-bolder text-primary">Back Shops, Stephen Keshi Stadium, Asaba</p>
+                  <p className="fw-bolder text-primary">{companyInfo.company_address}</p>
                 </section>
               </section>
 
               <section className="mb-2">
-                <Link className="text-decoration-none hstack justify-content-start align-items-center" to='#' onClick={() => window.location = 'tel:{companyInfo.telephone}'}>
+                <a className="text-decoration-none hstack justify-content-start align-items-center" href={`tel:${companyInfo.telephone}`}>
                   <section className='me-1 bg-primary p-1 text-center'>
                     <i className="fa-solid fa-square-phone fs-4 text-white align-middle"></i>
                   </section>
-                  <p className="fw-bolder">+2348106906058</p>
-                </Link>
+                  <p className="fw-bolder">{companyInfo.telephone}</p>
+                </a>
               </section>
 
               <section className="">
-                <Link className="text-decoration-none hstack justify-content-start align-items-center" to='#' onClick={() => window.location = 'mailto:{companyInfo.email}'}>
+                <a className="text-decoration-none hstack justify-content-start align-items-center" href={`mailto:${companyInfo.email}`}>
                   <section className='me-1 bg-primary p-1 text-center'>
                     <i className="fa-solid fa-square-envelope fs-4 text-white align-middle"></i>
                   </section>
-                  <p className="fw-bolder">info@codehubtech.com</p>
-                </Link>
+                  <p className="fw-bolder">{companyInfo.email}</p>
+                </a>
               </section>
             </section>
           </section>
