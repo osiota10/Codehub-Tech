@@ -8,7 +8,7 @@ function TestimonialCard({ image, key, message, name, position }) {
                     <div className='col-lg-5 d-flex justify-content-around align-items-center'>
                         <img src='Frame.svg' className="img-fluid" alt="..." style={{ maxWidth: '85.76px', maxHeight: '276px' }} />
                         <section className="ratio ratio-1x1">
-                            <img src={image} className="img-fluid rounded-circle flex-grow-1" alt="..." style={{ maxWidth: '276px', maxHeight: '276px' }} />
+                            <img src={image} className=" rounded-circle" alt="..." />
                         </section>
                         <img src='Frame.svg' className="img-fluid" alt="..." style={{ maxWidth: '85.76px', maxHeight: '276px' }} />
                     </div>
