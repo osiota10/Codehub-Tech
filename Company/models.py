@@ -236,9 +236,10 @@ class SocialUrl(models.Model):
     linkedin_url = models.URLField(blank=True, null=True)
     github_url = models.URLField(blank=True, null=True)
     youtube_url = models.URLField(blank=True, null=True)
+    whatsapp_url = models.URLField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.facebook_url}"
+        return f"{self.team_member} {self.company} Social URLs"
 
     def clean(self):
         if self.team_member and self.company:
