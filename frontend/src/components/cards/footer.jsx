@@ -27,7 +27,7 @@ const Footer = () => {
                             <div className="col-6">
                                 <h5 className='text-white'>Links</h5>
                                 <div className="list-group">
-                                    <p>Privacy Policy</p>
+                                    <Link className='text-decoration-none text-white' to="/privacy-policy">Privacy Policy</Link>
                                     <p>Return Policy</p>
                                     <p>Terms and Conditions</p>
                                 </div>
