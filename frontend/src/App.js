@@ -17,6 +17,7 @@ import "slick-carousel/slick/slick-theme.css";
 import ScrollToTop from './components/cards/utilities/scrollToTop';
 import Privacy from './components/pages/PrivacyPolicy';
 import OurReturnPolicy from './components/pages/ReturnPolicy';
+import OurTerms from './components/pages/TermsAndConditions';
 
 
 // Contexts
@@ -85,6 +86,7 @@ function App() {
                   <Route path="*" element={<NoPage />} />
                   <Route path="privacy-policy" element={<Privacy />} />
                   <Route path="return-policy" element={<OurReturnPolicy />} />
+                  <Route path="terms-and-conditions" element={<OurTerms />} />
                 </Route>
               </Routes>
             </BrowserRouter>
