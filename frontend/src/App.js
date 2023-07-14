@@ -83,11 +83,12 @@ function App() {
                   <Route path="recent-jobs" element={<RecentJob />} />
                   <Route path="recent-jobs/:slug" element={<RecentJobDetail />} />
                   <Route path="contact" element={<Contact />} />
-                  <Route path="*" element={<NoPage />} />
                   <Route path="privacy-policy" element={<Privacy />} />
                   <Route path="return-policy" element={<OurReturnPolicy />} />
                   <Route path="terms-and-conditions" element={<OurTerms />} />
                 </Route>
+
+                <Route path="*" element={<NoPage />} />
               </Routes>
             </BrowserRouter>
           </CategoryContext.Provider>
