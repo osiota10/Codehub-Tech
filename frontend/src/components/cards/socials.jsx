@@ -86,7 +86,7 @@ function Socials({ small, socials }) {
 
                 <>
                     <section className='py-10 bg-light'>
-                        <header className='text-center mb-8'>
+                        <header className='text-center mb-4'>
                             <h2>Our Socials</h2>
                             <h5>Follow us</h5>
                         </header>
