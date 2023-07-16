@@ -26,7 +26,7 @@ const WorkProcessGroup = () => {
                     null
                     :
                     <section className="container py-10">
-                        <h2 className="text-center mb-6">Our Work Process</h2>
+                        <h2 className="text-center mb-4">Our Work Process</h2>
                         <section className="row g-4 align-items-center">
                             <section className="col-lg-6">
                                 <ImageHolder image={pic.url} />

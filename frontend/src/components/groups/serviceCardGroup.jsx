@@ -22,7 +22,7 @@ function ServiceGroup({ type }) {
           <div className='container py-10'>
             {type ?
               <>
-                <h2 className='text-center mb-6'>Our Services</h2>
+                <h2 className='text-center mb-4'>Our Services</h2>
                 <div className='row row-cols-1 row-cols-lg-3 g-6 justify-content-center'>
                   {service.slice(0, 6).map(item =>
                     <Link className='text-decoration-none'
@@ -48,7 +48,7 @@ function ServiceGroup({ type }) {
               :
 
               <div className='container py-10'>
-                <h2 className='text-center mb-6'>What We Do</h2>
+                <h2 className='text-center mb-3'>What We Do</h2>
                 <Slider {...settings}>
                   {service.map(item =>
                     <Link

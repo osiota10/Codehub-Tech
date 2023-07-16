@@ -25,7 +25,7 @@ function IndustryGroup() {
           ?
           null :
           <div className='container py-10'>
-            <h2 className='text-center mb-6'>Industries</h2>
+            <h2 className='text-center mb-3'>Industries</h2>
             <Slider {...settings}>
               {industry.map(item => <section>
                 <IndustryCard

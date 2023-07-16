@@ -78,7 +78,7 @@ function RecentJobGroup({ filterCategory }) {
           null
           :
           <div className='container py-10'>
-            <h2 className='text-center mb-6'>
+            <h2 className='text-center mb-3'>
               {filterCategory ? 'Related Jobs Done' : 'Our Recent Jobs'}
             </h2>
             <Slider {...sliderSettings}>

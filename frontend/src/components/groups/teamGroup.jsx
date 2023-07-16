@@ -25,7 +25,7 @@ function TeamGroup() {
                     null
                     :
                     <div className='container py-10'>
-                        <h2 className='text-center mb-6'>Our Team</h2>
+                        <h2 className='text-center mb-3'>Our Team</h2>
                         <Slider {...sliderSettings}>
                             {ourTeam.map((item) =>
                                 <OurTeam
