@@ -1,10 +1,10 @@
 import parse from 'html-react-parser';
 
-function TestimonialCard({ image, key, message, name, position }) {
+function TestimonialCard({ image, id, message, name, position }) {
     return (
         <>
-            <div className='container '>
-                <div className='row' key={key}>
+            <div className='container' key={id}>
+                <div className='row'>
                     <div className='col-lg-5 d-flex justify-content-around align-items-center'>
                         <img src='Frame.svg' className="img-fluid" alt="..." style={{ maxWidth: '85.76px', maxHeight: '276px' }} />
                         <section className="ratio ratio-1x1">

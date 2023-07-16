@@ -2,10 +2,10 @@ import React from 'react'
 import TextTruncate from 'react-text-truncate';
 
 
-function RecentJobCard({ key, title, body, category, thumbnail, date }) {
+function RecentJobCard({ id, title, body, category, thumbnail, date }) {
     return (
-        <section className='col'>
-            <section className="card mx-auto" style={{ maxWidth: '379px' }} key={key}>
+        <section className='col' key={id}>
+            <section className="card mx-auto" style={{ maxWidth: '379px' }}>
                 <div className='ratio ratio-16x9'>
                     <img src={thumbnail} className="card-img-top mb-4" alt="..." />
                 </div>

@@ -90,7 +90,7 @@ function RecentJobGroup({ filterCategory, currentItem }) {
                   to={'/recent-jobs/' + item.slug}
                 >
                   <RecentJobCard
-                    key={item.id}
+                    id={item.id}
                     title={item.title}
                     body={item.safe_summary_html}
                     category={item.category}

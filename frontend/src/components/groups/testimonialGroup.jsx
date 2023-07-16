@@ -30,7 +30,7 @@ function TeastimonialGroup() {
                             {testimonials.map(item =>
                                 <TestimonialCard
                                     image={item.get_image_url}
-                                    key={item.id}
+                                    id={item.id}
                                     name={item.name}
                                     position={item.position}
                                     message={item.message}
