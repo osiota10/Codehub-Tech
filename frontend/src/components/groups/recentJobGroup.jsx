@@ -54,19 +54,22 @@ export const getSliderSettings = (dots, arrows, slidesToShow, removeAutoPlay) =>
 };
 
 
-function RecentJobGroup({ filterCategory }) {
+function RecentJobGroup({ filterCategory, currentItem }) {
   const sliderSettings = getSliderSettings(true, true, 3, true)
 
   const jobs = useContext(JobContext)
 
-
+  console.log(currentItem)
   // Extract category names from the passed category object
   const categoryNames = filterCategory ? filterCategory.map(cat => cat.name) : [];
 
   const filteredItems = categoryNames.length
     ? jobs.filter(item => {
       // Assuming item.category is a list of objects
-      return item.category.some(cat => categoryNames.includes(cat.name));
+      return (
+        item.category.some(cat => categoryNames.includes(cat.name)) &&
+        item.id !== currentItem
+      );
     })
     : jobs;
 

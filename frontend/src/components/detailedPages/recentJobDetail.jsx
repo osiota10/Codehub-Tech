@@ -12,10 +12,9 @@ import parse from 'html-react-parser';
 function RecentJobDetail() {
     const { slug } = useParams();
     const [detail, setDetails] = useState([]);
-    console.log(detail)
+
     const dataCheck = !detail || detail.length === 0
     useEffect(() => {
-        console.log('correct')
         axios.get(`${process.env.REACT_APP_API_URL}/recent-jobs/` + slug)
             .then(res => {
                 setDetails(res.data)
@@ -78,7 +77,7 @@ function RecentJobDetail() {
                             ?
                             null
                             :
-                            <RecentJobGroup filterCategory={detail.category} />
+                            <RecentJobGroup filterCategory={detail.category} currentItem={detail.id} />
                         }
                     </>
             }
