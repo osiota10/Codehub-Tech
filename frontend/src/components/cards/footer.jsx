@@ -15,17 +15,17 @@ const Footer = () => {
     return (
         <div className='pt-8 text-white bg-primary'>
             <div className='container pb-2'>
-                <div className='row'>
+                <div className='row g-3'>
                     <div className="col-lg-4">
                         <h5 className='text-white'>Codehub Technologies</h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                             Fringilla turpis adipiscing ut sapien. Commodo pretium
                             elementum in in eleifend in etiam. </p>
                     </div>
-                    <div className="col-lg-4">
+                    <div className="col-lg-4 ">
                         <div className="row">
                             <div className="col-6">
-                                <h5 className='text-white'>Links</h5>
+                                <h5 className='text-white'>Quick Links</h5>
                                 <div className="list-group">
                                     <Link className='text-decoration-none text-white mb-1' to="/privacy-policy">Privacy Policy</Link>
                                     <Link className='text-decoration-none text-white mb-1' to="/return-policy">Return Policy</Link>
@@ -38,7 +38,7 @@ const Footer = () => {
                                     {services.slice(0, 4).map(item => (
                                         <Link
                                             className='text-decoration-none text-white'
-                                            to={'/services/' + item.id}
+                                            to={'/services/' + item.slug}
                                             key={item.id}
                                         >
                                             <TextTruncate
@@ -73,8 +73,8 @@ const Footer = () => {
                 </div>
             </div>
             <div style={{ borderTop: '1px solid #fff' }}>
-                <div className='container-fluid py-4'>
-                    <div className="row row-cols-1 row-cols-lg-3 g-3 justify-content-center text-center">
+                <div className='container-fluid py-3'>
+                    <div className="row row-cols-1 row-cols-lg-3 g-3 justify-content-between align-items-center text-center">
                         {
                             dataCheck
                                 ?
