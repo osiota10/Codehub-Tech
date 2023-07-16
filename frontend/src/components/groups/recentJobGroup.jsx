@@ -59,7 +59,6 @@ function RecentJobGroup({ filterCategory, currentItem }) {
 
   const jobs = useContext(JobContext)
 
-  console.log(currentItem)
   // Extract category names from the passed category object
   const categoryNames = filterCategory ? filterCategory.map(cat => cat.name) : [];
 
