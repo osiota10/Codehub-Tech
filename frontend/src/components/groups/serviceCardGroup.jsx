@@ -65,7 +65,7 @@ function ServiceGroup({ type }) {
                   )}
                 </Slider>
                 <div className='d-flex justify-content-center'>
-                  <Link to="/services" className='btn btn-primary mt-9'>See all Services</Link>
+                  <Link to="/services" className='btn btn-primary mt-6'>See all Services</Link>
                 </div>
               </div>
             }
