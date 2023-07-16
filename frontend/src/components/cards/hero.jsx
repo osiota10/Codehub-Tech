@@ -22,7 +22,6 @@ const settings = {
 const HeroSection = () => {
     const services = useContext(ServiceContext)
 
-
     const getStyle = (imgUrl) => {
         return {
             backgroundImage: `linear-gradient(to right, rgb(0, 237, 240), rgba(255, 255, 255, 0.0)), url(${imgUrl})`,
