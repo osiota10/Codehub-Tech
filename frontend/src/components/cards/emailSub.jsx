@@ -69,13 +69,6 @@ const MailSubscription = () => {
                         <form className="row g-3" onSubmit={e => onSubmit(e)}>
                             <div className="col-md-8">
                                 <div className="form-floating">
-                                    {/* <input
-                                        type="email"
-                                        class="form-control"
-                                        id="floatingInput"
-                                        placeholder="name@example.com"
-                                        style={{ background: '#fff' }}
-                                    /> */}
                                     <input
                                         type="email"
                                         class="form-control"
@@ -108,6 +101,7 @@ const MailSubscription = () => {
                         </form>
                     </div>
                 </div>
+
                 {
                     show
                         ?
