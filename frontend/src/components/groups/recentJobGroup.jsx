@@ -78,7 +78,7 @@ function RecentJobGroup({ filterCategory }) {
           null
           :
           <div className='container py-10'>
-            <h2 className='text-center mb-8'>
+            <h2 className='text-center mb-6'>
               {filterCategory ? 'Related Jobs Done' : 'Our Recent Jobs'}
             </h2>
             <Slider {...sliderSettings}>
@@ -99,7 +99,7 @@ function RecentJobGroup({ filterCategory }) {
               )}
             </Slider>
             <div className='d-flex justify-content-center'>
-              <Link to="/recent-jobs" className='btn btn-primary mt-9'>See all Jobs</Link>
+              <Link to="/recent-jobs" className='btn btn-primary mt-6'>See all Jobs</Link>
             </div>
           </div>
       }
