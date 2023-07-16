@@ -24,7 +24,7 @@ function TeastimonialGroup() {
                     ?
                     null :
                     <div className='container py-10'>
-                        <h2 className='text-center mb-8'>Testimonials</h2>
+                        <h2 className='text-center mb-6'>Testimonials</h2>
 
                         <Slider {...sliderSettings}>
                             {testimonials.map(item =>
