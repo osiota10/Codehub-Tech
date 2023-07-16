@@ -7,7 +7,7 @@ function Socials({ small, socials }) {
     return (
         <div>
             {small ?
-                <>
+                <section>
                     {
                         facebook_url
                             ?
@@ -79,7 +79,7 @@ function Socials({ small, socials }) {
                             :
                             null
                     }
-                </>
+                </ section>
 
                 :
 

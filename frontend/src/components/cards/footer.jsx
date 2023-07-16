@@ -12,6 +12,8 @@ const Footer = () => {
     const companyInfo = useContext(CompanyInfoContext)
     const dataCheck = !companyInfo.company_social || companyInfo.company_social.length === 0
 
+    const date = new Date()
+
     return (
         <div className='pt-8 text-white bg-primary'>
             <div className='container pb-2'>
@@ -27,9 +29,9 @@ const Footer = () => {
                             <div className="col-6">
                                 <h5 className='text-white'>Quick Links</h5>
                                 <div className="list-group">
-                                    <Link className='text-decoration-none text-white mb-1' to="/privacy-policy">Privacy Policy</Link>
-                                    <Link className='text-decoration-none text-white mb-1' to="/return-policy">Return Policy</Link>
-                                    <Link className='text-decoration-none text-white' to="/terms-and-conditions">Terms and Conditions</Link>
+                                    <Link className='text-decoration-none text-white mb-1' to="/privacy-policy"><i class="fa-solid fa-angles-right me-1"></i>Privacy Policy</Link>
+                                    <Link className='text-decoration-none text-white mb-1' to="/return-policy"><i class="fa-solid fa-angles-right me-1"></i>Return Policy</Link>
+                                    <Link className='text-decoration-none text-white' to="/terms-and-conditions"><i class="fa-solid fa-angles-right me-1"></i>Terms and Conditions</Link>
                                 </div>
                             </div>
                             <div className="col-6">
@@ -41,12 +43,8 @@ const Footer = () => {
                                             to={'/services/' + item.slug}
                                             key={item.id}
                                         >
-                                            <TextTruncate
-                                                line={1}
-                                                element="p"
-                                                truncateText="…"
-                                                text={item.title}
-                                            />
+                                            <i class="fa-solid fa-angles-right me-1"></i>
+                                            {item.title}
                                         </Link>
                                     ))}
                                 </div>
@@ -69,31 +67,22 @@ const Footer = () => {
                             <i class="fa-solid fa-location-dot me-1"></i>
                             <p class="d-inline">{companyInfo.company_address}</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div style={{ borderTop: '1px solid #fff' }}>
-                <div className='container-fluid py-3'>
-                    <div className="row row-cols-1 row-cols-lg-3 g-3 justify-content-between align-items-center text-center">
+
                         {
                             dataCheck
                                 ?
                                 null
                                 :
-                                <div className="col">
+                                <div >
                                     <Socials small={true} socials={companyInfo.company_social} />
                                 </div>
                         }
-
-                        <div className="col">
-                            <small className="text-center">&#169; Codehub Technologies 2022. <br /> All rights Reserved</small>
-                        </div>
-
-                        <div className="col">
-                            <small class="text-center">Designed and Developed by <br /> <span className='fw-bold'>Codehub Technologies</span></small>
-                        </div>
                     </div>
-
+                </div>
+            </div>
+            <div style={{ borderTop: '1px solid #fff' }}>
+                <div className='container-fluid text-center py-3'>
+                    <small>&#169; {date.getFullYear()} Codehub Technologies. All rights Reserved</small>
                 </div>
             </div>
         </div>
