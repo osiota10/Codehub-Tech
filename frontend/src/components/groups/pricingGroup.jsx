@@ -4,7 +4,7 @@ function PricingGroup({ priceList, serviceTitle }) {
 
     return (
         <section className="container py-10">
-            <h2 className='text-center mb-8'>Pricing</h2>
+            <h2 className='text-center mb-6'>Pricing</h2>
             <div className='row row-cols-1 row-cols-lg-3 g-6 justify-content-center'>
                 {priceList.map((item) =>
                     <Pricing
