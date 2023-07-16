@@ -4,7 +4,7 @@ import parse from 'html-react-parser';
 const Faq = ({ faqList }) => {
   return (
     <div className='container py-10'>
-      <h2 className='text-center mb-8'>Frequently Asked Questions</h2>
+      <h2 className='text-center mb-4'>Frequently Asked Questions</h2>
 
       <section className='row'>
         <section className='col-lg-10 mx-auto'>
