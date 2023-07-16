@@ -64,7 +64,7 @@ const ContactForm = () => {
         <div className='container py-10' id="contact-form">
             <section className='row'>
                 <section className='col-lg-10 mx-auto'>
-                    <header className='text-center mb-8'>
+                    <header className='text-center mb-4'>
                         <h2>Have a Project in Mind?</h2>
                         <h5>Tell us about it</h5>
                     </header>
