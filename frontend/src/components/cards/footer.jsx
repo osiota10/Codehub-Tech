@@ -73,7 +73,7 @@ const Footer = () => {
                                 ?
                                 null
                                 :
-                                <div >
+                                <div className='py-3'>
                                     <Socials small={true} socials={companyInfo.company_social} />
                                 </div>
                         }
