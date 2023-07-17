@@ -29,10 +29,10 @@ const Contact = () => {
 
           <section className="col-lg-6">
             <h2>Get In Touch</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Esse aliquid ad, iusto ducimus debitis aliquam nostrum
-              libero eos impedit eum. Repudiandae quia est quas itaque
-              eveniet aliquid delectus illo sed?</p>
+            <p>Let's Connect and Ignite Possibilities! We're just a message away from
+              transforming your vision into reality. Whether you have a question,
+              a brilliant idea, or want to discuss a potential collaboration,
+              our team is ready to listen and help you thrive.</p>
 
             <section className="footer-contact-info">
               <section className="mb-2">
