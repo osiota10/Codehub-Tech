@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Slider from 'react-slick';
 import Stat from './stat';
 import { ServiceContext } from '../../App';
@@ -21,15 +21,35 @@ const settings = {
 
 const HeroSection = () => {
     const services = useContext(ServiceContext)
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setScreenWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const getStyle = (imgUrl) => {
-        return {
+        const style = {
             backgroundImage: `linear-gradient(to right, rgb(0, 237, 240), rgba(255, 255, 255, 0.0)), url(${imgUrl})`,
             height: '100%',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
-            // boxShadow: 'inset 0 0 0 100vh rgba(235, 237, 240, 0.93)',
+            boxShadow: 'inset 0 0 0 100vh rgba(235, 237, 240, 0.93)',
         };
+
+        // Conditionally delete properties and values
+        if (screenWidth > 991) {
+            delete style.boxShadow;
+        }
+
+        return style;
     };
 
     return (
