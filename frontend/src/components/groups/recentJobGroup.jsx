@@ -80,9 +80,16 @@ function RecentJobGroup({ filterCategory, currentItem }) {
           null
           :
           <div className='container py-10'>
-            <h2 className='text-center mb-3'>
-              {filterCategory ? 'Related Jobs Done' : 'Our Recent Jobs'}
-            </h2>
+            <header className='text-center mb-3'>
+              <h2 >
+                {filterCategory ? 'Related Jobs Done' : 'Our Recent Jobs'}
+              </h2>
+              <h6>
+                {filterCategory ? 'Explore Related Jobs!' : 'Explore Our Recent Jobs!'}
+              </h6>
+            </header>
+
+
             <Slider {...sliderSettings}>
               {filteredItems.slice(0, 9).map(item =>
                 <Link
