@@ -24,7 +24,11 @@ const ClientGroup = () => {
         null
         :
         <div className='container py-10'>
-          <h2 className='text-center mb-3'>Our Clients</h2>
+          <header className='text-center mb-3'>
+            <h2>Our Clients</h2>
+            <h6>Trusted by these Remarkable Clients</h6>
+          </header>
+
           <Slider {...settings}>
             {client.map(item =>
               <Client
