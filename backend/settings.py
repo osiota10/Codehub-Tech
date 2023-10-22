@@ -13,8 +13,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 import environ
-import cloudinary, cloudinary.uploader, cloudinary.api
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 from datetime import timedelta
+# import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -108,7 +111,6 @@ MIDDLEWARE = [
 ]
 
 
-
 CORS_ALLOW_CREDENTIALS = env.bool('CORS_ALLOW_CREDENTIALS')
 CORS_ORIGIN_WHITELIST = env.list('CORS_ORIGIN_WHITELIST')
 CORS_ALLOWED_ORIGIN_REGEXES = env.list('CORS_ALLOWED_ORIGIN_REGEXES')
@@ -140,12 +142,24 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    # development environment database.
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    #  production environment database.
+    DATABASES = {}
+
+    # Get the database URL from an environment variable
+    db_url = env('DATABASE_URL')
+
+    # Parse the database URL into a dictionary of options
+    # if db_url:
+    #     DATABASES['default'] = dj_database_url.parse(db_url)
 
 
 # Password validation
@@ -195,11 +209,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'Course.UserAccount'
 
 
-#Cloudinary Config
-cloudinary.config( 
-    cloud_name = env('cloud_name'), 
-    api_key = env('api_key'), 
-    api_secret = env('api_secret') 
+# Cloudinary Config
+cloudinary.config(
+    cloud_name=env('cloud_name'),
+    api_key=env('api_key'),
+    api_secret=env('api_secret')
 )
 
 # SMTP Configurations
