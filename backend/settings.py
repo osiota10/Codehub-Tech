@@ -158,8 +158,8 @@ else:
     db_url = env('DATABASE_URL')
 
     # Parse the database URL into a dictionary of options
-    # if db_url:
-    #     DATABASES['default'] = dj_database_url.parse(db_url)
+    if db_url:
+        DATABASES['default'] = dj_database_url.parse(db_url)
 
 
 # Password validation
