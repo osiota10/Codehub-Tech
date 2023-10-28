@@ -5,6 +5,7 @@ from .serializer import *
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.db import OperationalError
 
 
 class ContactFormView(generics.CreateAPIView):
@@ -57,9 +58,13 @@ class RecentJobView(APIView):
     permission_classes = [AllowAny,]
 
     def get(self, request):
-        services = RecentJob.objects.all()
-        serializer = RecentJobSerializer(services, many=True)
-        return Response(serializer.data)
+        try:
+            services = RecentJob.objects.all()
+            serializer = RecentJobSerializer(services, many=True)
+            return Response(serializer.data)
+        except OperationalError:
+            # Handle the exception or return an appropriate response
+            return Response({"message": "An error occurred while accessing the database."}, status=500)
 
 
 class RecentJobDetail(generics.RetrieveAPIView):
