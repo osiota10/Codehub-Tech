@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.db import OperationalError
 from rest_framework.renderers import JSONRenderer
+from .permissions import IsFrontend
 
 
 class ContactFormView(generics.CreateAPIView):
@@ -40,7 +41,7 @@ class OurClientView(generics.ListAPIView):
 
 
 class ServiceView(APIView):
-    permission_classes = [AllowAny,]
+    permission_classes = [IsFrontend,]
     renderer_classes = [JSONRenderer]
 
     def get(self, request):
