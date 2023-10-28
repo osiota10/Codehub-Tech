@@ -42,9 +42,13 @@ class ServiceView(APIView):
     permission_classes = [AllowAny,]
 
     def get(self, request):
-        services = Service.objects.all()
-        serializer = ServiceSerializer(services, many=True)
-        return Response(serializer.data)
+        try:
+            services = Service.objects.all()
+            serializer = ServiceSerializer(services, many=True)
+            return Response(serializer.data)
+        except OperationalError:
+            # Handle the exception or return an appropriate response
+            return Response({"message": "An error occurred while accessing the database."}, status=500)
 
 
 class ServiceDetail(generics.RetrieveAPIView):
