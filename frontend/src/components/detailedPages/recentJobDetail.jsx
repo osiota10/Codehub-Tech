@@ -7,18 +7,19 @@ import MailSubscription from "../cards/emailSub";
 import RecentJobGroup from "../groups/recentJobGroup";
 import Technologies from "../groups/techGroup";
 import TextTemplate from "../cards/sampleText";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 function RecentJobDetail() {
     const { slug } = useParams();
     const [detail, setDetails] = useState([]);
 
-    const dataCheck = !detail || detail.length === 0
+    const dataCheck = !detail || detail.length === 0;
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/recent-jobs/` + slug)
-            .then(res => {
-                setDetails(res.data)
-            })
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/our-recent-jobs/` + slug)
+            .then((res) => {
+                setDetails(res.data);
+            });
     }, [slug]);
 
     return (
@@ -33,55 +34,35 @@ function RecentJobDetail() {
                 </section>
             </section>
 
-            {
-                dataCheck
-                    ?
-                    null
-                    :
-                    <>
-                        {
-                            Object.keys(detail.recent_job_statement).length === 0
-                                ?
-                                null
-                                :
-                                <TextTemplate dataList={detail.recent_job_statement} />
-                        }
-                    </>
-            }
-
+            {dataCheck ? null : (
+                <>
+                    {Object.keys(detail.recent_job_statement).length ===
+                    0 ? null : (
+                        <TextTemplate dataList={detail.recent_job_statement} />
+                    )}
+                </>
+            )}
 
             {/* Technologies display Logic */}
-            {
-                dataCheck
-                    ?
-                    null
-                    :
-                    <>
-                        {Object.keys(detail.technologies).length === 0
-                            ?
-                            null
-                            :
-                            <Technologies techList={detail.technologies} />
-                        }
-                    </>
-            }
+            {dataCheck ? null : (
+                <>
+                    {Object.keys(detail.technologies).length === 0 ? null : (
+                        <Technologies techList={detail.technologies} />
+                    )}
+                </>
+            )}
 
             {/* Related Jobs display Logic */}
-            {
-                dataCheck
-                    ?
-                    null
-                    :
-                    <>
-                        {Object.keys(detail.category).length === 0
-                            ?
-                            null
-                            :
-                            <RecentJobGroup filterCategory={detail.category} currentItem={detail.id} />
-                        }
-                    </>
-            }
-
+            {dataCheck ? null : (
+                <>
+                    {Object.keys(detail.category).length === 0 ? null : (
+                        <RecentJobGroup
+                            filterCategory={detail.category}
+                            currentItem={detail.id}
+                        />
+                    )}
+                </>
+            )}
 
             <MailSubscription />
             <ContactForm />

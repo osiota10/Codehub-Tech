@@ -8,20 +8,21 @@ import RecentJobGroup from "../groups/recentJobGroup";
 import Technologies from "../groups/techGroup";
 import WorkProcessGroup from "../groups/workProcessGroup";
 import Faq from "../cards/faq";
-import Stat from '../cards/stat';
+import Stat from "../cards/stat";
 import PricingGroup from "../groups/pricingGroup";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 function ServicesDetail() {
     const { slug } = useParams();
     const [detail, setDetails] = useState([]);
-    const dataCheck = !detail || detail.length === 0
+    const dataCheck = !detail || detail.length === 0;
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/services/` + slug)
-            .then(res => {
-                setDetails(res.data)
-            })
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/our-services/` + slug)
+            .then((res) => {
+                setDetails(res.data);
+            });
     }, [slug]);
 
     return (
@@ -36,95 +37,61 @@ function ServicesDetail() {
                 </section>
             </section>
 
-
-
             {/* Stats display Logic */}
-            {
-                dataCheck
-                    ?
-                    null
-                    :
-                    <>
-                        {Object.keys(detail.stats).length === 0
-                            ?
-                            null
-                            :
-                            <section className=" bg-light py-10">
-                                <section className="row">
-                                    <section className="col-lg-10 mx-auto">
-                                        <Stat statList={detail.stats} />
-                                    </section>
+            {dataCheck ? null : (
+                <>
+                    {Object.keys(detail.stats).length === 0 ? null : (
+                        <section className=" bg-light py-10">
+                            <section className="row">
+                                <section className="col-lg-10 mx-auto">
+                                    <Stat statList={detail.stats} />
                                 </section>
                             </section>
-                        }
-                    </>
-            }
+                        </section>
+                    )}
+                </>
+            )}
 
             {/* Pricing display Logic */}
-            {
-                dataCheck
-                    ?
-                    null
-                    :
-                    <>
-                        {Object.keys(detail.pricings).length === 0
-                            ?
-                            null
-                            :
-                            <PricingGroup priceList={detail.pricings} serviceTitle={detail.title} />
-                        }
-                    </>
-            }
+            {dataCheck ? null : (
+                <>
+                    {Object.keys(detail.pricings).length === 0 ? null : (
+                        <PricingGroup
+                            priceList={detail.pricings}
+                            serviceTitle={detail.title}
+                        />
+                    )}
+                </>
+            )}
 
             {/* Technologies display Logic */}
-            {
-                dataCheck
-                    ?
-                    null
-                    :
-                    <>
-                        {Object.keys(detail.technologies).length === 0
-                            ?
-                            null
-                            :
-                            <Technologies techList={detail.technologies} />
-                        }
-                    </>
-            }
+            {dataCheck ? null : (
+                <>
+                    {Object.keys(detail.technologies).length === 0 ? null : (
+                        <Technologies techList={detail.technologies} />
+                    )}
+                </>
+            )}
 
             <WorkProcessGroup />
 
             {/* Related Jobs display Logic */}
-            {
-                dataCheck
-                    ?
-                    null
-                    :
-                    <>
-                        {Object.keys(detail.category).length === 0
-                            ?
-                            null
-                            :
-                            <RecentJobGroup filterCategory={detail.category} />
-                        }
-                    </>
-            }
+            {dataCheck ? null : (
+                <>
+                    {Object.keys(detail.category).length === 0 ? null : (
+                        <RecentJobGroup filterCategory={detail.category} />
+                    )}
+                </>
+            )}
 
             {/* FAQs display Logic */}
-            {
-                dataCheck
-                    ?
-                    null
-                    :
-                    <>
-                        {Object.keys(detail.faqs).length === 0
-                            ?
-                            null
-                            :
-                            <Faq faqList={detail.faqs} />
-                        }
-                    </>
-            }
+            {dataCheck ? null : (
+                <>
+                    {Object.keys(detail.faqs).length === 0 ? null : (
+                        <Faq faqList={detail.faqs} />
+                    )}
+                </>
+            )}
 
             <MailSubscription />
             <ContactForm />

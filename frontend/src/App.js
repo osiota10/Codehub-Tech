@@ -36,7 +36,7 @@ function App() {
   useEffect(() => {
 
     //Service
-    axios.get(`${process.env.REACT_APP_API_URL}/services`)
+    axios.get(`${process.env.REACT_APP_API_URL}/our-services`)
       .then(res => {
         setService(res.data)
       })
@@ -48,7 +48,7 @@ function App() {
       })
 
     // Recent Jobs
-    axios.get(`${process.env.REACT_APP_API_URL}/recent-jobs`)
+    axios.get(`${process.env.REACT_APP_API_URL}/our-recent-jobs`)
       .then(res => {
         setJobs(res.data)
 
