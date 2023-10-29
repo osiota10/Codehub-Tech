@@ -13,7 +13,7 @@ function OurTeam({ name, position, image, socialList }) {
                     <section className="d-flex justify-content-center mt-n12">
                         <img
                             src={image}
-                            className="mb-4 rounded-circle athlete-pix"
+                            className="mb-4 rounded-circle"
                             width="170"
                             height="170"
                             alt={name}
