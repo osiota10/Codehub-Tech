@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.core.validators import RegexValidator
 
+
 class UserAccountManager(BaseUserManager):
     use_in_migrations = True
 
@@ -31,6 +32,7 @@ class UserAccountManager(BaseUserManager):
 
         return self._create_user(email, password, **extra_fields)
 
+
 class UserAccount(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255)
@@ -43,7 +45,6 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     is_superuser = models.BooleanField(default=False)
     date_joined = models.DateTimeField(null=True, blank=True)
     is_featured = models.BooleanField(default=False)
-    phone_number = models.IntegerField()
     gender = models.CharField(max_length=255, null=True, blank=True)
     home_address = models.TextField(null=True, blank=True)
     local_govt = models.CharField(max_length=255, null=True, blank=True)
