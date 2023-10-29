@@ -41,8 +41,8 @@ class OurClientView(generics.ListAPIView):
 
 
 class ServiceView(APIView):
-    permission_classes = [IsFrontend,]
-    renderer_classes = [JSONRenderer]
+    permission_classes = [AllowAny,]
+    # renderer_classes = [JSONRenderer]
 
     def get(self, request):
         try:
