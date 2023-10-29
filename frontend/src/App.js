@@ -34,7 +34,6 @@ function App() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-
     //Service
     axios.get(`${process.env.REACT_APP_API_URL}/our-services`)
       .then(res => {
