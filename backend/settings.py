@@ -18,6 +18,7 @@ import cloudinary.uploader
 import cloudinary.api
 from datetime import timedelta
 import dj_database_url
+import mimetypes
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -225,3 +226,7 @@ EMAIL_USE_SSL = env('EMAIL_USE_SSL')
 EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
+# MIME types for both JavaScript and CSS files
+mimetypes.add_type("application/javascript", ".js", True)
+mimetypes.add_type("text/css", ".css", True)
