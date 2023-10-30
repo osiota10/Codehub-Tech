@@ -383,6 +383,9 @@ $card-group-margin:                 2rem;
     .icon-size{
       width: 2.4004370rem  !important;
     }
+    .sam{
+      background-color: #0A66C2;
+    }
   }
   @include media-breakpoint-down(sm) { 
     .card.hero { 
