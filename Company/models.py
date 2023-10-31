@@ -55,7 +55,7 @@ class OurClient(models.Model):
         return f"{self.name_of_client}"
 
     def get_logo_url(self):
-        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
+        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
 
 
 class Category(models.Model):
@@ -73,7 +73,7 @@ class OurTechnology(models.Model):
         return f"{self.name_of_technology}"
 
     def get_logo_url(self):
-        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
+        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
 
     class Meta:
         verbose_name_plural = "Our Technologies"
@@ -93,10 +93,10 @@ class Service(models.Model):
         return f"{self.title}"
 
     def get_image_url(self):
-        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
+        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
 
     def get_hero_image_url(self):
-        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.hero_image}")
+        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.hero_image}")
 
     def safe_description_html(self):
         return strip_tags(self.description)
@@ -120,7 +120,7 @@ class RecentJob(models.Model):
         return strip_tags(self.summary)
 
     def get_image_url(self):
-        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
+        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
 
 
 class RecentJobStatement(models.Model):
@@ -132,7 +132,7 @@ class RecentJobStatement(models.Model):
     description = RichTextField()
 
     def get_image_url(self):
-        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.pic}")
+        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.pic}")
 
     def __str__(self):
         return f"{self.title}"
@@ -177,7 +177,7 @@ class OurIndustry(models.Model):
         return f"{self.name_of_industry}"
 
     def get_logo_url(self):
-        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
+        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
 
     class Meta:
         verbose_name_plural = "Our Industries"
@@ -193,7 +193,7 @@ class Testimonial(models.Model):
         return f"{self.name} - {self.position}"
 
     def get_image_url(self):
-        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
+        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
 
 
 class CompanyInfo(models.Model):
@@ -213,10 +213,10 @@ class CompanyInfo(models.Model):
     privacy_policy = RichTextField(blank=True, null=True)
 
     def get_page_header_image(self):
-        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.page_header_image}")
+        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.page_header_image}")
 
     def get_logo(self):
-        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
+        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
 
 
 class OurTeam(models.Model):
@@ -228,7 +228,7 @@ class OurTeam(models.Model):
         return f"{self.name} - {self.position}"
 
     def get_image_url(self):
-        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
+        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
 
 
 class SocialUrl(models.Model):
@@ -276,7 +276,7 @@ class CoreValue(models.Model):
     description = RichTextField()
 
     def get_image_url(self):
-        return (f"https://res.cloudinary.com/dkcjpdk1c/image/upload/{self.pic}")
+        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.pic}")
 
     def __str__(self):
         return f"{self.title}"
