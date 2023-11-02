@@ -135,4 +135,4 @@ class CoreValueSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CoreValue
-        fields = ('id', 'title', 'description', 'get_image_url')
+        fields = ('id', 'title', 'description', 'pic_url')
