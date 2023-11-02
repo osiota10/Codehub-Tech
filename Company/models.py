@@ -168,13 +168,10 @@ class Stat(models.Model):
 
 class OurIndustry(models.Model):
     name_of_industry = models.CharField(max_length=50)
-    logo = CloudinaryField()
+    get_logo_url = models.URLField(default='')
 
     def __str__(self):
         return f"{self.name_of_industry}"
-
-    def get_logo_url(self):
-        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
 
     class Meta:
         verbose_name_plural = "Our Industries"
