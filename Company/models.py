@@ -67,13 +67,10 @@ class Category(models.Model):
 
 class OurTechnology(models.Model):
     name_of_technology = models.CharField(max_length=50)
-    logo = CloudinaryField()
+    get_logo_url = models.URLField(default='https://bit.ly/3u7pAe0')
 
     def __str__(self):
         return f"{self.name_of_technology}"
-
-    def get_logo_url(self):
-        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
 
     class Meta:
         verbose_name_plural = "Our Technologies"
@@ -271,12 +268,10 @@ class FAQ(models.Model):
 
 
 class CoreValue(models.Model):
-    pic_url = models.URLField(default='https://img.freepik.com/premium-photo/compass-with-arrow-marks-word-mission_207634-2241.jpg?size=626&ext=jpg&ga=GA1.1.1699289041.1668069491&semt=ais')
+    pic_url = models.URLField(
+        default='https://img.freepik.com/premium-photo/compass-with-arrow-marks-word-mission_207634-2241.jpg?size=626&ext=jpg&ga=GA1.1.1699289041.1668069491&semt=ais')
     title = models.CharField(max_length=50)
     description = RichTextField()
-
-    def get_image_url(self):
-        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.pic}")
 
     def __str__(self):
         return f"{self.title}"
