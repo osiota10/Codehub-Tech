@@ -271,7 +271,7 @@ class FAQ(models.Model):
 
 
 class CoreValue(models.Model):
-    pic = CloudinaryField('image')
+    pic_url = models.URLField(default='https://img.freepik.com/premium-photo/compass-with-arrow-marks-word-mission_207634-2241.jpg?size=626&ext=jpg&ga=GA1.1.1699289041.1668069491&semt=ais')
     title = models.CharField(max_length=50)
     description = RichTextField()
 
