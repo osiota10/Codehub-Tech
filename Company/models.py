@@ -55,7 +55,8 @@ class OurClient(models.Model):
         return f"{self.name_of_client}"
 
     def get_logo_url(self):
-        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
+        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}"
+        return url.replace(" ", "")
 
 
 class Category(models.Model):
@@ -90,10 +91,14 @@ class Service(models.Model):
         return f"{self.title}"
 
     def get_image_url(self):
-        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
+        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{
+            self.image}"
+        return url.replace(" ", "")
 
     def get_hero_image_url(self):
-        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.hero_image}")
+        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{
+            self.hero_image}"
+        return url.replace(" ", "")
 
     def safe_description_html(self):
         return strip_tags(self.description)
@@ -117,7 +122,9 @@ class RecentJob(models.Model):
         return strip_tags(self.summary)
 
     def get_image_url(self):
-        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
+        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{
+            self.image}"
+        return url.replace(" ", "")
 
 
 class RecentJobStatement(models.Model):
@@ -129,7 +136,8 @@ class RecentJobStatement(models.Model):
     description = RichTextField()
 
     def get_image_url(self):
-        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.pic}")
+        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.pic}"
+        return url.replace(" ", "")
 
     def __str__(self):
         return f"{self.title}"
@@ -187,7 +195,9 @@ class Testimonial(models.Model):
         return f"{self.name} - {self.position}"
 
     def get_image_url(self):
-        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
+        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{
+            self.image}"
+        return url.replace(" ", "")
 
 
 class CompanyInfo(models.Model):
@@ -207,10 +217,13 @@ class CompanyInfo(models.Model):
     privacy_policy = RichTextField(blank=True, null=True)
 
     def get_page_header_image(self):
-        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.page_header_image}")
+        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{
+            self.page_header_image}"
+        return url.replace(" ", "")
 
     def get_logo(self):
-        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}")
+        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}"
+        return url.replace(" ", "")
 
 
 class OurTeam(models.Model):
@@ -222,7 +235,9 @@ class OurTeam(models.Model):
         return f"{self.name} - {self.position}"
 
     def get_image_url(self):
-        return (f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.image}")
+        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{
+            self.image}"
+        return url.replace(" ", "")
 
 
 class SocialUrl(models.Model):
