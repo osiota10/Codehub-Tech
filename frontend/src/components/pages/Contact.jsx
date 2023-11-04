@@ -6,6 +6,7 @@ import Faq from "../cards/faq";
 import MailSubscription from "../cards/emailSub";
 import GoogleMap from "../cards/googleMap";
 import { CompanyInfoContext } from "../../App";
+import ImageHolder from "../cards/imageHolder";
 
 const pic = {
     url: "https://img.freepik.com/premium-photo/imagine-smiling-woman-wearing-headset-working-as-customer-service-representative-generate-ai_905417-5893.jpg?w=1060",
@@ -26,11 +27,8 @@ const Contact = () => {
                 <GoogleMap />
                 <section className="row g-5 mt-6 align-items-center">
                     <section className="col-lg-6">
-                        <img
-                            src={pic.url}
-                            className="img-fluid"
-                            alt="Customer Care Agent"
-                        />
+                        <ImageHolder image={pic.url} />
+
                     </section>
 
                     <section className="col-lg-6">
