@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 
 # Create your models here.
+cloudinary_url = "https://res.cloudinary.com/dkcjpdk1c/image/upload/"
 
 
 class ContactForm(models.Model):
@@ -55,8 +56,7 @@ class OurClient(models.Model):
         return f"{self.name_of_client}"
 
     def get_logo_url(self):
-        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}"
-        return url.replace(" ", "")
+        return f"{cloudinary_url}{self.logo}"
 
 
 class Category(models.Model):
@@ -91,14 +91,10 @@ class Service(models.Model):
         return f"{self.title}"
 
     def get_image_url(self):
-        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{
-            self.image}"
-        return url.replace(" ", "")
+        return f"{cloudinary_url}{self.image}"
 
     def get_hero_image_url(self):
-        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{
-            self.hero_image}"
-        return url.replace(" ", "")
+        return f"{cloudinary_url}{self.hero_image}"
 
     def safe_description_html(self):
         return strip_tags(self.description)
@@ -122,9 +118,7 @@ class RecentJob(models.Model):
         return strip_tags(self.summary)
 
     def get_image_url(self):
-        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{
-            self.image}"
-        return url.replace(" ", "")
+        return f"{cloudinary_url}{self.image}"
 
 
 class RecentJobStatement(models.Model):
@@ -136,8 +130,7 @@ class RecentJobStatement(models.Model):
     description = RichTextField()
 
     def get_image_url(self):
-        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.pic}"
-        return url.replace(" ", "")
+        return f"{cloudinary_url}{self.pic}"
 
     def __str__(self):
         return f"{self.title}"
@@ -195,9 +188,7 @@ class Testimonial(models.Model):
         return f"{self.name} - {self.position}"
 
     def get_image_url(self):
-        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{
-            self.image}"
-        return url.replace(" ", "")
+        return f"{cloudinary_url}{self.image}"
 
 
 class CompanyInfo(models.Model):
@@ -217,13 +208,10 @@ class CompanyInfo(models.Model):
     privacy_policy = RichTextField(blank=True, null=True)
 
     def get_page_header_image(self):
-        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{
-            self.page_header_image}"
-        return url.replace(" ", "")
+        return f"{cloudinary_url}{self.page_header_image}"
 
     def get_logo(self):
-        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{self.logo}"
-        return url.replace(" ", "")
+        return f"{cloudinary_url}{self.logo}"
 
 
 class OurTeam(models.Model):
@@ -235,9 +223,7 @@ class OurTeam(models.Model):
         return f"{self.name} - {self.position}"
 
     def get_image_url(self):
-        url = f"https: //res.cloudinary.com/dkcjpdk1c/image/upload/{
-            self.image}"
-        return url.replace(" ", "")
+        return f"{cloudinary_url}{self.image}"
 
 
 class SocialUrl(models.Model):
