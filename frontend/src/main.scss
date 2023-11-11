@@ -287,7 +287,8 @@ $card-group-margin:                 2rem;
   &:hover{
     transition: .7s ease;
     .image-holder-bg{
-      transform: rotate(45deg);
+      transform: rotate(45deg) translateY(10%);
+      transform-origin: center;
       transition: .7s ease;
     }
   }
