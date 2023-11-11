@@ -34,15 +34,19 @@ const WorkProcessGroup = () => {
                         </section>
 
                         <section className="col-lg-6">
-                            {workProcess.map((item) => (
-                                <WorkProcess
-                                    id={item.id}
-                                    title={item.title}
-                                    step={item.step}
-                                    font_awesome_class={item.font_awesome_class}
-                                    description={item.description}
-                                />
-                            ))}
+                            {workProcess
+                                .sort((a, b) => a.id - b.id)
+                                .map((item) => (
+                                    <WorkProcess
+                                        id={item.id}
+                                        title={item.title}
+                                        step={item.step}
+                                        font_awesome_class={
+                                            item.font_awesome_class
+                                        }
+                                        description={item.description}
+                                    />
+                                ))}
                         </section>
                     </section>
                 </section>

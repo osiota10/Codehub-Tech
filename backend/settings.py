@@ -172,6 +172,7 @@ db_url = env('DATABASE_URL')
 if db_url:
     DATABASES['default'] = dj_database_url.parse(db_url)
 
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
