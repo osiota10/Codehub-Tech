@@ -193,7 +193,7 @@ class Testimonial(models.Model):
 
 class CompanyInfo(models.Model):
     logo = CloudinaryField(null=True, blank=True)
-    page_header_image = CloudinaryField(null=True, blank=True)
+    get_page_header_image = models.URLField(default="")
     company_name = models.CharField(max_length=100, null=True, blank=True)
     company_address = models.CharField(
         max_length=255, null=True, blank=True)
@@ -206,9 +206,6 @@ class CompanyInfo(models.Model):
     return_policy = RichTextField(blank=True, null=True)
     term_and_conditions = RichTextField(blank=True, null=True)
     privacy_policy = RichTextField(blank=True, null=True)
-
-    def get_page_header_image(self):
-        return f"{cloudinary_url}{self.page_header_image}"
 
     def get_logo(self):
         return f"{cloudinary_url}{self.logo}"
