@@ -144,33 +144,33 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-if DEBUG:
-    # development environment database.
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
-    #  production environment database.
-    DATABASES = {}
+# if DEBUG:
+#     # development environment database.
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': BASE_DIR / 'db.sqlite3',
+#         }
+#     }
+# else:
+#     #  production environment database.
+#     DATABASES = {}
 
-    # Get the database URL from an environment variable
-    db_url = env('DATABASE_URL')
+#     # Get the database URL from an environment variable
+#     db_url = env('DATABASE_URL')
 
-    # Parse the database URL into a dictionary of options
-    if db_url:
-        DATABASES['default'] = dj_database_url.parse(db_url)
+#     # Parse the database URL into a dictionary of options
+#     if db_url:
+#         DATABASES['default'] = dj_database_url.parse(db_url)
 
-# DATABASES = {}
+DATABASES = {}
 
-# # Get the database URL from an environment variable
-# db_url = env('DATABASE_URL')
+# Get the database URL from an environment variable
+db_url = env('DATABASE_URL')
 
-# # Parse the database URL into a dictionary of options
-# if db_url:
-#     DATABASES['default'] = dj_database_url.parse(db_url)
+# Parse the database URL into a dictionary of options
+if db_url:
+    DATABASES['default'] = dj_database_url.parse(db_url)
 
 
 # Password validation
