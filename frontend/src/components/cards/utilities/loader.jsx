@@ -27,6 +27,8 @@ export const PageLoader = () => {
         background: "rgba(255, 255, 255, 0.7)", // Adjust the background color and opacity
         zIndex: 9999, // Ensure it's on top of other elements
         display: "flex", // Initially hide the overlay
+        justifyContent: "center",
+        alignItems: "center",
     };
     return (
         <div id="overlay" style={styles}>
