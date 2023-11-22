@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from 'react'
-import Slider from 'react-slick';
-import Stat from './stat';
-import { ServiceContext } from '../../App';
-import { Link } from 'react-router-dom';
+import { useContext, useEffect, useState } from "react";
+import Slider from "react-slick";
+import Stat from "./stat";
+import { ServiceContext } from "../../App";
+import { Link } from "react-router-dom";
 
 const settings = {
     dots: true,
@@ -20,7 +20,7 @@ const settings = {
 };
 
 const HeroSection = () => {
-    const services = useContext(ServiceContext)
+    const services = useContext(ServiceContext);
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
     useEffect(() => {
@@ -28,20 +28,20 @@ const HeroSection = () => {
             setScreenWidth(window.innerWidth);
         };
 
-        window.addEventListener('resize', handleResize);
+        window.addEventListener("resize", handleResize);
 
         return () => {
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener("resize", handleResize);
         };
     }, []);
 
     const getStyle = (imgUrl) => {
         const style = {
-            backgroundImage: `linear-gradient(to right, rgb(0, 237, 240), rgba(255, 255, 255, 0.0)), url(${imgUrl})`,
-            height: '100%',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            boxShadow: 'inset 0 0 0 100vh rgba(235, 237, 240, 0.93)',
+            backgroundImage: `linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0.0)), url(${imgUrl})`,
+            height: "100%",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            boxShadow: "inset 0 0 0 100vh rgba(235, 237, 240, 0.93)",
         };
 
         // Conditionally delete properties and values
@@ -54,43 +54,40 @@ const HeroSection = () => {
 
     return (
         <section className="card hero custom-slider">
-            {
-                <Slider {...settings}>
-                    {services.map((item) =>
-                        <section className="" key={item.id}>
-                            <section className="ratio ratio-16x9" style={getStyle(item.get_hero_image_url)}>
+            <Slider {...settings}>
+                {services.map((item) => (
+                    <section className="" key={item.id}>
+                        <section
+                            className="ratio ratio-16x9"
+                            style={getStyle(item.get_hero_image_url)}
+                        ></section>
 
-                            </section>
+                        <div className="container py-5 position-absolute top-50 start-50 translate-middle w-100">
+                            <div className="row align-items-center">
+                                <div className="col-lg-6">
+                                    <h2>{item.title}</h2>
+                                    <p>{item.hero_snippet}</p>
+                                    <Link
+                                        to={"/services/" + item.slug}
+                                        className="btn btn-primary text-decoration-none"
+                                    >
+                                        See More
+                                    </Link>
 
-                            <div className="container py-5 position-absolute top-50 start-50 translate-middle w-100">
-                                <div className="row align-items-center">
-                                    <div className="col-lg-6">
-                                        <h2>{item.title}</h2>
-                                        <p>{item.hero_snippet}</p>
-                                        <Link
-                                            to={'/services/' + item.slug}
-                                            className='btn btn-primary text-decoration-none'
-                                        >
-                                            See More
-                                        </Link>
-
-                                        {
-                                            Object.keys(item.stats).length === 0
-                                                ?
-                                                null :
-                                                <section className="mt-4">
-                                                    <Stat statList={item.stats} />
-                                                </section>
-                                        }
-                                    </div>
+                                    {Object.keys(item.stats).length ===
+                                    0 ? null : (
+                                        <section className="mt-4">
+                                            <Stat statList={item.stats} />
+                                        </section>
+                                    )}
                                 </div>
                             </div>
-                        </section>
-                    )}
-                </Slider>
-            }
+                        </div>
+                    </section>
+                ))}
+            </Slider>
         </section>
     );
-}
+};
 
 export default HeroSection;
