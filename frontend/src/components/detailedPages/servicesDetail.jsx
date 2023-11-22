@@ -16,13 +16,24 @@ function ServicesDetail() {
     const { slug } = useParams();
     const [detail, setDetails] = useState([]);
     const dataCheck = !detail || detail.length === 0;
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios
-            .get(`${process.env.REACT_APP_API_URL}/our-services/` + slug)
-            .then((res) => {
-                setDetails(res.data);
-            });
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(
+                    `${process.env.REACT_APP_API_URL}/our-services/` + slug
+                );
+                setDetails(response.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                // Set loading to false once the API call is complete (whether it succeeded or failed)
+                setLoading(false);
+            }
+        };
+
+        fetchData();
     }, [slug]);
 
     return (
