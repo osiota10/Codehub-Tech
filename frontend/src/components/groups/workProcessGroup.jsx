@@ -13,62 +13,44 @@ const WorkProcessGroup = () => {
     const [workProcess, setWorkProcess] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(
-                    `${process.env.REACT_APP_API_URL}/work-process`
-                );
-                setWorkProcess(response.data);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            } finally {
-                // Set loading to false once the API call is complete (whether it succeeded or failed)
-                setLoading(false);
-            }
-        };
-
-        fetchData();
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/work-process`)
+            .then((res) => {
+                setWorkProcess(res.data);
+            });
     }, []);
 
     return (
         <>
-            {loading ? (
-                <>
-                    <LoaderIcon />
-                </>
-            ) : (
-                <>
-                    {Object.keys(workProcess).length === 0 ? null : (
-                        <section className="container py-10">
-                            <header className="text-center mb-4">
-                                <h2>Our Work Process</h2>
-                                <h6>The Magic Behind Our Work Process!</h6>
-                            </header>
+            {Object.keys(workProcess).length === 0 ? null : (
+                <section className="container py-10">
+                    <header className="text-center mb-4">
+                        <h2>Our Work Process</h2>
+                        <h6>The Magic Behind Our Work Process!</h6>
+                    </header>
 
-                            <section className="row g-4 align-items-center">
-                                <section className="col-lg-6">
-                                    <ImageHolder image={pic.url} />
-                                </section>
-
-                                <section className="col-lg-6">
-                                    {workProcess
-                                        .sort((a, b) => a.id - b.id)
-                                        .map((item) => (
-                                            <WorkProcess
-                                                id={item.id}
-                                                title={item.title}
-                                                step={item.step}
-                                                font_awesome_class={
-                                                    item.font_awesome_class
-                                                }
-                                                description={item.description}
-                                            />
-                                        ))}
-                                </section>
-                            </section>
+                    <section className="row g-4 align-items-center">
+                        <section className="col-lg-6">
+                            <ImageHolder image={pic.url} />
                         </section>
-                    )}
-                </>
+
+                        <section className="col-lg-6">
+                            {workProcess
+                                .sort((a, b) => a.id - b.id)
+                                .map((item) => (
+                                    <WorkProcess
+                                        id={item.id}
+                                        title={item.title}
+                                        step={item.step}
+                                        font_awesome_class={
+                                            item.font_awesome_class
+                                        }
+                                        description={item.description}
+                                    />
+                                ))}
+                        </section>
+                    </section>
+                </section>
             )}
         </>
     );
