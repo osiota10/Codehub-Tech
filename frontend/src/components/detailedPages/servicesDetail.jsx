@@ -11,6 +11,7 @@ import Faq from "../cards/faq";
 import Stat from "../cards/stat";
 import PricingGroup from "../groups/pricingGroup";
 import parse from "html-react-parser";
+import { PageLoader } from "../cards/utilities/loader";
 
 function ServicesDetail() {
     const { slug } = useParams();
@@ -106,6 +107,7 @@ function ServicesDetail() {
 
             <MailSubscription />
             <ContactForm />
+            {loading ? <PageLoader /> : null}
         </>
     );
 }
