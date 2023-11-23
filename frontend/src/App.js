@@ -26,6 +26,7 @@ export const CompanyInfoContext = createContext(null)
 export const JobContext = createContext(null)
 export const CategoryContext = createContext(null)
 export const ClientContext = createContext(null)
+export const CoreValuesContext = createContext(null)
 
 
 function App() {
@@ -34,8 +35,15 @@ function App() {
   const [jobs, setJobs] = useState([])
   const [categories, setCategories] = useState([]);
   const [client, setClient] = useState([])
+  const [coreValue, setCorevalue] = useState([])
 
   useEffect(() => {
+    //Our Core Values
+    axios.get(`${process.env.REACT_APP_API_URL}/core-values`)
+      .then(res => {
+        setCorevalue(res.data)
+      })
+
     // Clients
     axios.get(`${process.env.REACT_APP_API_URL}/clients`)
       .then(res => {
@@ -80,25 +88,27 @@ function App() {
         <JobContext.Provider value={jobs}>
           <CategoryContext.Provider value={categories}>
             <ClientContext.Provider value={client}>
-              <BrowserRouter>
-                <ScrollToTop />
-                <Routes>
-                  <Route path="/" element={<Layout />}>
-                    <Route index element={<Home />} />
-                    <Route path="about" element={<About />} />
-                    <Route path="services" element={<Services />} />
-                    <Route path="services/:slug" element={<ServicesDetail />} />
-                    <Route path="recent-jobs" element={<RecentJob />} />
-                    <Route path="recent-jobs/:slug" element={<RecentJobDetail />} />
-                    <Route path="contact" element={<Contact />} />
-                    <Route path="privacy-policy" element={<Privacy />} />
-                    <Route path="return-policy" element={<OurReturnPolicy />} />
-                    <Route path="terms-and-conditions" element={<OurTerms />} />
-                  </Route>
+              <CoreValuesContext.Provider value={coreValue}>
+                <BrowserRouter>
+                  <ScrollToTop />
+                  <Routes>
+                    <Route path="/" element={<Layout />}>
+                      <Route index element={<Home />} />
+                      <Route path="about" element={<About />} />
+                      <Route path="services" element={<Services />} />
+                      <Route path="services/:slug" element={<ServicesDetail />} />
+                      <Route path="recent-jobs" element={<RecentJob />} />
+                      <Route path="recent-jobs/:slug" element={<RecentJobDetail />} />
+                      <Route path="contact" element={<Contact />} />
+                      <Route path="privacy-policy" element={<Privacy />} />
+                      <Route path="return-policy" element={<OurReturnPolicy />} />
+                      <Route path="terms-and-conditions" element={<OurTerms />} />
+                    </Route>
 
-                  <Route path="*" element={<NoPage />} />
-                </Routes>
-              </BrowserRouter>
+                    <Route path="*" element={<NoPage />} />
+                  </Routes>
+                </BrowserRouter>
+              </CoreValuesContext.Provider>
             </ClientContext.Provider>
           </CategoryContext.Provider>
         </JobContext.Provider>
