@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import ClientGroup from "../groups/clientCardGroup";
 import IndustryGroup from "../groups/industryGroup";
 import PageTitle from "./pageTitle";
