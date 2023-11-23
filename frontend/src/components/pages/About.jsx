@@ -7,21 +7,11 @@ import MailSubscription from "../cards/emailSub";
 import TextTemplate from "../cards/sampleText";
 import Technologies from "../groups/techGroup";
 import ServiceGroup from "../groups/serviceCardGroup";
-import axios from "axios";
-import { CoreValuesContext } from "../../App";
+import { CoreValuesContext, TechContext } from "../../App";
 
 const About = () => {
-    const [tech, setTech] = useState([]);
+    const tech = useContext(TechContext);
     const coreValue = useContext(CoreValuesContext);
-
-    useEffect(() => {
-        //Our Technologies
-        axios
-            .get(`${process.env.REACT_APP_API_URL}/technologies`)
-            .then((res) => {
-                setTech(res.data);
-            });
-    }, []);
 
     return (
         <>
