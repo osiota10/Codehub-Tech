@@ -28,6 +28,7 @@ export const CategoryContext = createContext(null)
 export const ClientContext = createContext(null)
 export const CoreValuesContext = createContext(null)
 export const TechContext = createContext(null)
+export const IndustryContext = createContext(null)
 
 function App() {
   const [service, setService] = useState([]);
@@ -37,8 +38,14 @@ function App() {
   const [client, setClient] = useState([])
   const [coreValue, setCorevalue] = useState([])
   const [tech, setTech] = useState([]);
+  const [industry, setIndustry] = useState([]);
 
   useEffect(() => {
+    // Industries
+    axios.get(`${process.env.REACT_APP_API_URL}/industries`).then((res) => {
+      setIndustry(res.data);
+    });
+
     //Our Technologies
     axios
       .get(`${process.env.REACT_APP_API_URL}/technologies`)
@@ -98,25 +105,27 @@ function App() {
             <ClientContext.Provider value={client}>
               <CoreValuesContext.Provider value={coreValue}>
                 <TechContext.Provider value={tech}>
-                  <BrowserRouter>
-                    <ScrollToTop />
-                    <Routes>
-                      <Route path="/" element={<Layout />}>
-                        <Route index element={<Home />} />
-                        <Route path="about" element={<About />} />
-                        <Route path="services" element={<Services />} />
-                        <Route path="services/:slug" element={<ServicesDetail />} />
-                        <Route path="recent-jobs" element={<RecentJob />} />
-                        <Route path="recent-jobs/:slug" element={<RecentJobDetail />} />
-                        <Route path="contact" element={<Contact />} />
-                        <Route path="privacy-policy" element={<Privacy />} />
-                        <Route path="return-policy" element={<OurReturnPolicy />} />
-                        <Route path="terms-and-conditions" element={<OurTerms />} />
-                      </Route>
+                  <IndustryContext.Provider value={industry}>
+                    <BrowserRouter>
+                      <ScrollToTop />
+                      <Routes>
+                        <Route path="/" element={<Layout />}>
+                          <Route index element={<Home />} />
+                          <Route path="about" element={<About />} />
+                          <Route path="services" element={<Services />} />
+                          <Route path="services/:slug" element={<ServicesDetail />} />
+                          <Route path="recent-jobs" element={<RecentJob />} />
+                          <Route path="recent-jobs/:slug" element={<RecentJobDetail />} />
+                          <Route path="contact" element={<Contact />} />
+                          <Route path="privacy-policy" element={<Privacy />} />
+                          <Route path="return-policy" element={<OurReturnPolicy />} />
+                          <Route path="terms-and-conditions" element={<OurTerms />} />
+                        </Route>
 
-                      <Route path="*" element={<NoPage />} />
-                    </Routes>
-                  </BrowserRouter>
+                        <Route path="*" element={<NoPage />} />
+                      </Routes>
+                    </BrowserRouter>
+                  </IndustryContext.Provider>
                 </TechContext.Provider>
               </CoreValuesContext.Provider>
             </ClientContext.Provider>
