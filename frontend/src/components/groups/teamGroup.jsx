@@ -1,47 +1,35 @@
 import OurTeam from "../cards/team";
 import Slider from "react-slick";
 import { getSliderSettings } from "./recentJobGroup";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useContext } from "react";
+import { TeamContext } from "../../App";
 
 function TeamGroup() {
-    const [ourTeam, setOurTeam] = useState([])
+    const ourTeam = useContext(TeamContext);
 
-    useEffect(() => {
-        //Our Team
-        axios.get(`${process.env.REACT_APP_API_URL}/our-teams`)
-            .then(res => {
-                setOurTeam(res.data)
-            })
-    }, [])
-
-    const sliderSettings = getSliderSettings(true, true, 3, true)
+    const sliderSettings = getSliderSettings(true, true, 3, true);
 
     return (
         <>
-            {
-                Object.keys(ourTeam).length === 0
-                    ?
-                    null
-                    :
-                    <div className='container py-10'>
-                        <header className='text-center mb-3'>
-                            <h2>Our Team</h2>
-                            <h6>Meet Our Extraordinary Team</h6>
-                        </header>
+            {Object.keys(ourTeam).length === 0 ? null : (
+                <div className="container py-10">
+                    <header className="text-center mb-3">
+                        <h2>Our Team</h2>
+                        <h6>Meet Our Extraordinary Team</h6>
+                    </header>
 
-                        <Slider {...sliderSettings}>
-                            {ourTeam.map((item) =>
-                                <OurTeam
-                                    name={item.name}
-                                    position={item.position}
-                                    image={item.get_image_url}
-                                    socialList={item.team_social}
-                                />
-                            )}
-                        </Slider>
-                    </div>
-            }
+                    <Slider {...sliderSettings}>
+                        {ourTeam.map((item) => (
+                            <OurTeam
+                                name={item.name}
+                                position={item.position}
+                                image={item.get_image_url}
+                                socialList={item.team_social}
+                            />
+                        ))}
+                    </Slider>
+                </div>
+            )}
         </>
     );
 }
