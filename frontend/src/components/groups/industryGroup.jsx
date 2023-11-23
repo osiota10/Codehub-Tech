@@ -1,18 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import IndustryCard from "../cards/industryCard";
-import axios from "axios";
 import Slider from "react-slick";
 import { getSliderSettings } from "./recentJobGroup";
+import { IndustryContext } from "../../App";
 
 function IndustryGroup() {
-    const [industry, setIndustry] = useState([]);
-    console.log(industry);
-    useEffect(() => {
-        // Industries
-        axios.get(`${process.env.REACT_APP_API_URL}/industries`).then((res) => {
-            setIndustry(res.data);
-        });
-    }, []);
+    const industry = useContext(IndustryContext);
 
     const settings = getSliderSettings(false, false, 3, false);
 
