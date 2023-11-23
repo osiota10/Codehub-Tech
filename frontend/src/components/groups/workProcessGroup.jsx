@@ -1,24 +1,14 @@
 import WorkProcess from "../cards/workProcess";
 import ImageHolder from "../cards/imageHolder";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import LoaderIcon from "../cards/utilities/loader";
+import { useContext } from "react";
+import { WorkProcessContext } from "../../App";
 
 const pic = {
     url: "https://img.freepik.com/premium-photo/young-african-businesswoman-presenting-data-analysis-dashboard-tv-concord_31965-115410.jpg?w=900",
 };
 
 const WorkProcessGroup = () => {
-    const [loading, setLoading] = useState(true);
-    const [workProcess, setWorkProcess] = useState([]);
-
-    useEffect(() => {
-        axios
-            .get(`${process.env.REACT_APP_API_URL}/work-process`)
-            .then((res) => {
-                setWorkProcess(res.data);
-            });
-    }, []);
+    const workProcess = useContext(WorkProcessContext);
 
     return (
         <>
