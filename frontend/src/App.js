@@ -46,8 +46,11 @@ function App() {
   const [workProcess, setWorkProcess] = useState([]);
   const [ourTeam, setOurTeam] = useState([])
   const [testimonials, setTestimonials] = useState([])
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+
+
     // Testimonials
     axios.get(`${process.env.REACT_APP_API_URL}/testimonials`)
       .then(res => {
