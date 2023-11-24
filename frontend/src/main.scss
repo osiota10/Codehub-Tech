@@ -341,6 +341,14 @@ $card-group-margin:                 2rem;
   }
 }
 
+.text-hover{
+  transition: .5s;
+
+  &:hover{
+    padding-left: 0.5rem;
+    transition: .5s;
+  }
+}
 // .image-holder-bg{
 //   transition: .5s ease;
 //   &:hover{

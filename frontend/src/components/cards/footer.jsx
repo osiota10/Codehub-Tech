@@ -18,33 +18,25 @@ const Footer = () => {
         <div className="pt-8 text-white bg-primary">
             <div className="container pb-2">
                 <div className="row g-3">
-                    <div className="col-lg-4">
-                        <h5 className="text-white">Codehub Technologies</h5>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Fringilla turpis adipiscing ut sapien. Commodo
-                            pretium elementum in in eleifend in etiam.{" "}
-                        </p>
-                    </div>
-                    <div className="col-lg-4 ">
+                    <div className="col-lg">
                         <h5 className="text-white">Quick Links</h5>
                         <div className="list-group">
                             <Link
-                                className="text-decoration-none text-white mb-1"
+                                className="text-decoration-none text-white mb-1 text-hover"
                                 to="/privacy-policy"
                             >
                                 <i class="fa-solid fa-angles-right me-1"></i>
                                 Privacy Policy
                             </Link>
                             <Link
-                                className="text-decoration-none text-white mb-1"
+                                className="text-decoration-none text-white mb-1 text-hover"
                                 to="/return-policy"
                             >
                                 <i class="fa-solid fa-angles-right me-1"></i>
                                 Return Policy
                             </Link>
                             <Link
-                                className="text-decoration-none text-white"
+                                className="text-decoration-none text-white text-hover"
                                 to="/terms-and-conditions"
                             >
                                 <i class="fa-solid fa-angles-right me-1"></i>
@@ -53,21 +45,74 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="col-lg-4">
+                    <div className="col-lg">
+                        <h5 className="text-white">Quick Links</h5>
+                        <div className="list-group">
+                            <Link
+                                className="text-decoration-none text-white mb-1 text-hover"
+                                to="/privacy-policy"
+                            >
+                                <i class="fa-solid fa-angles-right me-1"></i>
+                                Privacy Policy
+                            </Link>
+                            <Link
+                                className="text-decoration-none text-white mb-1 text-hover"
+                                to="/return-policy"
+                            >
+                                <i class="fa-solid fa-angles-right me-1"></i>
+                                Return Policy
+                            </Link>
+                            <Link
+                                className="text-decoration-none text-white text-hover"
+                                to="/terms-and-conditions"
+                            >
+                                <i class="fa-solid fa-angles-right me-1"></i>
+                                Terms and Conditions
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="col-lg">
+                        <h5 className="text-white">Quick Links</h5>
+                        <div className="list-group">
+                            <Link
+                                className="text-decoration-none text-white mb-1 text-hover"
+                                to="/privacy-policy"
+                            >
+                                <i class="fa-solid fa-angles-right me-1"></i>
+                                Privacy Policy
+                            </Link>
+                            <Link
+                                className="text-decoration-none text-white mb-1 text-hover"
+                                to="/return-policy"
+                            >
+                                <i class="fa-solid fa-angles-right me-1"></i>
+                                Return Policy
+                            </Link>
+                            <Link
+                                className="text-decoration-none text-white text-hover"
+                                to="/terms-and-conditions"
+                            >
+                                <i class="fa-solid fa-angles-right me-1"></i>
+                                Terms and Conditions
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="col-lg">
                         <h5 className="text-white">Get in Touch</h5>
-                        <div class="mt-1">
+                        <div class="mt-1 text-hover">
                             <a
                                 href={`mailto:${companyInfo.email}`}
                                 class="text-decoration-none text-white"
                             >
                                 <span>
-                                    {" "}
                                     <i class="fa-solid fa-envelope me-1"></i>
                                 </span>
                                 <p class="d-inline">{companyInfo.email}</p>
                             </a>
                         </div>
-                        <div class="mt-1">
+                        <div class="mt-1 text-hover">
                             <a
                                 href={`tel:${companyInfo.telephone}`}
                                 class="text-decoration-none text-white"
@@ -78,26 +123,29 @@ const Footer = () => {
                                 </p>
                             </a>
                         </div>
-                        <div class="mt-1">
+                        <div class="mt-1 text-hover">
                             <i class="fa-solid fa-location-dot me-1"></i>
                             <p class="d-inline">
                                 {companyInfo.company_address}
                             </p>
                         </div>
-
-                        {dataCheck ? null : (
-                            <div className="py-3">
-                                <Socials
-                                    small={true}
-                                    socials={companyInfo.company_social}
-                                />
-                            </div>
-                        )}
                     </div>
                 </div>
             </div>
-            <div style={{ borderTop: "1px solid #fff" }}>
-                <div className="container-fluid text-center py-3">
+            <div
+                style={{ borderTop: "1px solid #fff" }}
+                className="container-fluid"
+            >
+                {dataCheck ? null : (
+                    <div className="d-flex justify-content-center mt-3">
+                        <Socials
+                            small={true}
+                            socials={companyInfo.company_social}
+                        />
+                    </div>
+                )}
+
+                <div className="text-center pb-1">
                     <small>
                         &#169; {date.getFullYear()} Codehub Technologies. All
                         rights Reserved
