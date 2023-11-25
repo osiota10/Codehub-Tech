@@ -72,11 +72,13 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   color: #0F4C81 !important;
 }
 
-.hero .slick-dots li button:before {
-  top: -1.5rem !important;
-}
-.hero .slick-slide {
-  padding: 0 !important;
+.cap {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .fa-square-facebook:hover {
@@ -182,6 +184,10 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-weight: bold;
 }
 
+.stat-text h1, .stat-text .h1, .stat-text h2, .stat-text .h2, .stat-text h3, .stat-text .h3, .stat-text h4, .stat-text .h4, .stat-text h5, .stat-text .h5, .stat-text h6, .stat-text .h6, .stat-text p {
+  color: white !important;
+}
+
 @media (min-width: 992px) {
   .sample-text:nth-child(even) .one {
     order: 2;
@@ -199,7 +205,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   }
 }
 @media (max-width: 767.98px) {
-  .card.hero .ratio-16x9 {
+  .hero .ratio-16x9 {
     --bs-aspect-ratio: calc(3 / 4 * 100%);
   }
   .icon-size {
@@ -210,7 +216,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   }
 }
 @media (max-width: 575.98px) {
-  .card.hero .ratio-16x9 {
+  .hero .ratio-16x9 {
     --bs-aspect-ratio: calc(4 / 3 * 100%);
   }
 }
@@ -6434,7 +6440,7 @@ textarea.form-control-lg {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 15%;
+  width: 5%;
   padding: 0;
   color: #fff;
   text-align: center;
@@ -6501,16 +6507,16 @@ textarea.form-control-lg {
   display: flex;
   justify-content: center;
   padding: 0;
-  margin-right: 15%;
+  margin-right: 5%;
   margin-bottom: 1rem;
-  margin-left: 15%;
+  margin-left: 5%;
   list-style: none;
 }
 .carousel-indicators [data-bs-target] {
   box-sizing: content-box;
   flex: 0 1 auto;
-  width: 30px;
-  height: 3px;
+  width: 1rem;
+  height: 1rem;
   padding: 0;
   margin-right: 3px;
   margin-left: 3px;
@@ -6535,9 +6541,9 @@ textarea.form-control-lg {
 
 .carousel-caption {
   position: absolute;
-  right: 15%;
+  right: 5%;
   bottom: 1.25rem;
-  left: 15%;
+  left: 5%;
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
   color: #fff;

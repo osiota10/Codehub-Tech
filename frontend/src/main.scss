@@ -168,6 +168,13 @@ $card-spacer-x:                     1.5rem;
 // $card-color:                        #fff;
 $card-group-margin:                 2rem;
 
+// Carousel
+$carousel-control-icon-width:        2rem;
+$carousel-caption-width:             90%;
+$carousel-control-width:             5%;
+$carousel-indicator-width:           1rem;
+$carousel-indicator-height:          1rem;
+
 .card:not(.card.hero){
     box-shadow: $box-shadow;
     transition: .5s;
@@ -228,14 +235,14 @@ $card-group-margin:                 2rem;
   color: $primary !important;
 }
 
-.hero {
-  .slick-dots li button:before{
-    top: -1.5rem !important;
-  }
+.cap {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
-  .slick-slide {
-    padding:  0 !important;
-  }
 }
 
 
@@ -351,6 +358,12 @@ $card-group-margin:                 2rem;
     font-weight: bold;
   }
 }
+
+.stat-text{
+  h1,h2,h3,h4,h5,h6,p{
+    color: white !important;
+  }
+}
 // .image-holder-bg{
 //   transition: .5s ease;
 //   &:hover{
@@ -388,7 +401,7 @@ $card-group-margin:                 2rem;
 }
  
 @include media-breakpoint-down(md) { 
-    .card.hero { 
+    .hero { 
       .ratio-16x9{
         --bs-aspect-ratio: calc(3 / 4 * 100%);
         }
@@ -402,7 +415,7 @@ $card-group-margin:                 2rem;
     }
   }
   @include media-breakpoint-down(sm) { 
-    .card.hero { 
+    .hero { 
       .ratio-16x9{
         --bs-aspect-ratio: calc(4 / 3 * 100%);
         }
