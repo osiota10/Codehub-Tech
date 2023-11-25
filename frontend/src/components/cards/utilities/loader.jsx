@@ -24,7 +24,7 @@ export const PageLoader = () => {
         left: 0,
         width: "100%",
         height: "100%",
-        background: "rgba(255, 255, 255, 0.7)", // Adjust the background color and opacity
+        background: "rgba(255, 255, 255, 0.9)", // Adjust the background color and opacity
         zIndex: 9999, // Ensure it's on top of other elements
         display: "flex", // Initially hide the overlay
         justifyContent: "center",
