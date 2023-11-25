@@ -309,9 +309,8 @@ $carousel-indicator-height:          1rem;
 }
 
 .hero-img {
-  width: 100%;
-  height: auto;
   object-fit: cover;
+  background-size: cover;
 }
 
 .pulse-background {

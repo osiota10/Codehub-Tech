@@ -15,7 +15,7 @@ const HeroSection = () => {
             {services.map((item) => (
                 <Carousel.Item className="hero">
                     <section className="ratio ratio-21x9">
-                        <img src={pic.url} className="img-fluid" />
+                        <img src={pic.url} className="img-fluid hero-img" />
                     </section>
                     <Carousel.Caption className="d-flex  cap">
                         <section className="row align-items-center">
