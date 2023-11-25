@@ -25,11 +25,11 @@ const HeroSection = () => {
                                     {item.hero_snippet}
                                 </p>
 
-                                {Object.keys(item.stats).length === 0 ? null : (
+                                {/* {Object.keys(item.stats).length === 0 ? null : (
                                     <section className="mt-4 stat-text">
                                         <Stat statList={item.stats} />
                                     </section>
-                                )}
+                                )} */}
                             </section>
                             <section className="col-md">
                                 <img
