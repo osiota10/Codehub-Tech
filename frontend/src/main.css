@@ -184,6 +184,10 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-weight: bold;
 }
 
+.hero-side-img {
+  filter: drop-shadow(0 4px 8px rgba(225, 225, 225, 0.4));
+}
+
 .stat-text h1, .stat-text .h1, .stat-text h2, .stat-text .h2, .stat-text h3, .stat-text .h3, .stat-text h4, .stat-text .h4, .stat-text h5, .stat-text .h5, .stat-text h6, .stat-text .h6, .stat-text p {
   color: white !important;
 }
@@ -205,7 +209,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   }
 }
 @media (max-width: 767.98px) {
-  .hero .ratio-16x9 {
+  .hero .ratio-21x9 {
     --bs-aspect-ratio: calc(3 / 4 * 100%);
   }
   .icon-size {
@@ -216,7 +220,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   }
 }
 @media (max-width: 575.98px) {
-  .hero .ratio-16x9 {
+  .hero .ratio-21x9 {
     --bs-aspect-ratio: calc(4 / 3 * 100%);
   }
 }

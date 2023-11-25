@@ -175,6 +175,7 @@ $carousel-control-width:             5%;
 $carousel-indicator-width:           1rem;
 $carousel-indicator-height:          1rem;
 
+
 .card:not(.card.hero){
     box-shadow: $box-shadow;
     transition: .5s;
@@ -359,6 +360,10 @@ $carousel-indicator-height:          1rem;
   }
 }
 
+.hero-side-img{
+  filter: drop-shadow(0 4px 8px rgba(225, 225, 225, 0.4));
+}
+
 .stat-text{
   h1,h2,h3,h4,h5,h6,p{
     color: white !important;
@@ -402,7 +407,7 @@ $carousel-indicator-height:          1rem;
  
 @include media-breakpoint-down(md) { 
     .hero { 
-      .ratio-16x9{
+      .ratio-21x9{
         --bs-aspect-ratio: calc(3 / 4 * 100%);
         }
     }
@@ -416,7 +421,7 @@ $carousel-indicator-height:          1rem;
   }
   @include media-breakpoint-down(sm) { 
     .hero { 
-      .ratio-16x9{
+      .ratio-21x9{
         --bs-aspect-ratio: calc(4 / 3 * 100%);
         }
     }
