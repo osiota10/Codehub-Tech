@@ -18,6 +18,7 @@ import ScrollToTop from './components/cards/utilities/scrollToTop';
 import Privacy from './components/pages/PrivacyPolicy';
 import OurReturnPolicy from './components/pages/ReturnPolicy';
 import OurTerms from './components/pages/TermsAndConditions';
+import { PageLoader } from './components/cards/utilities/loader';
 
 
 // Contexts
@@ -49,70 +50,31 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    Promise.all([
+      axios.get(`${process.env.REACT_APP_API_URL}/testimonials`),
+      axios.get(`${process.env.REACT_APP_API_URL}/our-teams`),
+      axios.get(`${process.env.REACT_APP_API_URL}/work-process`),
+      axios.get(`${process.env.REACT_APP_API_URL}/industries`),
+      axios.get(`${process.env.REACT_APP_API_URL}/technologies`),
+      axios.get(`${process.env.REACT_APP_API_URL}/core-values`),
+      axios.get(`${process.env.REACT_APP_API_URL}/clients`),
+      axios.get(`${process.env.REACT_APP_API_URL}/our-services`),
+      axios.get(`${process.env.REACT_APP_API_URL}/company-info/1`),
+      axios.get(`${process.env.REACT_APP_API_URL}/our-recent-jobs`),
+    ])
+      .then((responses) => {
+        setTestimonials(responses[0].data);
+        setOurTeam(responses[1].data);
+        setWorkProcess(responses[2].data);
+        setIndustry(responses[3].data);
+        setTech(responses[4].data);
+        setCorevalue(responses[5].data);
+        setClient(responses[6].data);
+        setService(responses[7].data);
+        setCompanyInfor(responses[8].data);
+        setJobs(responses[9].data);
 
-
-    // Testimonials
-    axios.get(`${process.env.REACT_APP_API_URL}/testimonials`)
-      .then(res => {
-        setTestimonials(res.data)
-      })
-
-    //Our Team
-    axios.get(`${process.env.REACT_APP_API_URL}/our-teams`)
-      .then(res => {
-        setOurTeam(res.data)
-      })
-
-    // Work Process
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/work-process`)
-      .then((res) => {
-        setWorkProcess(res.data);
-      });
-
-    // Industries
-    axios.get(`${process.env.REACT_APP_API_URL}/industries`).then((res) => {
-      setIndustry(res.data);
-    });
-
-    //Our Technologies
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/technologies`)
-      .then((res) => {
-        setTech(res.data);
-      });
-
-    //Our Core Values
-    axios.get(`${process.env.REACT_APP_API_URL}/core-values`)
-      .then(res => {
-        setCorevalue(res.data)
-      })
-
-    // Clients
-    axios.get(`${process.env.REACT_APP_API_URL}/clients`)
-      .then(res => {
-        setClient(res.data)
-      })
-
-    //Service
-    axios.get(`${process.env.REACT_APP_API_URL}/our-services`)
-      .then(res => {
-        setService(res.data)
-      })
-
-    // Company Info
-    axios.get(`${process.env.REACT_APP_API_URL}/company-info/1`)
-      .then(res => {
-        setCompanyInfor(res.data)
-      })
-
-    // Recent Jobs
-    axios.get(`${process.env.REACT_APP_API_URL}/our-recent-jobs`)
-      .then(res => {
-        setJobs(res.data)
-
-        //Extract Unique categories
-        const uniqueCategories = res.data.reduce((categories, product) => {
+        const uniqueCategories = responses[9].data.reduce((categories, product) => {
           const productCategories = product.category;
           productCategories.forEach(category => {
             const existingCategory = categories.find(c => c.name === category.name);
@@ -123,7 +85,13 @@ function App() {
           return categories;
         }, []);
         setCategories(uniqueCategories);
+
+        setLoading(false);
       })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -140,6 +108,7 @@ function App() {
                         <TestimonialContext.Provider value={testimonials}>
                           <BrowserRouter>
                             <ScrollToTop />
+                            {loading ? <PageLoader /> : null}
                             <Routes>
                               <Route path="/" element={<Layout />}>
                                 <Route index element={<Home />} />
