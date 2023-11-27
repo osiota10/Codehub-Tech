@@ -12,8 +12,9 @@ import parse from "html-react-parser";
 function RecentJobDetail() {
     const { slug } = useParams();
     const [detail, setDetails] = useState([]);
-
+    console.log(detail);
     const dataCheck = !detail || detail.length === 0;
+
     useEffect(() => {
         axios
             .get(`${process.env.REACT_APP_API_URL}/our-recent-jobs/` + slug)
@@ -29,7 +30,57 @@ function RecentJobDetail() {
             <section className="container py-10">
                 <section className="row">
                     <section className="col-lg-8 mx-auto">
+                        <h2 className="text-center">Project Overview</h2>
                         {parse(`${detail.summary}`)}
+                    </section>
+                </section>
+
+                <section className="row mt-2">
+                    <section className="col-lg-8 mx-auto">
+                        <section className="row row-cols-1 row-cols-md-3 g-2">
+                            <section className="col-md-4 d-flex">
+                                <i
+                                    className="fa-solid fa-globe text-primary me-2"
+                                    style={{ fontSize: "3rem" }}
+                                ></i>
+                                <section>
+                                    <h6>Location</h6>
+                                    <p className="fw-light">Nigeria</p>
+                                </section>
+                            </section>
+
+                            <section className="col-md-4 d-flex">
+                                <i
+                                    className="fa-solid fa-industry text-primary me-2"
+                                    style={{ fontSize: "3rem" }}
+                                ></i>
+                                <section>
+                                    <h6>Industry</h6>
+                                    <p className="fw-light">Nigeria</p>
+                                </section>
+                            </section>
+
+                            <section className="col-md-4 d-flex">
+                                <i
+                                    className="fa-solid fa-arrow-up-short-wide text-primary me-2"
+                                    style={{ fontSize: "3rem" }}
+                                ></i>
+                                <section>
+                                    <h6>Category</h6>
+                                    <p className="fw-light">
+                                        {dataCheck ? null : (
+                                            <>
+                                                {detail.category.map((item) => (
+                                                    <span key={item.id}>
+                                                        {item.name}
+                                                    </span>
+                                                ))}
+                                            </>
+                                        )}
+                                    </p>
+                                </section>
+                            </section>
+                        </section>
                     </section>
                 </section>
             </section>
