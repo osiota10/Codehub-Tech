@@ -5,10 +5,10 @@ function Client({ id, name, logo }) {
             style={{ maxWidth: "379px" }}
             key={id}
         >
-            <div className="card-body d-flex align-items-center justify-content-center">
+            <div className="card-body d-flex flex-column align-items-center justify-content-center">
                 <img
                     src={logo}
-                    className="card-img me-3"
+                    className="card-img mb-2"
                     alt={`logo of ${name}`}
                     style={{ maxWidth: "80px" }}
                 />
