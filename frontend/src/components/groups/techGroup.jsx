@@ -2,12 +2,17 @@ import Client from "../cards/clientCard";
 
 function Technologies(props) {
     const { techList } = props;
+    const { is_recent_job } = props;
 
     return (
         <section className="container py-10">
             <header className="text-center mb-4">
-                <h2>Technologies</h2>
-                <h6>Our Technological Mastery</h6>
+                <h2>
+                    {is_recent_job
+                        ? "Technologies and Plaforms used"
+                        : "Technologies"}
+                </h2>
+                <h6>{is_recent_job ? null : "Our Technological Mastery"}</h6>
             </header>
 
             <section className="row row-cols-sm-2 row-cols-lg-5 g-6 justify-content-center">

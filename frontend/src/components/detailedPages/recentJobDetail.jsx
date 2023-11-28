@@ -98,7 +98,10 @@ function RecentJobDetail() {
             {dataCheck ? null : (
                 <>
                     {Object.keys(detail.technologies).length === 0 ? null : (
-                        <Technologies techList={detail.technologies} />
+                        <Technologies
+                            techList={detail.technologies}
+                            is_recent_job={true}
+                        />
                     )}
                 </>
             )}
