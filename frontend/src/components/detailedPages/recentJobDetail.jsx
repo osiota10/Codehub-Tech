@@ -17,6 +17,22 @@ function RecentJobDetail() {
     const dataCheck = !detail || detail.length === 0;
     const companyInfo = useContext(CompanyInfoContext);
 
+    const jobStatements = [
+        {
+            id: 1,
+            title: "Problem Statement",
+            description: detail.problem_statement,
+            pic_url:
+                "https://img.freepik.com/premium-photo/businessman-man-hand-hold-interface-question-marks-sign-web-ask-quiestion-online-faq-concept-what-where-when-how-why-search-information-internet_150455-4919.jpg?w=900",
+        },
+        {
+            id: 2,
+            title: "Solutions Offered",
+            description: detail.solution_offered,
+            pic_url:
+                "https://img.freepik.com/free-photo/standard-quality-control-concept-m_23-2150041859.jpg?w=900&t=st=1701947574~exp=1701948174~hmac=47bb6f28a2fd286594ead6e64a2fbed9012a3787cbd451653cddb8653cb686a2",
+        },
+    ];
     useEffect(() => {
         axios
             .get(`${process.env.REACT_APP_API_URL}/our-recent-jobs/` + slug)
@@ -29,7 +45,7 @@ function RecentJobDetail() {
         <>
             <PageTitle title={detail.title} />
 
-            <section className="container py-10">
+            <section className="container pt-10">
                 <section className="row">
                     <section className="col-lg-8 mx-auto">
                         <h2 className="text-center">Project Overview</h2>
@@ -87,14 +103,7 @@ function RecentJobDetail() {
                 </section>
             </section>
 
-            {dataCheck ? null : (
-                <>
-                    {Object.keys(detail.recent_job_statement).length ===
-                    0 ? null : (
-                        <TextTemplate dataList={detail.recent_job_statement} />
-                    )}
-                </>
-            )}
+            {dataCheck ? null : <TextTemplate dataList={jobStatements} />}
 
             {/* Technologies display Logic */}
             {dataCheck ? null : (
@@ -120,7 +129,7 @@ function RecentJobDetail() {
                 </>
             )}
 
-            <section className="container py-10">
+            <section className="container pb-10">
                 <section className="row">
                     <section className="col-lg-8 mx-auto text-center">
                         <h3 className="text-center">
