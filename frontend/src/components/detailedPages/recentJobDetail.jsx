@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import PageTitle from "../pages/pageTitle";
 import axios from "axios";
 import ContactForm from "../cards/contactForm";
@@ -8,12 +8,14 @@ import RecentJobGroup from "../groups/recentJobGroup";
 import Technologies from "../groups/techGroup";
 import TextTemplate from "../cards/sampleText";
 import parse from "html-react-parser";
+import { CompanyInfoContext } from "../../App";
 
 function RecentJobDetail() {
     const { slug } = useParams();
     const [detail, setDetails] = useState([]);
     console.log(detail);
     const dataCheck = !detail || detail.length === 0;
+    const companyInfo = useContext(CompanyInfoContext);
 
     useEffect(() => {
         axios
@@ -117,6 +119,29 @@ function RecentJobDetail() {
                     )}
                 </>
             )}
+
+            <section className="container py-10">
+                <section className="row">
+                    <section className="col-lg-8 mx-auto text-center">
+                        <h3 className="text-center">
+                            Planning for a Similar Project or Task?
+                        </h3>
+                        <p>
+                            Our consultants are here to hear all about it and
+                            provide you with an instant viable solution
+                        </p>
+                        <a
+                            href={companyInfo.company_social.whatsapp_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-primary"
+                        >
+                            <i className="fa-brands fa-whatsapp fs-6 text-white me-1"></i>
+                            Contact Us Now
+                        </a>
+                    </section>
+                </section>
+            </section>
 
             <MailSubscription />
             <ContactForm />
