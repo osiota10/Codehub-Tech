@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="pt-8 text-white bg-primary">
             <div className="container pb-2">
                 <div className="row g-3">
-                    <div className="col-lg">
+                    <div className="col-md">
                         <h5 className="text-white">Company</h5>
                         <div className="list-group">
                             <Link
@@ -42,7 +42,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="col-lg">
+                    <div className="col-md">
                         <h5 className="text-white">Quick Links</h5>
                         <div className="list-group">
                             <Link
@@ -69,7 +69,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="col-lg">
+                    <div className="col-md">
                         <h5 className="text-white">Start a Tech Career</h5>
                         <div className="list-group">
                             <Link
@@ -96,7 +96,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="col-lg">
+                    <div className="col-md">
                         <h5 className="text-white">Get in Touch</h5>
                         <div class="mt-1 text-hover">
                             <a
