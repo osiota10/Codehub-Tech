@@ -1,13 +1,10 @@
 import React from "react";
 import { useContext } from "react";
 import Socials from "./socials";
-import { ServiceContext } from "../../App";
-import TextTruncate from "react-text-truncate";
 import { Link } from "react-router-dom";
 import { CompanyInfoContext } from "../../App";
 
 const Footer = () => {
-    const services = useContext(ServiceContext);
     const companyInfo = useContext(CompanyInfoContext);
     const dataCheck =
         !companyInfo.company_social || companyInfo.company_social.length === 0;
@@ -19,28 +16,28 @@ const Footer = () => {
             <div className="container pb-2">
                 <div className="row g-3">
                     <div className="col-lg">
-                        <h5 className="text-white">Quick Links</h5>
+                        <h5 className="text-white">Company</h5>
                         <div className="list-group">
                             <Link
                                 className="text-decoration-none text-white mb-1 text-hover"
-                                to="/privacy-policy"
+                                to="/about"
                             >
                                 <i class="fa-solid fa-angles-right me-1"></i>
-                                Privacy Policy
+                                About Us
                             </Link>
                             <Link
                                 className="text-decoration-none text-white mb-1 text-hover"
-                                to="/return-policy"
+                                to="/services"
                             >
                                 <i class="fa-solid fa-angles-right me-1"></i>
-                                Return Policy
+                                Services
                             </Link>
                             <Link
                                 className="text-decoration-none text-white text-hover"
-                                to="/terms-and-conditions"
+                                to="/recent-jobs"
                             >
                                 <i class="fa-solid fa-angles-right me-1"></i>
-                                Terms and Conditions
+                                Recent Jobs
                             </Link>
                         </div>
                     </div>
@@ -73,28 +70,28 @@ const Footer = () => {
                     </div>
 
                     <div className="col-lg">
-                        <h5 className="text-white">Quick Links</h5>
+                        <h5 className="text-white">Start a Tech Career</h5>
                         <div className="list-group">
                             <Link
                                 className="text-decoration-none text-white mb-1 text-hover"
-                                to="/privacy-policy"
+                                to="#"
                             >
                                 <i class="fa-solid fa-angles-right me-1"></i>
-                                Privacy Policy
+                                Our Courses
                             </Link>
                             <Link
                                 className="text-decoration-none text-white mb-1 text-hover"
-                                to="/return-policy"
+                                to="#"
                             >
                                 <i class="fa-solid fa-angles-right me-1"></i>
-                                Return Policy
+                                Register
                             </Link>
                             <Link
                                 className="text-decoration-none text-white text-hover"
-                                to="/terms-and-conditions"
+                                to="#"
                             >
                                 <i class="fa-solid fa-angles-right me-1"></i>
-                                Terms and Conditions
+                                Log In
                             </Link>
                         </div>
                     </div>
