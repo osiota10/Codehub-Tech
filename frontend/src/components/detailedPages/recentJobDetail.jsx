@@ -9,6 +9,7 @@ import Technologies from "../groups/techGroup";
 import TextTemplate from "../cards/sampleText";
 import parse from "html-react-parser";
 import { CompanyInfoContext } from "../../App";
+import { PageLoader } from "../cards/utilities/loader";
 
 function RecentJobDetail() {
     const { slug } = useParams();
@@ -16,6 +17,7 @@ function RecentJobDetail() {
     console.log(detail);
     const dataCheck = !detail || detail.length === 0;
     const companyInfo = useContext(CompanyInfoContext);
+    const [loading, setLoading] = useState(true);
 
     const jobStatements = [
         {
@@ -34,11 +36,21 @@ function RecentJobDetail() {
         },
     ];
     useEffect(() => {
-        axios
-            .get(`${process.env.REACT_APP_API_URL}/our-recent-jobs/` + slug)
-            .then((res) => {
-                setDetails(res.data);
-            });
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(
+                    `${process.env.REACT_APP_API_URL}/our-recent-jobs/` + slug
+                );
+                setDetails(response.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                // Set loading to false once the API call is complete (whether it succeeded or failed)
+                setLoading(false);
+            }
+        };
+
+        fetchData();
     }, [slug]);
 
     return (
@@ -154,6 +166,7 @@ function RecentJobDetail() {
 
             <MailSubscription />
             <ContactForm />
+            {loading ? <PageLoader /> : null}
         </>
     );
 }
