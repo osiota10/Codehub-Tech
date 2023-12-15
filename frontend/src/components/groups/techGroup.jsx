@@ -16,15 +16,17 @@ function Technologies(props) {
             </header>
 
             <section className="row row-cols-sm-2 row-cols-lg-5 g-6 justify-content-center">
-                {techList.map((item) => (
-                    <section className="col">
-                        <Client
-                            id={item.id}
-                            name={item.name_of_technology}
-                            logo={item.get_logo_url}
-                        />
-                    </section>
-                ))}
+                {techList
+                    .sort((a, b) => a.id - b.id)
+                    .map((item) => (
+                        <section className="col">
+                            <Client
+                                id={item.id}
+                                name={item.name_of_technology}
+                                logo={item.get_logo_url}
+                            />
+                        </section>
+                    ))}
             </section>
         </section>
     );
