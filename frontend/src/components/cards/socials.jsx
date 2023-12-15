@@ -13,7 +13,7 @@ function Socials({ small, socials }) {
     return (
         <div>
             {small ? (
-                <section className="d-flex flex-wrap">
+                <section className="d-flex flex-wrap justify-content-center">
                     {facebook_url ? (
                         <span className="me-1 bg-white p-1 mb-1">
                             <a
