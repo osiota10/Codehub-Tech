@@ -28,7 +28,6 @@ const Contact = () => {
                 <section className="row g-5 mt-6 align-items-center">
                     <section className="col-lg-6">
                         <ImageHolder image={pic.url} />
-
                     </section>
 
                     <section className="col-lg-6">
@@ -93,10 +92,11 @@ const Contact = () => {
                 <Socials small={false} socials={companyInfo.company_social} />
             )}
 
-            <ContactForm />
+            {dataCheckFaqs ? null : <Faq faqList={companyInfo.company_faqs} />}
+
             <MailSubscription />
 
-            {dataCheckFaqs ? null : <Faq faqList={companyInfo.company_faqs} />}
+            <ContactForm />
         </>
     );
 };
