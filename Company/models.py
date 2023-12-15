@@ -144,7 +144,7 @@ class Pricing(models.Model):
     description = models.CharField(max_length=50)
 
     def __str__(self):
-        return f"{self.service} - N{self.price}"
+        return f"{self.service} - {self.title} - N{self.price}"
 
 
 class PricingFeature(models.Model):
