@@ -152,7 +152,7 @@ function RecentJobDetail() {
                             provide you with an instant viable solution
                         </p>
                         <a
-                            href={companyInfo.company_social.whatsapp_url}
+                            href={companyInfo?.company_social?.whatsapp_url}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn btn-primary"
