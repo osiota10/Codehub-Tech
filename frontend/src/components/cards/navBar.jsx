@@ -141,7 +141,7 @@ function NavBar() {
                     </Offcanvas>
 
                     <a
-                        className="btn btn-primary d-none d-sm-none d-md-none d-lg-block"
+                        className="btn btn-outline-primary d-none d-sm-none d-md-none d-lg-block"
                         href="#contact-form"
                     >
                         Request a Quote
