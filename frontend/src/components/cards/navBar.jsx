@@ -96,7 +96,7 @@ function NavBar() {
                                     >
                                         <NavLink
                                             to="/about"
-                                            className="nav-link"
+                                            className="nav-link fw-light"
                                             aria-current="page"
                                         >
                                             About
@@ -108,7 +108,7 @@ function NavBar() {
                                     >
                                         <NavLink
                                             to="/services"
-                                            className="nav-link"
+                                            className="nav-link fw-light"
                                         >
                                             Services
                                         </NavLink>
@@ -119,7 +119,7 @@ function NavBar() {
                                     >
                                         <NavLink
                                             to="/recent-jobs"
-                                            className="nav-link"
+                                            className="nav-link fw-light"
                                         >
                                             Recent Jobs
                                         </NavLink>
@@ -130,7 +130,7 @@ function NavBar() {
                                     >
                                         <NavLink
                                             to="/contact"
-                                            className="nav-link"
+                                            className="nav-link fw-light"
                                         >
                                             Contact
                                         </NavLink>
