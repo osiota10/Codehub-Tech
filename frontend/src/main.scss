@@ -371,12 +371,40 @@ $carousel-indicator-height:          1rem;
   }
 }
 
-.btn-outline-primary {
-  background-color: rgba($primary, 0.2) !important;
-}
 
-.btn-outline-primary:hover {
-  background-color: $primary !important;
+.btn-outline-primary {
+  position: relative;
+  // background-color: lighten($primary, 70%) !important;
+  transition: 0.8s ease !important;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: $primary !important;
+    width: 0;
+    height: 100%;
+    transition: 0.8s ease !important; /* Add a transition for a smooth effect */
+  }
+
+  // &:hover{
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   margin: auto;
+  //   width: 0;
+  // }
+
+  &:hover::before {
+    width: 100% !important;
+    z-index: -1 !important;
+    transition: 0.8s ease !important;
+  }
 }
 
 
