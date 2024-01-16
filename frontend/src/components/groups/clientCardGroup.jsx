@@ -1,5 +1,4 @@
-import { useEffect, useState, useContext } from "react";
-import Client from "../cards/clientCard";
+import { useContext } from "react";
 import Slider from "react-slick";
 import { getSliderSettings } from "./recentJobGroup";
 import { ClientContext } from "../../App";
@@ -21,31 +20,24 @@ const ClientGroup = () => {
 
                         <Slider {...settings}>
                             {client.map((item) => (
-                                <>
-                                    {/* <Client
-                                        id={item.id}
-                                        name={item.name_of_client}
-                                        logo={item.get_logo_url}
-                                    /> */}
-                                    <section
-                                        className="mx-auto tint"
-                                        style={{
-                                            maxWidth: "279px",
-                                            filter: "grayscale(100%)",
-                                        }}
-                                        id={item.id}
-                                    >
-                                        <div className="card-body d-flex flex-row align-items-center justify-content-center">
-                                            <img
-                                                src={item.get_logo_url}
-                                                className="card-img me-2"
-                                                alt={`logo of`}
-                                                style={{ maxWidth: "80px" }}
-                                            />
-                                            <h6>{item.name_of_client}</h6>
-                                        </div>
-                                    </section>
-                                </>
+                                <section
+                                    className="mx-auto tint"
+                                    style={{
+                                        maxWidth: "279px",
+                                        filter: "grayscale(100%)",
+                                    }}
+                                    id={item.id}
+                                >
+                                    <div className="card-body d-flex flex-row align-items-center justify-content-center">
+                                        <img
+                                            src={item.get_logo_url}
+                                            className="card-img me-2"
+                                            alt={`logo of ${item.name_of_client}`}
+                                            style={{ maxWidth: "80px" }}
+                                        />
+                                        <h6>{item.name_of_client}</h6>
+                                    </div>
+                                </section>
                             ))}
                         </Slider>
                     </section>
