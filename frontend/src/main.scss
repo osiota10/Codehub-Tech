@@ -430,6 +430,11 @@ $carousel-indicator-height:          1rem;
   }
 }
 
+.tint {
+  &:hover{
+    filter: none !important;
+  }
+}
 
 @import '../node_modules/bootstrap/scss/_functions.scss';
 @import '../node_modules/bootstrap/scss/_variables.scss';
