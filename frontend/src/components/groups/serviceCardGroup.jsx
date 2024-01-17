@@ -20,7 +20,7 @@ function ServiceGroup({ type }) {
             {Object.keys(service).length === 0 ? null : (
                 <section>
                     {type ? (
-                        <section className="container py-10">
+                        <section className="container pt-10">
                             <header className="text-center mb-4">
                                 <h2>Our Services</h2>
                                 <h6>Discover Our Exceptional Services</h6>
