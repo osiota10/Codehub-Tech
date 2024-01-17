@@ -9,7 +9,6 @@ export const getSliderSettings = ({
     arrows,
     slidesToShow,
     removeAutoPlay,
-    infinite,
     slidesToShowAt1024Breakpoint,
     slidesToShowAt992Breakpoint,
     objectCount,
@@ -18,7 +17,7 @@ export const getSliderSettings = ({
         dots: dots,
         arrows: arrows,
         className: "center",
-        infinite: objectCount > slidesToShow,
+        infinite: objectCount > slidesToShow ? true : false,
         centerPadding: "160px",
         slidesToShow: slidesToShow,
         swipeToSlide: true,
@@ -33,6 +32,10 @@ export const getSliderSettings = ({
                 settings: {
                     slidesToShow: slidesToShowAt1024Breakpoint,
                     slidesToScroll: 1,
+                    infinite:
+                        objectCount > slidesToShowAt1024Breakpoint
+                            ? true
+                            : false,
                 },
             },
             {
@@ -41,6 +44,10 @@ export const getSliderSettings = ({
                     slidesToShow: slidesToShowAt992Breakpoint,
                     slidesToScroll: 1,
                     initialSlide: 1,
+                    infinite:
+                        objectCount > slidesToShowAt992Breakpoint
+                            ? true
+                            : false,
                 },
             },
         ],
@@ -48,7 +55,6 @@ export const getSliderSettings = ({
 
     // Conditionally hide some properties
     if (removeAutoPlay) {
-        // delete sliderSettings.autoplay;
         delete sliderSettings.speed;
         delete sliderSettings.autoplaySpeed;
     }
