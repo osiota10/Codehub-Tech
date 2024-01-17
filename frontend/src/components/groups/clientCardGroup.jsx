@@ -33,9 +33,11 @@ const ClientGroup = () => {
                                             src={item.get_logo_url}
                                             className="card-img me-2"
                                             alt={`logo of ${item.name_of_client}`}
-                                            style={{ maxWidth: "80px" }}
+                                            style={{ maxWidth: "50px" }}
                                         />
-                                        <h6>{item.name_of_client}</h6>
+                                        <h6 style={{ fontSize: "16px" }}>
+                                            {item.name_of_client}
+                                        </h6>
                                     </div>
                                 </section>
                             ))}
