@@ -4,9 +4,18 @@ import { getSliderSettings } from "./recentJobGroup";
 import { ClientContext } from "../../App";
 
 const ClientGroup = () => {
-    const settings = getSliderSettings(false, false, 3, false);
-
     const client = useContext(ClientContext);
+
+    const settings = getSliderSettings({
+        dots: false,
+        arrows: false,
+        slidesToShow: 3,
+        infinite: true,
+        removeAutoPlay: false,
+        slidesToShowAt1024Breakpoint: 3,
+        slidesToShowAt992Breakpoint: 1,
+        objectCount: Object.keys(client).length,
+    });
 
     return (
         <>
@@ -35,7 +44,7 @@ const ClientGroup = () => {
                                             alt={`logo of ${item.name_of_client}`}
                                             style={{ maxWidth: "50px" }}
                                         />
-                                        <h6 style={{ fontSize: "16px" }}>
+                                        <h6 style={{ fontSize: "14px" }}>
                                             {item.name_of_client}
                                         </h6>
                                     </div>

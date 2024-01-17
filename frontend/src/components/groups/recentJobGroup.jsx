@@ -10,40 +10,35 @@ export const getSliderSettings = ({
     slidesToShow,
     removeAutoPlay,
     infinite,
+    slidesToShowAt1024Breakpoint,
+    slidesToShowAt992Breakpoint,
+    objectCount,
 }) => {
     const sliderSettings = {
         dots: dots,
         arrows: arrows,
         className: "center",
-        infinite: infinite,
+        infinite: objectCount > slidesToShow,
         centerPadding: "160px",
         slidesToShow: slidesToShow,
         swipeToSlide: true,
         autoplay: true,
-        // speed: 5000,
-        // autoplaySpeed: 5000,
+        speed: 5000,
+        autoplaySpeed: 5000,
         cssEase: "linear",
-        afterChange: (index) => {
-            console.log(
-                `Slider Changed to: ${
-                    index + 1
-                }, background: #222; color: #bada55`
-            );
-        },
+
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: slidesToShowAt1024Breakpoint,
                     slidesToScroll: 1,
-                    infinite: true,
-                    dots: true,
                 },
             },
             {
                 breakpoint: 992,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: slidesToShowAt992Breakpoint,
                     slidesToScroll: 1,
                     initialSlide: 1,
                 },
@@ -53,7 +48,7 @@ export const getSliderSettings = ({
 
     // Conditionally hide some properties
     if (removeAutoPlay) {
-        delete sliderSettings.autoplay;
+        // delete sliderSettings.autoplay;
         delete sliderSettings.speed;
         delete sliderSettings.autoplaySpeed;
     }
