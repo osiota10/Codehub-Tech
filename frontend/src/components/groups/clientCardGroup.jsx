@@ -11,7 +11,7 @@ const ClientGroup = () => {
     return (
         <>
             {Object.keys(client).length === 0 ? null : (
-                <section className="py-10">
+                <section className="pt-8">
                     <section className="container">
                         <header className="text-center mb-3">
                             <h2>Our Clients</h2>
