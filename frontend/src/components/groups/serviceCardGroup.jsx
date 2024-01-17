@@ -18,15 +18,15 @@ function ServiceGroup({ type }) {
     return (
         <>
             {Object.keys(service).length === 0 ? null : (
-                <div className="container py-10">
+                <section>
                     {type ? (
-                        <>
+                        <section className="container py-10">
                             <header className="text-center mb-4">
                                 <h2>Our Services</h2>
                                 <h6>Discover Our Exceptional Services</h6>
                             </header>
 
-                            <div className="row row-cols-1 row-cols-lg-3 g-6 justify-content-center">
+                            <section className="row row-cols-1 row-cols-lg-3 g-6 justify-content-center">
                                 {service.slice(0, 6).map((item) => (
                                     <Link
                                         className="text-decoration-none"
@@ -40,20 +40,20 @@ function ServiceGroup({ type }) {
                                         />
                                     </Link>
                                 ))}
-                            </div>
+                            </section>
                             {Object.keys(service).length > 6 ? (
-                                <div className="d-flex justify-content-center">
+                                <section className="d-flex justify-content-center">
                                     <Link
                                         to="/services"
                                         className="btn btn-primary mt-6"
                                     >
                                         See all Services
                                     </Link>
-                                </div>
+                                </section>
                             ) : null}
-                        </>
+                        </section>
                     ) : (
-                        <div className="container py-10">
+                        <section className="container py-10">
                             <header className="text-center mb-3">
                                 <h2>What We Do</h2>
                                 <h6>Discover Our Exceptional Services</h6>
@@ -74,17 +74,17 @@ function ServiceGroup({ type }) {
                                     </Link>
                                 ))}
                             </Slider>
-                            <div className="d-flex justify-content-center">
+                            <section className="d-flex justify-content-center">
                                 <Link
                                     to="/services"
                                     className="btn btn-primary mt-6"
                                 >
                                     See all Services
                                 </Link>
-                            </div>
-                        </div>
+                            </section>
+                        </section>
                     )}
-                </div>
+                </section>
             )}
         </>
     );
