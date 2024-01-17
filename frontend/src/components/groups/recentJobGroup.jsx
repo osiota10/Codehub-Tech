@@ -12,6 +12,8 @@ export const getSliderSettings = ({
     slidesToShowAt1024Breakpoint,
     slidesToShowAt992Breakpoint,
     objectCount,
+    speed,
+    autoplaySpeed,
 }) => {
     const sliderSettings = {
         dots: dots,
@@ -22,8 +24,8 @@ export const getSliderSettings = ({
         slidesToShow: slidesToShow,
         swipeToSlide: true,
         autoplay: true,
-        speed: 5000,
-        autoplaySpeed: 5000,
+        speed: speed,
+        autoplaySpeed: autoplaySpeed,
         cssEase: "linear",
 
         responsive: [
