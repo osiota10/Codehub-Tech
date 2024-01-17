@@ -10,7 +10,6 @@ const ClientGroup = () => {
         dots: false,
         arrows: false,
         slidesToShow: 3,
-        infinite: true,
         removeAutoPlay: false,
         slidesToShowAt1024Breakpoint: 3,
         slidesToShowAt992Breakpoint: 1,
