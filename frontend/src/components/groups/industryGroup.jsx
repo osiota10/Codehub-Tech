@@ -7,7 +7,18 @@ import { IndustryContext } from "../../App";
 function IndustryGroup() {
     const industry = useContext(IndustryContext);
 
-    const settings = getSliderSettings(false, false, 3, false);
+    // const settings = getSliderSettings(false, false, 3, false);
+    const settings = getSliderSettings({
+        dots: false,
+        arrows: false,
+        slidesToShow: 3,
+        removeAutoPlay: false,
+        slidesToShowAt1024Breakpoint: 2,
+        slidesToShowAt992Breakpoint: 1,
+        objectCount: Object.keys(industry).length,
+        speed: 500,
+        autoplaySpeed: 2000,
+    });
 
     return (
         <>
