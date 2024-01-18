@@ -9,10 +9,10 @@ const ClientGroup = () => {
     const settings = getSliderSettings({
         dots: false,
         arrows: false,
-        slidesToShow: 3,
+        slidesToShow: 5,
         removeAutoPlay: false,
         slidesToShowAt1024Breakpoint: 3,
-        slidesToShowAt992Breakpoint: 1,
+        slidesToShowAt992Breakpoint: 2,
         objectCount: Object.keys(client).length,
         speed: 5000,
         autoplaySpeed: 5000,
@@ -34,14 +34,13 @@ const ClientGroup = () => {
                                     className="mx-auto tint"
                                     style={{
                                         maxWidth: "279px",
-                                        filter: "grayscale(100%)",
                                     }}
                                     id={item.id}
                                 >
                                     <div className="card-body d-flex flex-row align-items-center justify-content-center">
                                         <img
                                             src={item.get_logo_url}
-                                            className="card-img me-2"
+                                            className="card-img me-1"
                                             alt={`logo of ${item.name_of_client}`}
                                             style={{ maxWidth: "50px" }}
                                         />
