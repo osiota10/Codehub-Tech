@@ -7,7 +7,6 @@ import { IndustryContext } from "../../App";
 function IndustryGroup() {
     const industry = useContext(IndustryContext);
 
-    // const settings = getSliderSettings(false, false, 3, false);
     const settings = getSliderSettings({
         dots: false,
         arrows: false,
