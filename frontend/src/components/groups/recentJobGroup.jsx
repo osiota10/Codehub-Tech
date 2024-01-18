@@ -65,9 +65,19 @@ export const getSliderSettings = ({
 };
 
 function RecentJobGroup({ filterCategory, currentItem }) {
-    const sliderSettings = getSliderSettings(true, true, 3, true);
-
     const jobs = useContext(JobContext);
+
+    const settings = getSliderSettings({
+        dots: true,
+        arrows: true,
+        slidesToShow: 3,
+        removeAutoPlay: false,
+        slidesToShowAt1024Breakpoint: 2,
+        slidesToShowAt992Breakpoint: 1,
+        objectCount: Object.keys(jobs).length,
+        speed: 500,
+        autoplaySpeed: 15000,
+    });
 
     // Extract category names from the passed category object
     const categoryNames = filterCategory
@@ -102,7 +112,7 @@ function RecentJobGroup({ filterCategory, currentItem }) {
                         </h6>
                     </header>
 
-                    <Slider {...sliderSettings}>
+                    <Slider {...settings}>
                         {filteredItems.slice(0, 9).map((item) => (
                             <Link
                                 className="text-decoration-none"
