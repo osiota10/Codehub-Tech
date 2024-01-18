@@ -14,7 +14,7 @@ import { PageLoader } from "../cards/utilities/loader";
 function RecentJobDetail() {
     const { slug } = useParams();
     const [detail, setDetails] = useState([]);
-    console.log(detail);
+
     const dataCheck = !detail || detail.length === 0;
     const companyInfo = useContext(CompanyInfoContext);
     const [loading, setLoading] = useState(true);
