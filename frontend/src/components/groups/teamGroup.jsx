@@ -7,7 +7,17 @@ import { TeamContext } from "../../App";
 function TeamGroup() {
     const ourTeam = useContext(TeamContext);
 
-    const sliderSettings = getSliderSettings(true, true, 3, true);
+    const settings = getSliderSettings({
+        dots: true,
+        arrows: true,
+        slidesToShow: 3,
+        removeAutoPlay: false,
+        slidesToShowAt1024Breakpoint: 2,
+        slidesToShowAt992Breakpoint: 1,
+        objectCount: Object.keys(ourTeam).length,
+        speed: 500,
+        autoplaySpeed: 15000,
+    });
 
     return (
         <>
@@ -18,7 +28,7 @@ function TeamGroup() {
                         <h6>Meet Our Extraordinary Team</h6>
                     </header>
 
-                    <Slider {...sliderSettings}>
+                    <Slider {...settings}>
                         {ourTeam.map((item) => (
                             <OurTeam
                                 name={item.name}
