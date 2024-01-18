@@ -10,7 +10,7 @@ function Client({ id, name, logo }) {
                     src={logo}
                     className="card-img mb-2"
                     alt={`logo of ${name}`}
-                    style={{ maxWidth: "80px" }}
+                    style={{ maxWidth: "60px" }}
                 />
                 <h6>{name}</h6>
             </div>
