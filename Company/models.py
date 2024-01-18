@@ -100,6 +100,17 @@ class Service(models.Model):
         return strip_tags(self.description)
 
 
+class OurIndustry(models.Model):
+    name_of_industry = models.CharField(max_length=50)
+    get_logo_url = models.URLField(default='')
+
+    def __str__(self):
+        return f"{self.name_of_industry}"
+
+    class Meta:
+        verbose_name_plural = "Our Industries"
+
+
 class RecentJob(models.Model):
     title = models.CharField(max_length=50)
     date = models.DateField(blank=True, null=True)
@@ -109,6 +120,8 @@ class RecentJob(models.Model):
     solution_offered = RichTextField()
     category = models.ManyToManyField(Category)
     technologies = models.ManyToManyField(OurTechnology, blank=True, null=True)
+    industry = models.ManyToManyField(OurIndustry, blank=True, null=True)
+    location = models.CharField(max_length=30, blank=True, null=True)
     slug = models.SlugField(max_length=250, blank=True, null=True)
 
     def __str__(self):
@@ -165,17 +178,6 @@ class Stat(models.Model):
 
     def __str__(self):
         return f"{self.stat_title} - N{self.stat_figure}"
-
-
-class OurIndustry(models.Model):
-    name_of_industry = models.CharField(max_length=50)
-    get_logo_url = models.URLField(default='')
-
-    def __str__(self):
-        return f"{self.name_of_industry}"
-
-    class Meta:
-        verbose_name_plural = "Our Industries"
 
 
 class Testimonial(models.Model):
