@@ -13,6 +13,12 @@ function ServiceGroup({ type }) {
         dots: false,
         arrows: true,
         slidesToShow: 3,
+        removeAutoPlay: false,
+        slidesToShowAt1024Breakpoint: 2,
+        slidesToShowAt992Breakpoint: 1,
+        objectCount: Object.keys(service).length,
+        speed: 500,
+        autoplaySpeed: 15000,
     });
 
     return (
