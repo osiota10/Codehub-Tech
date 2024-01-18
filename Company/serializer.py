@@ -84,21 +84,23 @@ class ServiceSerializer(serializers.ModelSerializer):
                   'get_image_url', 'pricings', 'stats', 'faqs', 'safe_description_html', 'hero_snippet', 'get_hero_image_url')
 
 
-class RecentJobSerializer(serializers.ModelSerializer):
-    category = CategorySerializer(many=True)
-    technologies = OurTechnologySerializer(many=True)
-    recent_job_statement = RecentJobStatementSerializer(many=True)
-
-    class Meta:
-        model = RecentJob
-        fields = ('id', 'title', 'summary', 'slug', 'problem_statement',
-                  'solution_offered', 'category', 'technologies', 'safe_summary_html', 'date', 'get_image_url', 'recent_job_statement')
-
-
 class OurIndustrySerializer(serializers.ModelSerializer):
     class Meta:
         model = OurIndustry
         fields = ('id', 'name_of_industry', 'get_logo_url')
+
+
+class RecentJobSerializer(serializers.ModelSerializer):
+    category = CategorySerializer(many=True)
+    technologies = OurTechnologySerializer(many=True)
+    recent_job_statement = RecentJobStatementSerializer(many=True)
+    industry = OurIndustrySerializer(many=True)
+
+    class Meta:
+        model = RecentJob
+        fields = ('id', 'title', 'summary', 'slug', 'problem_statement',
+                  'solution_offered', 'category', 'technologies', 'safe_summary_html',
+                  'date', 'get_image_url', 'recent_job_statement', 'industry', 'location')
 
 
 class TestimonialSerializer(serializers.ModelSerializer):
