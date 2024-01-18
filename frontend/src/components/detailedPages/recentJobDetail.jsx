@@ -75,7 +75,9 @@ function RecentJobDetail() {
                                 ></i>
                                 <section>
                                     <h6>Location</h6>
-                                    <p className="fw-light">Nigeria</p>
+                                    <p className="fw-light">
+                                        {detail.location}
+                                    </p>
                                 </section>
                             </section>
 
@@ -86,7 +88,18 @@ function RecentJobDetail() {
                                 ></i>
                                 <section>
                                     <h6>Industry</h6>
-                                    <p className="fw-light">Nigeria</p>
+
+                                    <p className="fw-light">
+                                        {dataCheck ? null : (
+                                            <>
+                                                {detail.industry.map((item) => (
+                                                    <span key={item.id}>
+                                                        {item.name}
+                                                    </span>
+                                                ))}
+                                            </>
+                                        )}
+                                    </p>
                                 </section>
                             </section>
 
