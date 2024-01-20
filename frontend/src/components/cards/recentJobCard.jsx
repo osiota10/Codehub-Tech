@@ -1,13 +1,22 @@
-import React from 'react'
-import TextTruncate from 'react-text-truncate';
-
+import React from "react";
+import TextTruncate from "react-text-truncate";
 
 function RecentJobCard({ id, title, body, category, thumbnail, date }) {
+    const newDate = new Date(date).toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+    });
+
     return (
-        <section className='col' key={id}>
-            <section className="card mx-auto" style={{ maxWidth: '379px' }}>
-                <div className='ratio ratio-16x9'>
-                    <img src={thumbnail} className="card-img-top mb-4" alt="..." />
+        <section className="col" key={id}>
+            <section className="card mx-auto" style={{ maxWidth: "379px" }}>
+                <div className="ratio ratio-16x9">
+                    <img
+                        src={thumbnail}
+                        className="card-img-top mb-4"
+                        alt={`Screenshot of ${title}`}
+                    />
                 </div>
                 <section className="card-body">
                     <TextTruncate
@@ -15,23 +24,24 @@ function RecentJobCard({ id, title, body, category, thumbnail, date }) {
                         element="h5"
                         truncateText="…"
                         text={title}
-                        className='card-title'
+                        className="card-title"
                     />
-                    <small className='fw-bold text-primary'><i class="fa-sharp fa-solid fa-calendar-days me-1"></i> {date}</small>
+                    <small className="fw-bold text-primary">
+                        <i class="fa-sharp fa-solid fa-calendar-days me-1"></i>
+                        {newDate}
+                    </small>
                     <TextTruncate
                         line={6}
                         element="p"
                         truncateText="…"
                         text={body}
-                        className='card-text text-secondary'
+                        className="card-text text-secondary"
                     />
-
                 </section>
                 <div class="card-footer text-primary fw-bold">
-                    {category.map((item) =>
+                    {category.map((item) => (
                         <small key={item.id}>{item.name}</small>
-                    )}
-
+                    ))}
                 </div>
             </section>
         </section>
