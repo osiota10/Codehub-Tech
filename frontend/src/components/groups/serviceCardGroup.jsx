@@ -51,7 +51,7 @@ function ServiceGroup({ type }) {
                                 <section className="d-flex justify-content-center">
                                     <Link
                                         to="/services"
-                                        className="btn btn-primary mt-6"
+                                        className="btn btn-primary mt-4"
                                     >
                                         See all Services
                                     </Link>
@@ -80,14 +80,16 @@ function ServiceGroup({ type }) {
                                     </Link>
                                 ))}
                             </Slider>
-                            <section className="d-flex justify-content-center">
-                                <Link
-                                    to="/services"
-                                    className="btn btn-primary mt-6"
-                                >
-                                    See all Services
-                                </Link>
-                            </section>
+                            {Object.keys(service).length > 1 ? (
+                                <section className="d-flex justify-content-center">
+                                    <Link
+                                        to="/services"
+                                        className="btn btn-primary mt-4"
+                                    >
+                                        See all Services
+                                    </Link>
+                                </section>
+                            ) : null}
                         </section>
                     )}
                 </section>
