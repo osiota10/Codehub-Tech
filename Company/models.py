@@ -208,9 +208,13 @@ class CompanyInfo(models.Model):
     return_policy = RichTextField(blank=True, null=True)
     term_and_conditions = RichTextField(blank=True, null=True)
     privacy_policy = RichTextField(blank=True, null=True)
+    testimonial_frame = CloudinaryField(null=True, blank=True)
 
     def get_logo(self):
         return f"{cloudinary_url}{self.logo}"
+
+    def get_testimonial_frame(self):
+        return f"{cloudinary_url}{self.testimonial_frame}"
 
 
 class OurTeam(models.Model):
