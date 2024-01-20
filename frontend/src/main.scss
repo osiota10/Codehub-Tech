@@ -475,6 +475,9 @@ $carousel-indicator-height:          1rem;
         --bs-aspect-ratio: calc(3 / 4 * 100%);
         }
     }
+    .testimonial-frame{
+      max-width: 50px !important;
+    }
 
     .icon-size{
       width: 2.4004370rem  !important;

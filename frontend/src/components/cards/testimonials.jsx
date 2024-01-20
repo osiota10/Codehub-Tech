@@ -12,20 +12,23 @@ function TestimonialCard({ image, id, message, name, position }) {
                     <div className="col-lg-5 d-flex justify-content-around align-items-center">
                         <img
                             src={companyInfo.get_testimonial_frame}
-                            className="img-fluid"
+                            className="img-fluid testimonial-frame"
                             alt="frame"
                             style={{ maxWidth: "85.76px", maxHeight: "276px" }}
                         />
-                        <section className="ratio ratio-1x1">
+                        <section
+                            className="ratio ratio-1x1"
+                            style={{ maxWidth: "300px" }}
+                        >
                             <img
                                 src={image}
-                                className=" rounded-circle"
+                                className="rounded-circle"
                                 alt={name}
                             />
                         </section>
                         <img
                             src={companyInfo.get_testimonial_frame}
-                            className="img-fluid"
+                            className="img-fluid testimonial-frame"
                             alt="frame"
                             style={{ maxWidth: "85.76px", maxHeight: "276px" }}
                         />
