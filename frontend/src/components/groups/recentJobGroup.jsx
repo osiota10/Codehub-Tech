@@ -130,14 +130,16 @@ function RecentJobGroup({ filterCategory, currentItem }) {
                             </Link>
                         ))}
                     </Slider>
-                    <div className="d-flex justify-content-center">
-                        <Link
-                            to="/recent-jobs"
-                            className="btn btn-primary mt-6"
-                        >
-                            See all Jobs
-                        </Link>
-                    </div>
+                    {Object.keys(jobs).length > 1 ? (
+                        <div className="d-flex justify-content-center">
+                            <Link
+                                to="/recent-jobs"
+                                className="btn btn-primary mt-6"
+                            >
+                                See all Jobs
+                            </Link>
+                        </div>
+                    ) : null}
                 </div>
             )}
         </>
