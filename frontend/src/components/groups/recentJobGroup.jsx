@@ -125,6 +125,7 @@ function RecentJobGroup({ filterCategory, currentItem }) {
                                     category={item.category}
                                     thumbnail={item.get_image_url}
                                     date={item.date}
+                                    location={item.location}
                                 />
                             </Link>
                         ))}
