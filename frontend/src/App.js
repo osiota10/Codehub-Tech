@@ -19,6 +19,7 @@ import Privacy from './components/pages/PrivacyPolicy';
 import OurReturnPolicy from './components/pages/ReturnPolicy';
 import OurTerms from './components/pages/TermsAndConditions';
 import { PageLoader } from './components/cards/utilities/loader';
+import Careers from './components/pages/Careers';
 
 
 // Contexts
@@ -121,6 +122,7 @@ function App() {
                                 <Route path="privacy-policy" element={<Privacy />} />
                                 <Route path="return-policy" element={<OurReturnPolicy />} />
                                 <Route path="terms-and-conditions" element={<OurTerms />} />
+                                <Route path="careers" element={<Careers />} />
                               </Route>
 
                               <Route path="*" element={<NoPage />} />
