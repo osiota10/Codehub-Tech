@@ -1,6 +1,7 @@
 import PageTitle from "./pageTitle";
 import TeamGroup from "../groups/teamGroup";
 import TextTemplate from "../cards/sampleText";
+import CareerGroup from "../groups/careerGroup";
 
 const Careers = () => {
     const careerBenefits = [
@@ -16,6 +17,7 @@ const Careers = () => {
         <>
             <PageTitle title="Careers" />
             <TextTemplate dataList={careerBenefits} />
+            <CareerGroup />
             <TeamGroup />
         </>
     );
