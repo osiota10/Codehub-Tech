@@ -135,6 +135,17 @@ function NavBar() {
                                             Contact
                                         </NavLink>
                                     </li>
+                                    <li
+                                        className="nav-item"
+                                        onClick={handleOffcanvasClose}
+                                    >
+                                        <NavLink
+                                            to="/careers"
+                                            className="nav-link fw-light"
+                                        >
+                                            Careers
+                                        </NavLink>
+                                    </li>
                                 </ul>
                             </div>
                         </Offcanvas.Body>
