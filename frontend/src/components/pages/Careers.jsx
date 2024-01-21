@@ -1,9 +1,11 @@
 import PageTitle from "./pageTitle";
+import TeamGroup from "../groups/teamGroup";
 
 const Careers = () => {
     return (
         <>
-            <PageTitle title="Career" />
+            <PageTitle title="Careers" />
+            <TeamGroup />
         </>
     );
 };
