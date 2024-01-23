@@ -276,3 +276,18 @@ class CoreValue(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+
+class JobOpening(models.Model):
+    date_created = models.DateTimeField(auto_now_add=True)
+    deadline = models.DateTimeField()
+    is_active = models.BooleanField(default=True)
+    number_of_openings = models.IntegerField()
+    job_title = models.CharField(max_length=225)
+    location = models.CharField(max_length=225)
+    years_of_experience = models.CharField(max_length=225)
+    skills = models.CharField(max_length=225)
+    roles = RichTextField()
+
+    def __str__(self):
+        return f"{self.job_title}"
