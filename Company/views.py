@@ -131,3 +131,19 @@ class CoeValueView(generics.ListAPIView):
     def get_queryset(self):
         query = CoreValue.objects.all()
         return query
+
+
+class JobOpeingView(generics.ListAPIView):
+    serializer_class = JobOpeningSerializer
+    permission_classes = [AllowAny,]
+
+    def get_queryset(self):
+        query = JobOpening.objects.filter(is_active=True)
+        return query
+
+
+class JobOpeningDetail(generics.RetrieveAPIView):
+    lookup_field = 'slug'
+    serializer_class = JobOpeningSerializer
+    queryset = JobOpening.objects.filter(is_active=True)
+    permission_classes = [AllowAny,]
