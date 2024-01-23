@@ -16,4 +16,6 @@ urlpatterns = [
     path('technologies', TechnologyView.as_view()),
     path('company-info/<int:id>', CompanyInfoView.as_view()),
     path('core-values', CoeValueView.as_view()),
+    path('our-jobs', JobOpeingView.as_view()),
+    path('our-jobs/<slug:slug>', JobOpeningDetail.as_view()),
 ]
