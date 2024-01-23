@@ -17,8 +17,21 @@ const Careers = () => {
         <>
             <PageTitle title="Careers" />
             <TextTemplate dataList={careerBenefits} />
-            <CareerGroup />
             <TeamGroup />
+            <CareerGroup />
+            <section className="container py-10">
+                <section className="row">
+                    <section className="col-lg-8 mx-auto text-center">
+                        <h3 className="text-center">
+                            Didn't Find A Suitable Position?
+                        </h3>
+                        <p>
+                            Send your CV to codehubtechnologies1@gmail.com and
+                            stay updated about our future openings.
+                        </p>
+                    </section>
+                </section>
+            </section>
         </>
     );
 };
