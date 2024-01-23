@@ -140,3 +140,10 @@ class CoreValueSerializer(serializers.ModelSerializer):
     class Meta:
         model = CoreValue
         fields = ('id', 'title', 'description', 'pic_url')
+
+
+class JobOpeningSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = JobOpening
+        fields = '__all__'
