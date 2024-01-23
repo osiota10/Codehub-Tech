@@ -288,6 +288,7 @@ class JobOpening(models.Model):
     years_of_experience = models.CharField(max_length=225)
     skills = models.CharField(max_length=225)
     roles = RichTextField()
+    slug = models.SlugField(max_length=250, blank=True, null=True)
 
     def __str__(self):
         return f"{self.job_title}"
