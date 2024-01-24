@@ -20,6 +20,7 @@ import OurReturnPolicy from './components/pages/ReturnPolicy';
 import OurTerms from './components/pages/TermsAndConditions';
 import { PageLoader } from './components/cards/utilities/loader';
 import Careers from './components/pages/Careers';
+import JobOpeningDetail from './components/detailedPages/jobOpeningDetail';
 
 
 // Contexts
@@ -123,6 +124,7 @@ function App() {
                                 <Route path="return-policy" element={<OurReturnPolicy />} />
                                 <Route path="terms-and-conditions" element={<OurTerms />} />
                                 <Route path="careers" element={<Careers />} />
+                                <Route path="job-openings/:slug" element={<JobOpeningDetail />} />
                               </Route>
 
                               <Route path="*" element={<NoPage />} />
