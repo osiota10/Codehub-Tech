@@ -10,16 +10,16 @@ const Careers = () => {
             title: "Careers with Codehub Technologies",
             description: "Benefits",
             pic_url:
-                "https://img.freepik.com/premium-photo/businessman-man-hand-hold-interface-question-marks-sign-web-ask-quiestion-online-faq-concept-what-where-when-how-why-search-information-internet_150455-4919.jpg?w=900",
+                "https://img.freepik.com/free-photo/confident-african-businesswoman-smiling-closeup-portrait-jobs-career-campaign_53876-143280.jpg?w=826&t=st=1706094006~exp=1706094606~hmac=b814bce95d6fc997b90f0d20c5e3ee6050798fcd24bd9ac1dbe0784d9fd36bfa",
         },
     ];
     return (
         <>
             <PageTitle title="Careers" />
             <TextTemplate dataList={careerBenefits} />
-            <TeamGroup />
             <CareerGroup />
-            <section className="container py-10">
+            <TeamGroup />
+            <section className="container pb-10">
                 <section className="row">
                     <section className="col-lg-8 mx-auto text-center">
                         <h3 className="text-center">
