@@ -10,3 +10,4 @@ def slug_generator(sender, instance, *args, **kwargs):
 
 pre_save.connect(slug_generator, sender=Service)
 pre_save.connect(slug_generator, sender=RecentJob)
+pre_save.connect(slug_generator, sender=JobOpening)
