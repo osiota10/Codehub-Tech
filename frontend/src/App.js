@@ -35,6 +35,7 @@ export const IndustryContext = createContext(null)
 export const WorkProcessContext = createContext(null)
 export const TeamContext = createContext(null)
 export const TestimonialContext = createContext(null)
+export const JobOpeningContext = createContext(null)
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
   const [workProcess, setWorkProcess] = useState([]);
   const [ourTeam, setOurTeam] = useState([])
   const [testimonials, setTestimonials] = useState([])
+  const [jobOpenings, setJobOpenings] = useState([])
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -63,6 +65,7 @@ function App() {
       axios.get(`${process.env.REACT_APP_API_URL}/our-services`),
       axios.get(`${process.env.REACT_APP_API_URL}/company-info/1`),
       axios.get(`${process.env.REACT_APP_API_URL}/our-recent-jobs`),
+      axios.get(`${process.env.REACT_APP_API_URL}/our-jobs`),
     ])
       .then((responses) => {
         setTestimonials(responses[0].data);
@@ -75,6 +78,7 @@ function App() {
         setService(responses[7].data);
         setCompanyInfor(responses[8].data);
         setJobs(responses[9].data);
+        setJobOpenings(responses[10].data);
 
         const uniqueCategories = responses[9].data.reduce((categories, product) => {
           const productCategories = product.category;
@@ -108,28 +112,30 @@ function App() {
                     <WorkProcessContext.Provider value={workProcess}>
                       <TeamContext.Provider value={ourTeam}>
                         <TestimonialContext.Provider value={testimonials}>
-                          <BrowserRouter>
-                            <ScrollToTop />
-                            {loading ? <PageLoader /> : null}
-                            <Routes>
-                              <Route path="/" element={<Layout />}>
-                                <Route index element={<Home />} />
-                                <Route path="about" element={<About />} />
-                                <Route path="services" element={<Services />} />
-                                <Route path="services/:slug" element={<ServicesDetail />} />
-                                <Route path="recent-jobs" element={<RecentJob />} />
-                                <Route path="recent-jobs/:slug" element={<RecentJobDetail />} />
-                                <Route path="contact" element={<Contact />} />
-                                <Route path="privacy-policy" element={<Privacy />} />
-                                <Route path="return-policy" element={<OurReturnPolicy />} />
-                                <Route path="terms-and-conditions" element={<OurTerms />} />
-                                <Route path="careers" element={<Careers />} />
-                                <Route path="job-openings/:slug" element={<JobOpeningDetail />} />
-                              </Route>
+                          <JobOpeningContext.Provider value={jobOpenings}>
+                            <BrowserRouter>
+                              <ScrollToTop />
+                              {loading ? <PageLoader /> : null}
+                              <Routes>
+                                <Route path="/" element={<Layout />}>
+                                  <Route index element={<Home />} />
+                                  <Route path="about" element={<About />} />
+                                  <Route path="services" element={<Services />} />
+                                  <Route path="services/:slug" element={<ServicesDetail />} />
+                                  <Route path="recent-jobs" element={<RecentJob />} />
+                                  <Route path="recent-jobs/:slug" element={<RecentJobDetail />} />
+                                  <Route path="contact" element={<Contact />} />
+                                  <Route path="privacy-policy" element={<Privacy />} />
+                                  <Route path="return-policy" element={<OurReturnPolicy />} />
+                                  <Route path="terms-and-conditions" element={<OurTerms />} />
+                                  <Route path="careers" element={<Careers />} />
+                                  <Route path="job-openings/:slug" element={<JobOpeningDetail />} />
+                                </Route>
 
-                              <Route path="*" element={<NoPage />} />
-                            </Routes>
-                          </BrowserRouter>
+                                <Route path="*" element={<NoPage />} />
+                              </Routes>
+                            </BrowserRouter>
+                          </JobOpeningContext.Provider>
                         </TestimonialContext.Provider>
                       </TeamContext.Provider>
                     </WorkProcessContext.Provider>
