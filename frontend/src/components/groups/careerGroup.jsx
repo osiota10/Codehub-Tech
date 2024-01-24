@@ -2,9 +2,11 @@ import { useContext } from "react";
 import Slider from "react-slick";
 import { getSliderSettings } from "./recentJobGroup";
 import CareerCard from "../cards/careerInfo";
+import { JobOpeningContext } from "../../App";
 
 const CareerGroup = () => {
-    const availablePositions = 3;
+    const jobOpenings = useContext(JobOpeningContext);
+
     const settings = getSliderSettings({
         dots: true,
         arrows: true,
@@ -12,7 +14,7 @@ const CareerGroup = () => {
         removeAutoPlay: false,
         slidesToShowAt1024Breakpoint: 2,
         slidesToShowAt992Breakpoint: 1,
-        objectCount: Object.keys(availablePositions).length,
+        objectCount: Object.keys(jobOpenings).length,
         speed: 500,
         autoplaySpeed: 15000,
     });
@@ -24,9 +26,16 @@ const CareerGroup = () => {
             </header>
 
             <Slider {...settings}>
-                <CareerCard />
-                <CareerCard />
-                <CareerCard />
+                {jobOpenings.map((item) => (
+                    <CareerCard
+                        title={item.title}
+                        deadline={item.deadline}
+                        experience={item.experience}
+                        skills={item.skills}
+                        slug={item.slug}
+                        id={item.id}
+                    />
+                ))}
             </Slider>
         </section>
     );

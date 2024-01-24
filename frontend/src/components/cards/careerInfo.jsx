@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 
-const CareerCard = () => {
+const CareerCard = ({ title, deadline, experience, skills, slug, id }) => {
     return (
-        <section>
+        <section key={id}>
             <section className="card mx-auto" style={{ maxWidth: "379px" }}>
                 <section className="card-body">
                     <header>
-                        <h5>Job Title</h5>
+                        <h5>{title}</h5>
                     </header>
 
                     <section className="fw-light">
-                        <p>Experience:</p>
-                        <p>Skills:</p>
-                        <p>Deadline:</p>
+                        <p>Experience: {experience}</p>
+                        <p>Skills: {skills}</p>
+                        <p>Deadline: {deadline}</p>
                     </section>
 
                     <section className="d-flex justify-content-center">
@@ -20,7 +20,7 @@ const CareerCard = () => {
                             Apply Now
                         </Link>
 
-                        <Link to="#" className="btn btn-outline-primary">
+                        <Link to={slug} className="btn btn-outline-primary">
                             see More
                         </Link>
                     </section>
