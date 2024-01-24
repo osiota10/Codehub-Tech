@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 
-const CareerCard = ({ title, deadline, experience, skills, slug, id }) => {
+const CareerCard = ({
+    title,
+    deadline,
+    experience,
+    skills,
+    slug,
+    id,
+    qualification,
+}) => {
     return (
         <section key={id}>
             <section className="card mx-auto" style={{ maxWidth: "379px" }}>
@@ -13,6 +21,7 @@ const CareerCard = ({ title, deadline, experience, skills, slug, id }) => {
                         <p>Experience: {experience}</p>
                         <p>Skills: {skills}</p>
                         <p>Deadline: {deadline}</p>
+                        <p>Qualification: {qualification}</p>
                     </section>
 
                     <section className="d-flex justify-content-center">

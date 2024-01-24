@@ -53,6 +53,7 @@ const JobOpeningDetail = () => {
                                 {detail.years_of_experience}
                             </li>
                             <li>Locaion: {detail.location}</li>
+                            <li>Qualification: {detail.qualification}</li>
                             <li>Skills: {detail.skills}</li>
                         </ul>
                     </section>

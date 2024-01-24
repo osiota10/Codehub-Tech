@@ -34,6 +34,7 @@ const CareerGroup = () => {
                         skills={item.skills}
                         slug={item.slug}
                         id={item.id}
+                        qualification={item.qualification}
                     />
                 ))}
             </Slider>
