@@ -7,6 +7,7 @@ import MailSubscription from "../cards/emailSub";
 import parse from "html-react-parser";
 import { CompanyInfoContext } from "../../App";
 import { PageLoader } from "../cards/utilities/loader";
+import LoaderIcon from "../cards/utilities/loader";
 
 const JobOpeningDetail = () => {
     const { slug } = useParams();
@@ -36,12 +37,10 @@ const JobOpeningDetail = () => {
 
     return (
         <>
-            <PageTitle title={detail.title} />
-            <section className="container">
+            <PageTitle title={detail.job_title} />
+            <section className="container py-8">
                 <section className="row">
                     <section className="col-lg-8 mx-auto">
-                        <h2 className="text-center">{detail.title}</h2>
-
                         <h6>Job Summary</h6>
                         <ul>
                             <li>Date Posted: {detail.date_created}</li>
@@ -61,11 +60,23 @@ const JobOpeningDetail = () => {
 
                 <section className="row">
                     <section className="col-lg-8 mx-auto">
-                        <h2 className="text-center">
-                            Roles and Responsibilites
-                        </h2>
+                        <h2>Roles and Responsibilites</h2>
                         {parse(`${detail.roles}`)}
                     </section>
+                </section>
+
+                <section className="d-flex justify-content-center">
+                    <button
+                        type="button"
+                        className={
+                            loading
+                                ? "btn btn-primary disabled"
+                                : "btn btn-primary"
+                        }
+                    >
+                        {loading ? <LoaderIcon /> : null}
+                        Apply Now
+                    </button>
                 </section>
             </section>
 
