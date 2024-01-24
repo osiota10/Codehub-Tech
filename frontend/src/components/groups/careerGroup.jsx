@@ -28,9 +28,9 @@ const CareerGroup = () => {
             <Slider {...settings}>
                 {jobOpenings.map((item) => (
                     <CareerCard
-                        title={item.title}
+                        title={item.job_title}
                         deadline={item.deadline}
-                        experience={item.experience}
+                        experience={item.years_of_experience}
                         skills={item.skills}
                         slug={item.slug}
                         id={item.id}
