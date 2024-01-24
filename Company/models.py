@@ -209,6 +209,7 @@ class CompanyInfo(models.Model):
     term_and_conditions = RichTextField(blank=True, null=True)
     privacy_policy = RichTextField(blank=True, null=True)
     testimonial_frame = CloudinaryField(null=True, blank=True)
+    career_benefits = RichTextField(null=True, blank=True)
 
     def get_logo(self):
         return f"{cloudinary_url}{self.logo}"
@@ -287,6 +288,7 @@ class JobOpening(models.Model):
     location = models.CharField(max_length=225)
     years_of_experience = models.CharField(max_length=225)
     skills = models.CharField(max_length=225)
+    qualification = models.CharField(max_length=225, null=True, blank=True)
     roles = RichTextField()
     slug = models.SlugField(max_length=250, blank=True, null=True)
 
