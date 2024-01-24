@@ -19,7 +19,7 @@ def unique_slug_generator(instance, new_slug=None):
         try:
             slug = slugify(instance.title)
         except AttributeError:
-            slug = slugify(instance.name)
+            slug = slugify(instance.job_title)
 
     Klass = instance.__class__
     qs_exists = Klass.objects.filter(slug=slug).exists()
