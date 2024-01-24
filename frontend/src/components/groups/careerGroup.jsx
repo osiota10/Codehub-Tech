@@ -19,26 +19,35 @@ const CareerGroup = () => {
         autoplaySpeed: 15000,
     });
     return (
-        <section className="container">
-            <header className="text-center mb-3">
-                <h2>Availiable Positions</h2>
-                <h6>Checkout the available positions below</h6>
-            </header>
+        <>
+            {Object.keys(jobOpenings).length === 0 ? (
+                <section className="container text-center">
+                    <h2>There are currently no availiable Positions</h2>
+                    <h6>Check back later for available positions</h6>
+                </section>
+            ) : (
+                <section className="container">
+                    <header className="text-center mb-3">
+                        <h2>Availiable Positions</h2>
+                        <h6>Checkout the available positions below</h6>
+                    </header>
 
-            <Slider {...settings}>
-                {jobOpenings.map((item) => (
-                    <CareerCard
-                        title={item.job_title}
-                        deadline={item.deadline}
-                        experience={item.years_of_experience}
-                        skills={item.skills}
-                        slug={item.slug}
-                        id={item.id}
-                        qualification={item.qualification}
-                    />
-                ))}
-            </Slider>
-        </section>
+                    <Slider {...settings}>
+                        {jobOpenings.map((item) => (
+                            <CareerCard
+                                title={item.job_title}
+                                deadline={item.deadline}
+                                experience={item.years_of_experience}
+                                skills={item.skills}
+                                slug={item.slug}
+                                id={item.id}
+                                qualification={item.qualification}
+                            />
+                        ))}
+                    </Slider>
+                </section>
+            )}
+        </>
     );
 };
 
