@@ -27,6 +27,28 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
     const onChange = (e) =>
         setFormData({ ...formData, [e.target.name]: e.target.value });
 
+    const [resumeInput, setResumeInput] = useState(null);
+    const [coverLetterInput, setCoverLetterInput] = useState(null);
+
+    const onFileInputChange = (e, setFileState) => {
+        const file = e.target.files[0];
+
+        // Check file type
+        if (file && !file.type.includes("pdf")) {
+            alert("PDF files only accepted");
+            return;
+        }
+
+        // Check file size
+        const maxSize = 1 * 1024 * 1024; //1mb
+        if (file && file.size > maxSize) {
+            alert("File exceeds 1mb");
+            return;
+        }
+
+        setFileState(file);
+    };
+
     const onSubmit = (e) => {
         e.preventDefault();
         setLoading(true);
@@ -164,24 +186,32 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
                         </div>
 
                         <div>
-                            <label for="formFile" class="form-label">
+                            <label for="cover_letter" class="form-label">
                                 Cover Letter
                             </label>
                             <input
                                 className="form-control"
                                 type="file"
-                                id="formFile"
+                                id="cover_letter"
+                                accept=".pdf"
+                                onChange={(e) =>
+                                    onFileInputChange(e, setCoverLetterInput)
+                                }
                             />
                         </div>
 
                         <div>
-                            <label for="formFile" class="form-label">
+                            <label for="resume" class="form-label">
                                 Resume
                             </label>
                             <input
                                 className="form-control"
                                 type="file"
-                                id="formFile"
+                                id="resume"
+                                accept=".pdf"
+                                onChange={(e) =>
+                                    onFileInputChange(e, setResumeInput)
+                                }
                             />
                         </div>
                     </form>
