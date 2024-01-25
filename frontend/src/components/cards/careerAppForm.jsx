@@ -10,13 +10,19 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
     const [formError, setFormError] = useState([]);
     const [formData, setFormData] = useState({
         full_name: "",
-        subject: "",
         email: "",
         phone_number: "",
-        message: "",
+        qualification: "",
+        years_of_experience: "",
     });
 
-    const { full_name, subject, email, phone_number, message } = formData;
+    const {
+        full_name,
+        email,
+        phone_number,
+        qualification,
+        years_of_experience,
+    } = formData;
 
     const onChange = (e) =>
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,44 +32,44 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
         setLoading(true);
 
         // declare the data fetching function
-        const PostFormData = async () => {
-            const config = {
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                },
-            };
+        // const PostFormData = async () => {
+        //     const config = {
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //             Accept: "application/json",
+        //         },
+        //     };
 
-            const body = JSON.stringify({
-                full_name,
-                subject,
-                email,
-                phone_number,
-                message,
-            });
+        //     const body = JSON.stringify({
+        //         full_name,
+        //         subject,
+        //         email,
+        //         phone_number,
+        //         message,
+        //     });
 
-            try {
-                const res = await axios.post(
-                    `${process.env.REACT_APP_API_URL}/contact-us`,
-                    body,
-                    config
-                );
-                setLoading(false);
-                if (res.status === 201) {
-                    // handleShow();
-                    setFormData({
-                        full_name: "",
-                        subject: "",
-                        email: "",
-                        phone_number: "",
-                        message: "",
-                    });
-                }
-            } catch (err) {
-                setFormError(err.response.data);
-            }
-        };
-        PostFormData();
+        //     try {
+        //         const res = await axios.post(
+        //             `${process.env.REACT_APP_API_URL}/contact-us`,
+        //             body,
+        //             config
+        //         );
+        //         setLoading(false);
+        //         if (res.status === 201) {
+        //             // handleShow();
+        //             setFormData({
+        //                 full_name: "",
+        //                 subject: "",
+        //                 email: "",
+        //                 phone_number: "",
+        //                 message: "",
+        //             });
+        //         }
+        //     } catch (err) {
+        //         setFormError(err.response.data);
+        //     }
+        // };
+        // PostFormData();
     };
 
     return (
@@ -81,7 +87,7 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
                             <div className="form-floating">
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     id="full_name"
                                     placeholder="Full Name"
                                     name="full_name"
@@ -92,11 +98,11 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
                                 <label for="full_name">Full Name</label>
                             </div>
                         </div>
-                        <div className="col-md-12">
+                        <div className="col-md-6">
                             <div className="form-floating">
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     id="phone_number"
                                     placeholder="Full Name"
                                     name="phone_number"
@@ -108,11 +114,11 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
                             </div>
                         </div>
 
-                        <div className="col-md-12">
+                        <div className="col-md-6">
                             <div className="form-floating">
                                 <input
                                     type="email"
-                                    class="form-control"
+                                    className="form-control"
                                     id="email"
                                     placeholder="Full Name"
                                     name="email"
@@ -122,6 +128,61 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
                                 />
                                 <label for="email">Email address</label>
                             </div>
+                        </div>
+
+                        <div className="col-md-6">
+                            <div className="form-floating">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="qualification"
+                                    placeholder="Full Name"
+                                    name="qualification"
+                                    onChange={(e) => onChange(e)}
+                                    value={qualification}
+                                    required
+                                />
+                                <label for="qualification">Qualification</label>
+                            </div>
+                        </div>
+                        <div className="col-md-6">
+                            <div className="form-floating">
+                                <input
+                                    type="number"
+                                    className="form-control"
+                                    id="years_of_experience"
+                                    placeholder="Years of Experience"
+                                    name="years_of_experience"
+                                    onChange={(e) => onChange(e)}
+                                    value={years_of_experience}
+                                    required
+                                />
+                                <label for="years_of_experience">
+                                    Years of Experience
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="formFile" class="form-label">
+                                Cover Letter
+                            </label>
+                            <input
+                                className="form-control"
+                                type="file"
+                                id="formFile"
+                            />
+                        </div>
+
+                        <div>
+                            <label for="formFile" class="form-label">
+                                Resume
+                            </label>
+                            <input
+                                className="form-control"
+                                type="file"
+                                id="formFile"
+                            />
                         </div>
                     </form>
 
