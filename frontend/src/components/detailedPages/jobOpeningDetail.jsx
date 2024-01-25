@@ -8,6 +8,7 @@ import parse from "html-react-parser";
 import { CompanyInfoContext } from "../../App";
 import { PageLoader } from "../cards/utilities/loader";
 import LoaderIcon from "../cards/utilities/loader";
+import CareerApplicationForm from "../cards/careerAppForm";
 
 const JobOpeningDetail = () => {
     const { slug } = useParams();
@@ -16,6 +17,13 @@ const JobOpeningDetail = () => {
     // const dataCheck = !detail || detail.length === 0;
     // const companyInfo = useContext(CompanyInfoContext);
     const [loading, setLoading] = useState(true);
+
+    //Modal
+    const [show, setShow] = useState(false);
+    const handleClose = () => {
+        setShow(false);
+    };
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -74,6 +82,7 @@ const JobOpeningDetail = () => {
                                 ? "btn btn-primary disabled"
                                 : "btn btn-primary"
                         }
+                        onClick={handleShow}
                     >
                         {loading ? <LoaderIcon /> : null}
                         Apply Now
@@ -84,6 +93,11 @@ const JobOpeningDetail = () => {
             <MailSubscription />
             <ContactForm />
             {loading ? <PageLoader /> : null}
+            <CareerApplicationForm
+                show={show}
+                onClose={handleClose}
+                role={detail.job_title}
+            />
         </>
     );
 };

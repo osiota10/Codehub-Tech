@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import CareerApplicationForm from "./careerAppForm";
+import { useState } from "react";
 
 const CareerCard = ({
     title,
@@ -9,6 +11,12 @@ const CareerCard = ({
     id,
     qualification,
 }) => {
+    //Modal
+    const [show, setShow] = useState(false);
+    const handleClose = () => {
+        setShow(false);
+    };
+    const handleShow = () => setShow(true);
     return (
         <section key={id}>
             <section className="card mx-auto" style={{ maxWidth: "379px" }}>
@@ -25,7 +33,11 @@ const CareerCard = ({
                     </section>
 
                     <section className="d-flex justify-content-center">
-                        <Link to="#" className="btn btn-primary me-2">
+                        <Link
+                            to="#"
+                            className="btn btn-primary me-2"
+                            onClick={handleShow}
+                        >
                             Apply Now
                         </Link>
 
@@ -35,6 +47,11 @@ const CareerCard = ({
                     </section>
                 </section>
             </section>
+            <CareerApplicationForm
+                show={show}
+                onClose={handleClose}
+                role={title}
+            />
         </section>
     );
 };
