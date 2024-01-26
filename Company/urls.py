@@ -18,4 +18,5 @@ urlpatterns = [
     path('core-values', CoeValueView.as_view()),
     path('our-jobs', JobOpeingView.as_view()),
     path('our-jobs/<slug:slug>', JobOpeningDetail.as_view()),
+    path('job-opening-application', JobOpeningApplicationView.as_view()),
 ]
