@@ -294,3 +294,19 @@ class JobOpening(models.Model):
 
     def __str__(self):
         return f"{self.job_title}"
+
+
+class JobOpeningApplication(models.Model):
+    date_created = models.DateTimeField(auto_now_add=True)
+    job = models.ForeignKey(JobOpening, on_delete=models.CASCADE)
+    full_name = models.CharField(max_length=225)
+    phone_number = models.CharField(max_length=11, validators=[
+                                    RegexValidator(r'^\d{11}$', 'Enter a valid phone number.')])
+    email = models.EmailField(max_length=255)
+    qualification = models.CharField(max_length=225)
+    years_of_experience = models.IntegerField()
+    cover_letter = CloudinaryField()
+    resume = CloudinaryField()
+
+    def __str__(self):
+        return f"{self.job} - {self.full_name}"
