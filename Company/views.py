@@ -147,3 +147,9 @@ class JobOpeningDetail(generics.RetrieveAPIView):
     serializer_class = JobOpeningSerializer
     queryset = JobOpening.objects.filter(is_active=True)
     permission_classes = [AllowAny,]
+
+
+class JobOpeningApplicationView(generics.CreateAPIView):
+    queryset = JobOpeningApplication.objects.all()
+    serializer_class = JobOpeningApplicationSerializer
+    permission_classes = [AllowAny,]
