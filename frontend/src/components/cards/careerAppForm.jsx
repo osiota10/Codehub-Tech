@@ -54,44 +54,56 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
         setLoading(true);
 
         // declare the data fetching function
-        // const PostFormData = async () => {
-        //     const config = {
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //             Accept: "application/json",
-        //         },
-        //     };
+        const PostFormData = async () => {
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+            };
 
-        //     const body = JSON.stringify({
-        //         full_name,
-        //         subject,
-        //         email,
-        //         phone_number,
-        //         message,
-        //     });
+            // const body = JSON.stringify({
+            //     full_name,
+            //     email,
+            //     phone_number,
+            //     qualification,
+            //     years_of_experience,
+            // });
+            const body = new FormData();
+            body.append("full_name", full_name);
+            body.append("email", email);
+            body.append("phone_number", phone_number);
+            body.append("qualification", qualification);
+            body.append("years_of_experience", years_of_experience);
+            body.append("role", role);
+            body.append("resume", resumeInput);
+            body.append("cover_letter", coverLetterInput);
 
-        //     try {
-        //         const res = await axios.post(
-        //             `${process.env.REACT_APP_API_URL}/contact-us`,
-        //             body,
-        //             config
-        //         );
-        //         setLoading(false);
-        //         if (res.status === 201) {
-        //             // handleShow();
-        //             setFormData({
-        //                 full_name: "",
-        //                 subject: "",
-        //                 email: "",
-        //                 phone_number: "",
-        //                 message: "",
-        //             });
-        //         }
-        //     } catch (err) {
-        //         setFormError(err.response.data);
-        //     }
-        // };
-        // PostFormData();
+            try {
+                const res = await axios.post(
+                    `${process.env.REACT_APP_API_URL}/job-opening-application`,
+                    body,
+                    config
+                );
+                setLoading(false);
+                if (res.status === 201) {
+                    onClose();
+                    setFormData({
+                        full_name: "",
+                        email: "",
+                        phone_number: "",
+                        qualification: "",
+                        years_of_experience: "",
+                    });
+                    setCoverLetterInput(null);
+                    setResumeInput(null);
+                }
+            } catch (err) {
+                setLoading(false);
+                setFormError(err.response.data);
+            }
+        };
+        PostFormData();
     };
 
     return (
@@ -126,7 +138,7 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
                                     type="text"
                                     className="form-control"
                                     id="phone_number"
-                                    placeholder="Full Name"
+                                    placeholder="Phone Number"
                                     name="phone_number"
                                     onChange={(e) => onChange(e)}
                                     value={phone_number}
@@ -142,7 +154,7 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
                                     type="email"
                                     className="form-control"
                                     id="email"
-                                    placeholder="Full Name"
+                                    placeholder="Email"
                                     name="email"
                                     onChange={(e) => onChange(e)}
                                     value={email}
@@ -158,7 +170,7 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
                                     type="text"
                                     className="form-control"
                                     id="qualification"
-                                    placeholder="Full Name"
+                                    placeholder="Qualification"
                                     name="qualification"
                                     onChange={(e) => onChange(e)}
                                     value={qualification}
@@ -197,6 +209,7 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
                                 onChange={(e) =>
                                     onFileInputChange(e, setCoverLetterInput)
                                 }
+                                required
                             />
                         </div>
 
@@ -212,27 +225,31 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
                                 onChange={(e) =>
                                     onFileInputChange(e, setResumeInput)
                                 }
+                                required
                             />
                         </div>
+
+                        <section className="d-flex justify-content-center mt-5">
+                            <button
+                                type="submit"
+                                className={
+                                    loading
+                                        ? "btn btn-primary disabled"
+                                        : "btn btn-primary"
+                                }
+                            >
+                                {loading && <LoaderIcon />}
+                                Submit
+                            </button>
+
+                            <Button
+                                variant="btn btn-danger ms-5"
+                                onClick={onClose}
+                            >
+                                Cancel
+                            </Button>
+                        </section>
                     </form>
-
-                    <section className="d-flex justify-content-center mt-5">
-                        <button
-                            type="submit"
-                            className={
-                                loading
-                                    ? "btn btn-primary disabled"
-                                    : "btn btn-primary"
-                            }
-                        >
-                            {loading ? <LoaderIcon /> : null}
-                            Submit
-                        </button>
-
-                        <Button variant="btn btn-danger ms-5" onClick={onClose}>
-                            Cancel
-                        </Button>
-                    </section>
                 </Modal.Body>
             </Modal>
         </>
