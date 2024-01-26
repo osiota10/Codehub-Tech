@@ -147,3 +147,10 @@ class JobOpeningSerializer(serializers.ModelSerializer):
     class Meta:
         model = JobOpening
         fields = '__all__'
+
+
+class JobOpeningApplicationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = JobOpeningApplication
+        fields = '__all__'
