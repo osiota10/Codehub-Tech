@@ -150,6 +150,7 @@ class JobOpeningSerializer(serializers.ModelSerializer):
 
 
 class JobOpeningApplicationSerializer(serializers.ModelSerializer):
+    job = serializers.PrimaryKeyRelatedField(queryset=JobOpening.objects.all())
 
     class Meta:
         model = JobOpeningApplication

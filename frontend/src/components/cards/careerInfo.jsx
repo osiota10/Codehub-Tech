@@ -51,6 +51,7 @@ const CareerCard = ({
                 show={show}
                 onClose={handleClose}
                 role={title}
+                role_id={id}
             />
         </section>
     );

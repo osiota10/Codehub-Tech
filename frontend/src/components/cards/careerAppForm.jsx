@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import LoaderIcon from "./utilities/loader";
 
-const CareerApplicationForm = ({ show, onClose, role }) => {
+const CareerApplicationForm = ({ show, onClose, role, role_id }) => {
     // Form
     const [loading, setLoading] = useState(false);
     const [formError, setFormError] = useState([]);
@@ -27,9 +27,9 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
     const onChange = (e) =>
         setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    const [resumeInput, setResumeInput] = useState(null);
-    const [coverLetterInput, setCoverLetterInput] = useState(null);
-
+    const [resumeInput, setResumeInput] = useState([]);
+    const [coverLetterInput, setCoverLetterInput] = useState([]);
+    console.log(coverLetterInput);
     const onFileInputChange = (e, setFileState) => {
         const file = e.target.files[0];
 
@@ -57,25 +57,18 @@ const CareerApplicationForm = ({ show, onClose, role }) => {
         const PostFormData = async () => {
             const config = {
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "multipart/form-data",
                     Accept: "application/json",
                 },
             };
 
-            // const body = JSON.stringify({
-            //     full_name,
-            //     email,
-            //     phone_number,
-            //     qualification,
-            //     years_of_experience,
-            // });
             const body = new FormData();
             body.append("full_name", full_name);
             body.append("email", email);
             body.append("phone_number", phone_number);
             body.append("qualification", qualification);
             body.append("years_of_experience", years_of_experience);
-            body.append("role", role);
+            body.append("job", role_id);
             body.append("resume", resumeInput);
             body.append("cover_letter", coverLetterInput);
 

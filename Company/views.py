@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from django.db import OperationalError
 from rest_framework.renderers import JSONRenderer
 from .permissions import IsFrontend
+from rest_framework import status
 
 
 class ContactFormView(generics.CreateAPIView):

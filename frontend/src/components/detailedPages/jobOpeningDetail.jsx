@@ -1,11 +1,10 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import PageTitle from "../pages/pageTitle";
 import axios from "axios";
 import ContactForm from "../cards/contactForm";
 import MailSubscription from "../cards/emailSub";
 import parse from "html-react-parser";
-import { CompanyInfoContext } from "../../App";
 import { PageLoader } from "../cards/utilities/loader";
 import LoaderIcon from "../cards/utilities/loader";
 import CareerApplicationForm from "../cards/careerAppForm";
@@ -97,6 +96,7 @@ const JobOpeningDetail = () => {
                 show={show}
                 onClose={handleClose}
                 role={detail.job_title}
+                role_id={detail.id}
             />
         </>
     );
