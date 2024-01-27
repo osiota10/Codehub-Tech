@@ -3,8 +3,17 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import axios from "axios";
 import LoaderIcon from "./utilities/loader";
+import SuccessModal from "./utilities/successModalMsg";
 
 const CareerApplicationForm = ({ show, onClose, role, role_id }) => {
+    //Success Modal
+    const [showSuccess, setShowSuccess] = useState(false);
+    const handleClose = () => {
+        // setFormError([])
+        setShowSuccess(false);
+    };
+    const handleShow = () => setShowSuccess(true);
+
     // Form
     const [loading, setLoading] = useState(false);
     const [formError, setFormError] = useState([]);
@@ -29,7 +38,7 @@ const CareerApplicationForm = ({ show, onClose, role, role_id }) => {
 
     const [resumeInput, setResumeInput] = useState([]);
     const [coverLetterInput, setCoverLetterInput] = useState([]);
-    console.log(coverLetterInput);
+
     const onFileInputChange = (e, setFileState) => {
         const file = e.target.files[0];
 
@@ -81,6 +90,7 @@ const CareerApplicationForm = ({ show, onClose, role, role_id }) => {
                 setLoading(false);
                 if (res.status === 201) {
                     onClose();
+                    handleShow();
                     setFormData({
                         full_name: "",
                         email: "",
@@ -245,6 +255,15 @@ const CareerApplicationForm = ({ show, onClose, role, role_id }) => {
                     </form>
                 </Modal.Body>
             </Modal>
+
+            {showSuccess && (
+                <SuccessModal
+                    message={`You have Sucessfully applied for the position of ${role}. Do NOT apply more than once.`}
+                    errorMessage={formError}
+                    show={showSuccess}
+                    onClose={handleClose}
+                />
+            )}
         </>
     );
 };
