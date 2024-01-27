@@ -8,6 +8,7 @@ import parse from "html-react-parser";
 import { PageLoader } from "../cards/utilities/loader";
 import LoaderIcon from "../cards/utilities/loader";
 import CareerApplicationForm from "../cards/careerAppForm";
+import { formatDateWithTime } from "../cards/recentJobCard";
 
 const JobOpeningDetail = () => {
     const { slug } = useParams();
@@ -50,8 +51,16 @@ const JobOpeningDetail = () => {
                     <section className="col-lg-8 mx-auto">
                         <h6>Job Summary</h6>
                         <ul>
-                            <li>Date Posted: {detail.date_created}</li>
-                            <li>Deadline: {detail.deadline}</li>
+                            <li>
+                                Date Posted:{" "}
+                                {detail.date_created &&
+                                    formatDateWithTime(detail.date_created)}
+                            </li>
+                            <li>
+                                Deadline:{" "}
+                                {detail.deadline &&
+                                    formatDateWithTime(detail.deadline)}
+                            </li>
                             <li>
                                 Number of Openings: {detail.number_of_openings}
                             </li>

@@ -1,6 +1,25 @@
 import React from "react";
 import TextTruncate from "react-text-truncate";
 
+export const formatDateWithTime = (dateString) => {
+    const date = new Date(dateString);
+    const options = {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+    };
+
+    // Check if the input date string includes time information
+    if (dateString.includes("T")) {
+        options.hour = "numeric";
+        options.minute = "numeric";
+        options.second = "numeric";
+        options.hour12 = true; // If you want to use 12-hour format
+    }
+
+    return date.toLocaleDateString("en-US", options);
+};
+
 function RecentJobCard({
     id,
     title,
@@ -10,12 +29,6 @@ function RecentJobCard({
     date,
     location,
 }) {
-    const newDate = new Date(date).toLocaleDateString("en-US", {
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-    });
-
     return (
         <section className="col" key={id}>
             <section className="card mx-auto" style={{ maxWidth: "379px" }}>
@@ -36,7 +49,7 @@ function RecentJobCard({
                     />
                     <small className="fw-bold text-primary me-3">
                         <i class="fa-sharp fa-solid fa-calendar-days me-1"></i>
-                        {newDate}
+                        {formatDateWithTime(date)}
                     </small>
                     <span>
                         <i className="fa-solid fa-globe text-primary me-1"></i>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import CareerApplicationForm from "./careerAppForm";
 import { useState } from "react";
+import { formatDateWithTime } from "./recentJobCard";
 
 const CareerCard = ({
     title,
@@ -28,7 +29,9 @@ const CareerCard = ({
                     <section className="fw-light">
                         <p>Experience: {experience}</p>
                         <p>Skills: {skills}</p>
-                        <p>Deadline: {deadline}</p>
+                        <p>
+                            Deadline: {deadline && formatDateWithTime(deadline)}
+                        </p>
                         <p>Qualification: {qualification}</p>
                     </section>
 
