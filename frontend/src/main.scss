@@ -42,6 +42,9 @@ $spacers: (
   12: $spacer * 7.5,  //120px
 );
 
+//Off Canvass
+$offcanvas-horizontal-width:        300px;
+
 //Typography
 $header-font-family:          'Merriweather', serif;
 $font-size-root:              16px;
@@ -493,4 +496,5 @@ $carousel-indicator-height:          1rem;
         }
     }
   }
+
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
