@@ -47,14 +47,20 @@ function RecentJobCard({
                         text={title}
                         className="card-title"
                     />
-                    <small className="fw-bold text-primary me-3">
-                        <i class="fa-sharp fa-solid fa-calendar-days me-1"></i>
-                        {formatDateWithTime(date)}
-                    </small>
-                    <span>
-                        <i className="fa-solid fa-globe text-primary me-1"></i>
-                        {location}
-                    </span>
+                    {date && (
+                        <small className="fw-bold text-primary me-3">
+                            <i class="fa-sharp fa-solid fa-calendar-days me-1"></i>
+                            {formatDateWithTime(date)}
+                        </small>
+                    )}
+
+                    {location && (
+                        <span>
+                            <i className="fa-solid fa-globe text-primary me-1"></i>
+                            {location}
+                        </span>
+                    )}
+
                     <TextTruncate
                         line={6}
                         element="p"
