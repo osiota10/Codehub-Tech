@@ -52,25 +52,41 @@ const JobOpeningDetail = () => {
                         <h6>Job Summary</h6>
                         <ul>
                             <li>
-                                Date Posted:{" "}
+                                <span className="fw-light">Date Posted:</span>{" "}
                                 {detail.date_created &&
                                     formatDateWithTime(detail.date_created)}
                             </li>
                             <li>
-                                Deadline:{" "}
+                                <span className="fw-light">Deadline:</span>{" "}
                                 {detail.deadline &&
                                     formatDateWithTime(detail.deadline)}
                             </li>
                             <li>
-                                Number of Openings: {detail.number_of_openings}
+                                <span className="fw-light">
+                                    Number of Openings:{" "}
+                                </span>
+                                {detail.number_of_openings}
                             </li>
                             <li>
-                                Years of Experience:
+                                <span className="fw-light">
+                                    Years of Experience:{" "}
+                                </span>
                                 {detail.years_of_experience}
                             </li>
-                            <li>Locaion: {detail.location}</li>
-                            <li>Qualification: {detail.qualification}</li>
-                            <li>Skills: {detail.skills}</li>
+                            <li>
+                                <span className="fw-light">Locaion: </span>
+                                {detail.location}
+                            </li>
+                            <li>
+                                <span className="fw-light">
+                                    Qualification:{" "}
+                                </span>
+                                {detail.qualification}
+                            </li>
+                            <li>
+                                <span className="fw-light">Skills: </span>
+                                {detail.skills}
+                            </li>
                         </ul>
                     </section>
                 </section>
