@@ -26,13 +26,26 @@ const CareerCard = ({
                         <h5>{title}</h5>
                     </header>
 
-                    <section className="fw-light">
-                        <p>Experience: {experience}</p>
-                        <p>Skills: {skills}</p>
+                    <section>
                         <p>
-                            Deadline: {deadline && formatDateWithTime(deadline)}
+                            <span className="fw-light">Experience:</span>{" "}
+                            {experience}
                         </p>
-                        <p>Qualification: {qualification}</p>
+
+                        <section className="d-flex">
+                            <p className="fw-light me-1">Skills:</p>
+                            <p>{skills}</p>
+                        </section>
+
+                        <section className="d-flex">
+                            <p className="fw-light me-1">Deadline:</p>
+                            <p>{deadline && formatDateWithTime(deadline)}</p>
+                        </section>
+
+                        <section className="d-flex">
+                            <p className="fw-light me-1">Qualification:</p>
+                            <p>{qualification}</p>
+                        </section>
                     </section>
 
                     <section className="d-flex justify-content-center">
