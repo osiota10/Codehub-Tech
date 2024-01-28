@@ -1,58 +1,68 @@
 import { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 import LoaderIcon from "./utilities/loader";
 import SuccessModal from "./utilities/successModalMsg";
-
 
 const ContactForm = () => {
     // Form
     const [loading, setLoading] = useState(false);
     const [formError, setFormError] = useState([]);
     const [formData, setFormData] = useState({
-        full_name: '',
-        subject: '',
-        email: '',
-        phone_number: '',
-        message: '',
+        full_name: "",
+        subject: "",
+        email: "",
+        phone_number: "",
+        message: "",
     });
 
     const { full_name, subject, email, phone_number, message } = formData;
 
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    const onChange = (e) =>
+        setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    const onSubmit = e => {
+    const onSubmit = (e) => {
         e.preventDefault();
-        setLoading(true)
+        setLoading(true);
 
         // declare the data fetching function
         const PostFormData = async () => {
             const config = {
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
             };
 
-            const body = JSON.stringify({ full_name, subject, email, phone_number, message });
+            const body = JSON.stringify({
+                full_name,
+                subject,
+                email,
+                phone_number,
+                message,
+            });
 
             try {
-                const res = await axios.post(`${process.env.REACT_APP_API_URL}/contact-us`, body, config);
-                setLoading(false)
+                const res = await axios.post(
+                    `${process.env.REACT_APP_API_URL}/contact-us`,
+                    body,
+                    config
+                );
+                setLoading(false);
                 if (res.status === 201) {
-                    handleShow()
+                    handleShow();
                     setFormData({
-                        full_name: '',
-                        subject: '',
-                        email: '',
-                        phone_number: '',
-                        message: '',
-                    })
+                        full_name: "",
+                        subject: "",
+                        email: "",
+                        phone_number: "",
+                        message: "",
+                    });
                 }
             } catch (err) {
                 setFormError(err.response.data);
             }
-        }
-        PostFormData()
+        };
+        PostFormData();
     };
 
     //Modal
@@ -61,15 +71,15 @@ const ContactForm = () => {
     const handleShow = () => setShow(true);
 
     return (
-        <div className='container py-10' id="contact-form">
-            <section className='row'>
-                <section className='col-lg-10 mx-auto'>
-                    <header className='text-center mb-4'>
+        <div className="container py-10" id="contact-form">
+            <section className="row">
+                <section className="col-lg-10 mx-auto">
+                    <header className="text-center mb-4">
                         <h2>Have a Project in Mind?</h2>
                         <h5>Tell us about it</h5>
                     </header>
 
-                    <form className="row g-3" onSubmit={e => onSubmit(e)}>
+                    <form className="row g-3" onSubmit={(e) => onSubmit(e)}>
                         <div className="col-md-6">
                             <div className="form-floating">
                                 <input
@@ -78,7 +88,7 @@ const ContactForm = () => {
                                     id="full_name"
                                     placeholder="Full Name"
                                     name="full_name"
-                                    onChange={e => onChange(e)}
+                                    onChange={(e) => onChange(e)}
                                     value={full_name}
                                     required
                                 />
@@ -93,7 +103,7 @@ const ContactForm = () => {
                                     id="phone_number"
                                     placeholder="Full Name"
                                     name="phone_number"
-                                    onChange={e => onChange(e)}
+                                    onChange={(e) => onChange(e)}
                                     value={phone_number}
                                     required
                                 />
@@ -109,7 +119,7 @@ const ContactForm = () => {
                                     id="email"
                                     placeholder="Full Name"
                                     name="email"
-                                    onChange={e => onChange(e)}
+                                    onChange={(e) => onChange(e)}
                                     value={email}
                                     required
                                 />
@@ -124,7 +134,7 @@ const ContactForm = () => {
                                     id="subject"
                                     placeholder="Full Name"
                                     name="subject"
-                                    onChange={e => onChange(e)}
+                                    onChange={(e) => onChange(e)}
                                     value={subject}
                                     required
                                 />
@@ -133,34 +143,34 @@ const ContactForm = () => {
                         </div>
 
                         <div className="col-md-12">
-                            <div className="form-floating" >
+                            <div className="form-floating">
                                 <textarea
                                     class="form-control"
                                     id="floatingTextarea2"
                                     rows="4"
                                     placeholder="Leave a comment here"
                                     name="message"
-                                    onChange={e => onChange(e)}
+                                    onChange={(e) => onChange(e)}
                                     value={message}
-                                    style={{ height: '9.375rem' }}
+                                    style={{ height: "9.375rem" }}
                                     required
                                 ></textarea>
-                                <label for="floatingTextarea2">Brief Description</label>
+                                <label for="floatingTextarea2">
+                                    Brief Description
+                                </label>
                             </div>
                         </div>
-
 
                         <div className="col-12 d-grid">
                             <button
                                 type="submit"
-                                className={loading ? "btn btn-primary disabled" : "btn btn-primary"}
-                            >
-                                {loading
-                                    ?
-                                    <LoaderIcon />
-                                    :
-                                    null
+                                className={
+                                    loading
+                                        ? "btn btn-primary disabled"
+                                        : "btn btn-primary"
                                 }
+                            >
+                                {loading ? <LoaderIcon /> : null}
                                 Submit
                             </button>
                         </div>
@@ -168,21 +178,17 @@ const ContactForm = () => {
                 </section>
             </section>
 
-            {
-                show
-                    ?
-                    <SuccessModal
-                        title='Thank you'
-                        message='you have successfully uploaded Payment Proof'
-                        errorMessage={formError}
-                        show={show}
-                        onClose={handleClose}
-                    />
-                    :
-                    null
-            }
+            {show ? (
+                <SuccessModal
+                    title="Form Submitted"
+                    message="Thank you for reaching out to us! We've received your message and will get back to you shortly. Your feedback is valuable to us, and we appreciate you taking the time to connect. Have a fantastic day!"
+                    errorMessage={formError}
+                    show={show}
+                    onClose={handleClose}
+                />
+            ) : null}
         </div>
     );
-}
+};
 
 export default ContactForm;
