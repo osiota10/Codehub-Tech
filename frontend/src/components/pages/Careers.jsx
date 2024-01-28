@@ -4,6 +4,8 @@ import TextTemplate from "../cards/sampleText";
 import CareerGroup from "../groups/careerGroup";
 import { CompanyInfoContext } from "../../App";
 import { useContext } from "react";
+import MailSubscription from "../cards/emailSub";
+import ContactForm from "../cards/contactForm";
 
 const Careers = () => {
     const companyInfo = useContext(CompanyInfoContext);
@@ -44,6 +46,9 @@ const Careers = () => {
                     </section>
                 </section>
             </section>
+
+            <MailSubscription />
+            <ContactForm />
         </>
     );
 };
