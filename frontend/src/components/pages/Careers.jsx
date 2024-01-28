@@ -32,8 +32,14 @@ const Careers = () => {
                             Didn't Find A Suitable Position?
                         </h3>
                         <p>
-                            Send your CV to codehubtechnologies1@gmail.com and
-                            stay updated about our future openings.
+                            Send your CV to{" "}
+                            <a
+                                className="fw-bold text-decoration-none"
+                                href="mailto:codehubtechnologies1@gmail.com"
+                            >
+                                codehubtechnologies1@gmail.com
+                            </a>{" "}
+                            and stay updated about our future openings.
                         </p>
                     </section>
                 </section>
