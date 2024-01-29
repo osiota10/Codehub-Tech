@@ -9,7 +9,7 @@ function TeamGroup() {
 
     const settings = getSliderSettings({
         dots: true,
-        arrows: true,
+        arrows: false,
         slidesToShow: 3,
         removeAutoPlay: false,
         slidesToShowAt1024Breakpoint: 2,
