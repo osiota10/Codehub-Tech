@@ -8,8 +8,8 @@ function TeamGroup() {
     const ourTeam = useContext(TeamContext);
 
     const settings = getSliderSettings({
-        dots: true,
-        arrows: false,
+        dots: false,
+        arrows: true,
         slidesToShow: 3,
         removeAutoPlay: false,
         slidesToShowAt1024Breakpoint: 2,
