@@ -28,7 +28,7 @@ function Pricing({
                 <section className="card-body">
                     <header className="text-center">
                         <h6>{title}</h6>
-                        <h4>N{price}</h4>
+                        <h4>{price}</h4>
                     </header>
 
                     <p className="text-center">{description}</p>
