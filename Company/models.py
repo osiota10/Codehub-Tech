@@ -152,7 +152,7 @@ class RecentJobStatement(models.Model):
 class Pricing(models.Model):
     service = models.ForeignKey(
         Service, on_delete=models.CASCADE, related_name='pricings')
-    price = models.IntegerField()
+    price = models.CharField(max_length=50)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=50)
 
